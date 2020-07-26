@@ -11,6 +11,8 @@ using DevExpress.XtraEditors;
 using DAL_BLL;
 using DevExpress.Utils.Extensions;
 using DevExpress.DataProcessing;
+using DevExpress.XtraExport.Helpers;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace QuanLyCuaHangDM
 {
@@ -47,10 +49,11 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            cboMaSP.DataBindings.Clear();
-            cboMaSP.DataBindings.Add("SelectedValue", gridCtrlCTHD.DataSource, "MaSanPham");
-            txtSoLuong.DataBindings.Clear();
-            txtSoLuong.DataBindings.Add("Text", gridCtrlCTHD.DataSource, "SoLuong");
+            //cboMaSP.DataBindings.Clear();
+            //cboMaSP.DataBindings.Add("SelectedValue", gridCtrlCTHD.DataSource, "MaSanPham");
+            //txtSoLuong.DataBindings.Clear();
+            //txtSoLuong.DataBindings.Add("Text", gridCtrlCTHD.DataSource, "SoLuong");
+            GridView gridView1 = gridCtrlCTHD.MainView as GridView;
         }
         void disEndPN(bool e)
         {

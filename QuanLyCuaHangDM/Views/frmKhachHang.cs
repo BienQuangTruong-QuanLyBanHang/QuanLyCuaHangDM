@@ -25,7 +25,7 @@ namespace QuanLyCuaHangDM
         public static frmNhanVien nv = new frmNhanVien();
         public void HienThiDSKhachHang()
         {
-            gridCtrlKhachHang.DataSource = Models.KhachHangModel.FillDataSetKhachHang().Tables[0];
+            gridCtrlKhachHang.DataSource = bll_kh.GetKhachHangs();
         }
         void binding()
         {
@@ -62,8 +62,7 @@ namespace QuanLyCuaHangDM
         }
         void loadControl_cboLoaiKH()
         {
-            cboLoaiKH.DataSource = Models.LoaiKhachHangModel.FillDataSetLoaiKhachHang().Tables[0];
-            cboLoaiKH.DisplayMember = "TenLoaiKhachHang";
+            cboLoaiKH.DataSource = bll_lkh.GetLoaiKhachHangs();
             cboLoaiKH.ValueMember = "MaLoaiKhachHang";
             cboLoaiKH.SelectedIndex = 0;
         }
