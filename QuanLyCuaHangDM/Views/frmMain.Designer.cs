@@ -48,6 +48,8 @@
             this.btnHangSX = new DevExpress.XtraBars.BarButtonItem();
             this.btnLoaiSP = new DevExpress.XtraBars.BarButtonItem();
             this.btnKhachHang = new DevExpress.XtraBars.BarButtonItem();
+            this.btnInDSPN = new DevExpress.XtraBars.BarButtonItem();
+            this.btnInDSHoaDon = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -70,8 +72,6 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInDSPN = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInDSHoaDon = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabHienThi)).BeginInit();
@@ -103,7 +103,6 @@
             this.btnInDSPN,
             this.btnInDSHoaDon});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbonControl1.MaxItemId = 20;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -111,7 +110,7 @@
             this.ribbonPage2,
             this.ribbonPage4,
             this.ribbonPage3});
-            this.ribbonControl1.Size = new System.Drawing.Size(1126, 178);
+            this.ribbonControl1.Size = new System.Drawing.Size(965, 143);
             this.ribbonControl1.StatusBar = this.rbStt;
             // 
             // imageCollection1
@@ -283,6 +282,24 @@
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             this.btnKhachHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKhachHang_ItemClick);
             // 
+            // btnInDSPN
+            // 
+            this.btnInDSPN.Caption = "In danh sách phiếu nhập";
+            this.btnInDSPN.Id = 18;
+            this.btnInDSPN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInDSPN.ImageOptions.Image")));
+            this.btnInDSPN.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInDSPN.ImageOptions.LargeImage")));
+            this.btnInDSPN.Name = "btnInDSPN";
+            this.btnInDSPN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInDSPN_ItemClick);
+            // 
+            // btnInDSHoaDon
+            // 
+            this.btnInDSHoaDon.Caption = "In danh sách hóa đơn";
+            this.btnInDSHoaDon.Id = 19;
+            this.btnInDSHoaDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInDSHoaDon.ImageOptions.Image")));
+            this.btnInDSHoaDon.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInDSHoaDon.ImageOptions.LargeImage")));
+            this.btnInDSHoaDon.Name = "btnInDSHoaDon";
+            this.btnInDSHoaDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInDSHoaDon_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -385,17 +402,18 @@
             // 
             // rbStt
             // 
-            this.rbStt.Location = new System.Drawing.Point(1, 356);
+            this.rbStt.Location = new System.Drawing.Point(1, 363);
             this.rbStt.Name = "rbStt";
             this.rbStt.Ribbon = this.ribbonControl1;
-            this.rbStt.Size = new System.Drawing.Size(1119, 34);
+            this.rbStt.Size = new System.Drawing.Size(1119, 27);
             // 
             // tabHienThi
             // 
             this.tabHienThi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabHienThi.Location = new System.Drawing.Point(0, 178);
+            this.tabHienThi.Location = new System.Drawing.Point(0, 143);
+            this.tabHienThi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabHienThi.Name = "tabHienThi";
-            this.tabHienThi.Size = new System.Drawing.Size(1126, 396);
+            this.tabHienThi.Size = new System.Drawing.Size(965, 323);
             this.tabHienThi.TabIndex = 1;
             this.tabHienThi.Visible = false;
             // 
@@ -452,35 +470,16 @@
             this.barButtonItem5.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
-            // btnInDSPN
-            // 
-            this.btnInDSPN.Caption = "In danh sách phiếu nhập";
-            this.btnInDSPN.Id = 18;
-            this.btnInDSPN.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
-            this.btnInDSPN.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.LargeImage")));
-            this.btnInDSPN.Name = "btnInDSPN";
-            this.btnInDSPN.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInDSPN_ItemClick);
-            // 
-            // btnInDSHoaDon
-            // 
-            this.btnInDSHoaDon.Caption = "In danh sách hóa đơn";
-            this.btnInDSHoaDon.Id = 19;
-            this.btnInDSHoaDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInDSHoaDon.ImageOptions.Image")));
-            this.btnInDSHoaDon.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInDSHoaDon.ImageOptions.LargeImage")));
-            this.btnInDSHoaDon.Name = "btnInDSHoaDon";
-            this.btnInDSHoaDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInDSHoaDon_ItemClick);
-            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile;
-            this.BackgroundImageStore = global::QuanLyCuaHangDM.Properties.Resources.wolf_minimalism_4k_u6_1920x1080;
-            this.ClientSize = new System.Drawing.Size(1126, 574);
+            this.BackgroundImageStore = global::QuanLyCuaHangDM.Properties.Resources.white_background;
+            this.ClientSize = new System.Drawing.Size(965, 466);
             this.Controls.Add(this.tabHienThi);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmMain";
             this.Ribbon = this.ribbonControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

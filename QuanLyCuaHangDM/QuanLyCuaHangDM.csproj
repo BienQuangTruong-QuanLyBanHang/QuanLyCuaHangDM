@@ -456,6 +456,8 @@
     <None Include="Resources\wolf-minimalism-4k-u6-1920x1080.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\white-background.png" />
+    <None Include="Resources\123.jpg" />
     <Content Include="Resources\image-not-found.jpg" />
     <None Include="Resources\image-not-found1.jpg" />
   </ItemGroup>

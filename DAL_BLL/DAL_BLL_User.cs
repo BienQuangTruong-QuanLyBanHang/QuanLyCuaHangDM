@@ -106,5 +106,9 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public string GetIdUsers(string qTenDN)
+        {
+            return qlhh.Users.Where(t => t.TenDangNhap == qTenDN).FirstOrDefault().MaNhanVien;
+        }
     }
 }

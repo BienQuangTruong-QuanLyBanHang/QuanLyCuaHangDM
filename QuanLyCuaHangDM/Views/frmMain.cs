@@ -33,7 +33,7 @@ namespace QuanLyCuaHangDM
         public void skin()
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel theme = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            theme.LookAndFeel.SkinName = "office 2017 blue";
+            theme.LookAndFeel.SkinName = "Office 2019 Colorful";
         }
 
         public void DisEndMenuLogin(bool e, string _idlogin)
@@ -97,6 +97,7 @@ namespace QuanLyCuaHangDM
                 else
                 {
                     DisEndMenuLogin(false, IdLogin);
+                    IdUser = login.txtUser.Text;
                 }
                 //else
                 //{
@@ -169,7 +170,7 @@ namespace QuanLyCuaHangDM
 
         private void btnBanHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmBanHang banhang = new frmBanHang();
+            frmBanHang banhang = new frmBanHang(bll_us.GetIdUsers(IdUser));
             banhang.MdiParent = this;
             banhang.Show();
         }

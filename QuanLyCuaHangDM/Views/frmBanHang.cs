@@ -22,10 +22,17 @@ namespace QuanLyCuaHangDM
         DAL_BLL_KhachHang bll_kh = new DAL_BLL_KhachHang();
         List<ChiTietHoaDon> lst = new List<ChiTietHoaDon>();
         public static string MaHD;
+        string MaNV;
         public frmBanHang()
         {
             InitializeComponent();
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        }
+        public frmBanHang(string _MaNV)
+        {
+            InitializeComponent();
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            MaNV = _MaNV;
         }
         int flagHD = 0;
         int flagCTHD = 0;
@@ -50,12 +57,12 @@ namespace QuanLyCuaHangDM
             cboMaKH.Enabled = e;
             btnThemHD.Enabled = !e;
             btnLuuHD.Enabled = e;
+            btnThemCTHD.Enabled = e;
         }
         void disEndCTPN(bool e)
         {
             cboMaSP.Enabled = e;
             txtSoLuong.Enabled = e;
-            btnThemCTHD.Enabled = !e;
             btnLuuCTHD.Enabled = e;
         }
         public void loadControl_cboMaHD()
@@ -84,7 +91,7 @@ namespace QuanLyCuaHangDM
             txtTongTien.Text = "";
             txtNgayLapHoaDon.Text = DateTime.Now.ToShortDateString();
             loadControl_cboMaKH();
-            txtMaNV.Text = frmMain.IdUser;
+            txtMaNV.Text = MaNV;
         }
         void clearDataCTHD()
         {
@@ -104,6 +111,7 @@ namespace QuanLyCuaHangDM
             loadControl_cboMaSP();
             txtNgayLapHoaDon.Text = DateTime.Now.ToShortDateString();
             MaHD = cboMaHD.Text;
+            clearDataHD();
             cboMaHD.SelectedIndexChanged += cboMaHD_SelectedIndexChanged_1;
             cboMaSP.SelectedIndexChanged += cboMaSP_SelectedIndexChanged_1;
         }
@@ -112,7 +120,7 @@ namespace QuanLyCuaHangDM
         {
             flagHD = 0;
             //cboMaHD.Text = cboMaHD.Items.Count.ToString();
-            int count = cboMaHD.Items.Count;
+            //int count = cboMaHD.Items.Count;
             string str = bll_hd.GetLastHoaDons();
             int str2 = Convert.ToInt32(str.Remove(0, 2));
             if(str2 + 1 < 10)
@@ -163,16 +171,30 @@ namespace QuanLyCuaHangDM
             catch { }
             if (flagHD == 0)
             {
-                int i = bll_hd.addHoaDon(_MaHoaDon, _MaKhachHang, _MaNhanVien, _NgayNhap, _TongTien + (_TongTien * 1) / 10);
-                if (i > 0)
+                if (lst.Count > 0)
                 {
-                    XtraMessageBox.Show("Thêm mới thành công");
+                    int i = bll_hd.addHoaDon(_MaHoaDon, _MaKhachHang, _MaNhanVien, _NgayNhap, _TongTien + (_TongTien * 1) / 10);
+                    for (int j = 0; j < lst.Count; j++)
+                    {
+                        int k = bll_cthd.AddChiTietHoaDons(lst[j].MaHoaDon, lst[j].MaSanPham, lst[j].SoLuong, Convert.ToInt32(lst[j].TongTien));
+                        if(k < 1)
+                        {
+                            XtraMessageBox.Show("Thêm mới thất bại");
+                            return;
+                        }
+                    }
+                    if (i > 0)
+                    {
+                        XtraMessageBox.Show("Thêm mới thành công");
+                    }
+                    else
+                        XtraMessageBox.Show("Thêm mới thất bại");
                 }
                 else
-                    XtraMessageBox.Show("Thêm mới thất bại");
+                    MessageBox.Show("Đơn hàng đang rỗng");
             }
-            frmBanHang_Load(sender, e);
-            cboMaHD.Text = Models.Connection.GetLastID("HoaDon", "MaHoaDon");
+            //frmBanHang_Load(sender, e);
+            //cboMaHD.Text = Models.Connection.GetLastID("HoaDon", "MaHoaDon");
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -225,12 +247,15 @@ namespace QuanLyCuaHangDM
                     if (Convert.ToInt32(txtSoLuong.Text) <= tonkho)
                     {
                         lst.Add(new ChiTietHoaDon { MaHoaDon = _MaHoaDon, MaSanPham = _MaSanPham, SoLuong = _SoLuong, TongTien = _TongTien });
-                        gridCtrlCTHD.DataSource = lst[0];
-                        MessageBox.Show(lst.Count.ToString());
-                        //for(int i = 0; i < lst.Count; i++)
-                        //{
-                        //    gridCtrlCTHD.DataSource = lst[i];
-                        //}
+                        var source = new BindingSource();
+                        source.DataSource = lst;
+                        gridCtrlCTHD.DataSource = source;
+                        int money = 0;
+                        for(int i = 0; i< lst.Count; i++)
+                        {
+                            money += Convert.ToInt32(lst[i].TongTien);
+                        }
+                        txtTongTien.Text = money.ToString();
                         disEndCTPN(false);
                     }
                     else
@@ -241,7 +266,7 @@ namespace QuanLyCuaHangDM
                     XtraMessageBox.Show("Hãy nhập số lượng !");
                 }
                 //HienThiDSCTHD(_MaHoaDon);
-                //disEndCTPN(false);
+                disEndCTPN(false);
                 //binding();
             }
         }
