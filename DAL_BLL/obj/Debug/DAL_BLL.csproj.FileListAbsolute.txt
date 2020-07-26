@@ -1,0 +1,13 @@
+D:\Winform\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll.config
+D:\Winform\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll
+D:\Winform\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.pdb
+D:\Winform\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csproj.CoreCompileInputs.cache
+D:\Winform\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.dll
+D:\Winform\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.pdb
+D:\Winform\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csprojAssemblyReference.cache
+D:\HK6\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll.config
+D:\HK6\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll
+D:\HK6\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.pdb
+D:\HK6\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csproj.CoreCompileInputs.cache
+D:\HK6\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.dll
+D:\HK6\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.pdb

@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5FD137C2-097B-4A02-AACB-C084E561B37F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuanLyCuaHangDM</RootNamespace>
+    <AssemblyName>QuanLyCuaHangDM</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="ClosedXML, Version=0.94.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.94.2\lib\net40\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL_BLL">
+      <HintPath>..\DAL_BLL\bin\Debug\DAL_BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Dataset2Excel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dataset2Excel.dll.1.0.5\lib\Dataset2Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v19.1" />
+    <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v19.1" />
+    <Reference Include="DevExpress.DataAccess.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dialogs.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Export, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.1" />
+    <Reference Include="DevExpress.Utils.v19.1.UI, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.1" />
+    <Reference Include="DevExpress.Sparkline.v19.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.1" />
+    <Reference Include="DevExpress.XtraGauges.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.1.Extensions, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.3.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.3\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.3.0\lib\net45\FastMember.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BackupCtrl.cs" />
+    <Compile Include="Controllers\RestoreCtrl.cs" />
+    <Compile Include="Controllers\ChangePassCtrl.cs" />
+    <Compile Include="Controllers\ChiTietHoaDonCtrl.cs" />
+    <Compile Include="Controllers\ChiTietPhieuNhapCtrl.cs" />
+    <Compile Include="Controllers\ChucVuCtrl.cs" />
+    <Compile Include="Controllers\HangSanXuatCtrl.cs" />
+    <Compile Include="Controllers\HoaDonCtrl.cs" />
+    <Compile Include="Controllers\KhachHangCtrl.cs" />
+    <Compile Include="Controllers\LoaiKhachHangCtrl.cs" />
+    <Compile Include="Controllers\LoaiSanPhamCtrl.cs" />
+    <Compile Include="Controllers\LoginCtrl.cs" />
+    <Compile Include="Controllers\NhanVienCtrl.cs" />
+    <Compile Include="Controllers\NhaPhanPhoiCtrl.cs" />
+    <Compile Include="Controllers\PhieuNhapCtrl.cs" />
+    <Compile Include="Controllers\RegisterCtrl.cs" />
+    <Compile Include="Controllers\SanPhamCtrl.cs" />
+    <Compile Include="Controllers\UserCtrl.cs" />
+    <Compile Include="Models\BackupModel.cs" />
+    <Compile Include="Models\RestoreModel.cs" />
+    <Compile Include="Models\ChangePassModel.cs" />
+    <Compile Include="Models\ChiTietPhieuNhapModel.cs" />
+    <Compile Include="Models\ChucVuModel.cs" />
+    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\ChiTietHoaDonModel.cs" />
+    <Compile Include="Models\HangSanXuatModel.cs" />
+    <Compile Include="Models\HoaDonModel.cs" />
+    <Compile Include="Models\KhachHangModel.cs" />
+    <Compile Include="Models\LoaiKhachHangModel.cs" />
+    <Compile Include="Models\LoaiSanPhamModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\NhanVienModel.cs" />
+    <Compile Include="Models\NhaPhanPhoiModel.cs" />
+    <Compile Include="Models\PhieuNhapModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\SanPhamModel.cs" />
+    <Compile Include="Models\UserControl.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Views\frmBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmBanHang.Designer.cs">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmChucVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmChucVu.Designer.cs">
+      <DependentUpon>frmChucVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmDoiMatKhau.Designer.cs">
+      <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmHangSX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmHangSX.Designer.cs">
+      <DependentUpon>frmHangSX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmLoaiKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmLoaiKhachHang.Designer.cs">
+      <DependentUpon>frmLoaiKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmLoaiSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmLoaiSP.Designer.cs">
+      <DependentUpon>frmLoaiSP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\frmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmNhanVien.Designer.cs">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmNhapHang.Designer.cs">
+      <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmNhaPhanPhoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmNhaPhanPhoi.Designer.cs">
+      <DependentUpon>frmNhaPhanPhoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmSanPham.Designer.cs">
+      <DependentUpon>frmSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmKhachHang.Designer.cs">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptCTHD.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptCTHD.Designer.cs">
+      <DependentUpon>rptCTHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptCTPN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptCTPN.Designer.cs">
+      <DependentUpon>rptCTPN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptHangSX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptHangSX.Designer.cs">
+      <DependentUpon>rptHangSX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptHoaDon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptHoaDon.Designer.cs">
+      <DependentUpon>rptHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptKhachHang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptKhachHang.Designer.cs">
+      <DependentUpon>rptKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptNhanVien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptNhanVien.Designer.cs">
+      <DependentUpon>rptNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptNhaPhanPhoi.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptNhaPhanPhoi.Designer.cs">
+      <DependentUpon>rptNhaPhanPhoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptPhieuNhap.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptPhieuNhap.Designer.cs">
+      <DependentUpon>rptPhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptSanPham.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptSanPham.Designer.cs">
+      <DependentUpon>rptSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\rpt\rptUser.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\rpt\rptUser.Designer.cs">
+      <DependentUpon>rptUser.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\frmBanHang.resx">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmChucVu.resx">
+      <DependentUpon>frmChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmDoiMatKhau.resx">
+      <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmHangSX.resx">
+      <DependentUpon>frmHangSX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmLoaiKhachHang.resx">
+      <DependentUpon>frmLoaiKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmLoaiSP.resx">
+      <DependentUpon>frmLoaiSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Views\frmNhanVien.resx">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmNhapHang.resx">
+      <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmNhaPhanPhoi.resx">
+      <DependentUpon>frmNhaPhanPhoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmSanPham.resx">
+      <DependentUpon>frmSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmKhachHang.resx">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptCTHD.resx">
+      <DependentUpon>rptCTHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptCTPN.resx">
+      <DependentUpon>rptCTPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptHangSX.resx">
+      <DependentUpon>rptHangSX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptHoaDon.resx">
+      <DependentUpon>rptHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptKhachHang.resx">
+      <DependentUpon>rptKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptNhanVien.resx">
+      <DependentUpon>rptNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptNhaPhanPhoi.resx">
+      <DependentUpon>rptNhaPhanPhoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptPhieuNhap.resx">
+      <DependentUpon>rptPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptSanPham.resx">
+      <DependentUpon>rptSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\rpt\rptUser.resx">
+      <DependentUpon>rptUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportFile_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteList_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BO_Product_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModelEditor_KeyProperty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PublicFix_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\windows-10-uhd-4k-wallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iron_man_4k.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rsz_iron_man_4k.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rsz_1iron_man_4k.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snowfall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wolf-minimalism-4k-u6-1920x1080.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\image-not-found.jpg" />
+    <None Include="Resources\image-not-found1.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
