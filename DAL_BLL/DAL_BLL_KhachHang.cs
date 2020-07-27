@@ -20,7 +20,7 @@ namespace DAL_BLL
         public int addKhachHang(string maKH, string tenKH, DateTime NgaySinh, string gioiTinh, string diaChi, string loaiKH)
         {
             KhachHang kh = qlhh.KhachHangs.Where(t => t.MaKhachHang == maKH).FirstOrDefault();
-            if(kh != null)
+            if(kh == null)
             {
                 KhachHang kh1 = new KhachHang();
                 kh1.MaKhachHang = maKH;

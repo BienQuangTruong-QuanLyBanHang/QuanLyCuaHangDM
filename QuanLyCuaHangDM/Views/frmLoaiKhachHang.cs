@@ -23,7 +23,7 @@ namespace QuanLyCuaHangDM
         public static frmLoaiSP loaisp = new frmLoaiSP();
         public void HienThiDSLoaiKhachHang()
         {
-            gridCtrlLoaiKH.DataSource = Models.LoaiKhachHangModel.FillDataSetLoaiKhachHang().Tables[0];
+            //gridCtrlLoaiKH.DataSource = Models.LoaiKhachHangModel.FillDataSetLoaiKhachHang().Tables[0];
         }
         void binding()
         {

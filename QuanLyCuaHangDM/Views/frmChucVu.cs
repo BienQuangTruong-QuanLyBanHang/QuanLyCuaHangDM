@@ -117,34 +117,34 @@ namespace QuanLyCuaHangDM
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string _MaChucVu = "";
-            try
-            {
-                _MaChucVu = (txtMaCV.Text);
-            }
-            catch { }
-            DialogResult dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
-            {
-                int chk = Models.Connection.CheckForeignKey("NhanVien", "ChucVu", _MaChucVu);
-                if (chk == 0)
-                {
-                    int i = 0;
-                    i = Controllers.ChucVuCtrl.DeleteChucVu(_MaChucVu);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSCV();
-                        frmChucVu_Load(sender, e);
-                    }
-                    else
-                        XtraMessageBox.Show("Xóa thất bại !");
-                }
-                else
-                    XtraMessageBox.Show("Dữ liệu này đang được sử dụng !");
-            }
-            else
-                return;
+            //string _MaChucVu = "";
+            //try
+            //{
+            //    _MaChucVu = (txtMaCV.Text);
+            //}
+            //catch { }
+            //DialogResult dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (dr == DialogResult.Yes)
+            //{
+            //    int chk = Models.Connection.CheckForeignKey("NhanVien", "ChucVu", _MaChucVu);
+            //    if (chk == 0)
+            //    {
+            //        int i = 0;
+            //        i = Controllers.ChucVuCtrl.DeleteChucVu(_MaChucVu);
+            //        if (i > 0)
+            //        {
+            //            XtraMessageBox.Show("Xóa thành công !");
+            //            HienThiDSCV();
+            //            frmChucVu_Load(sender, e);
+            //        }
+            //        else
+            //            XtraMessageBox.Show("Xóa thất bại !");
+            //    }
+            //    else
+            //        XtraMessageBox.Show("Dữ liệu này đang được sử dụng !");
+            //}
+            //else
+            //    return;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

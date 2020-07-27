@@ -109,44 +109,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BackupCtrl.cs" />
-    <Compile Include="Controllers\RestoreCtrl.cs" />
-    <Compile Include="Controllers\ChangePassCtrl.cs" />
-    <Compile Include="Controllers\ChiTietHoaDonCtrl.cs" />
-    <Compile Include="Controllers\ChiTietPhieuNhapCtrl.cs" />
-    <Compile Include="Controllers\ChucVuCtrl.cs" />
-    <Compile Include="Controllers\HangSanXuatCtrl.cs" />
-    <Compile Include="Controllers\HoaDonCtrl.cs" />
-    <Compile Include="Controllers\KhachHangCtrl.cs" />
-    <Compile Include="Controllers\LoaiKhachHangCtrl.cs" />
-    <Compile Include="Controllers\LoaiSanPhamCtrl.cs" />
-    <Compile Include="Controllers\LoginCtrl.cs" />
-    <Compile Include="Controllers\NhanVienCtrl.cs" />
-    <Compile Include="Controllers\NhaPhanPhoiCtrl.cs" />
-    <Compile Include="Controllers\PhieuNhapCtrl.cs" />
-    <Compile Include="Controllers\RegisterCtrl.cs" />
-    <Compile Include="Controllers\SanPhamCtrl.cs" />
-    <Compile Include="Controllers\UserCtrl.cs" />
-    <Compile Include="Models\BackupModel.cs" />
-    <Compile Include="Models\RestoreModel.cs" />
-    <Compile Include="Models\ChangePassModel.cs" />
-    <Compile Include="Models\ChiTietPhieuNhapModel.cs" />
-    <Compile Include="Models\ChucVuModel.cs" />
-    <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\ChiTietHoaDonModel.cs" />
-    <Compile Include="Models\HangSanXuatModel.cs" />
-    <Compile Include="Models\HoaDonModel.cs" />
-    <Compile Include="Models\KhachHangModel.cs" />
-    <Compile Include="Models\LoaiKhachHangModel.cs" />
-    <Compile Include="Models\LoaiSanPhamModel.cs" />
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\NhanVienModel.cs" />
-    <Compile Include="Models\NhaPhanPhoiModel.cs" />
-    <Compile Include="Models\PhieuNhapModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\SanPhamModel.cs" />
-    <Compile Include="Models\UserControl.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Views\frmBanHang.cs">
       <SubType>Form</SubType>
     </Compile>

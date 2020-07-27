@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using QuanLyCuaHangDM.Models;
-using QuanLyCuaHangDM.Controllers;
 using System.Configuration;
 using System.IO;
 using DAL_BLL;
@@ -297,7 +295,6 @@ namespace QuanLyCuaHangDM
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
                 string folderPath = Path.GetDirectoryName(folderBrowser.FileName);
-                Controllers.BackupCtrl.Backup(folderPath);
                 //XtraMessageBox.Show(folderPath);
                 XtraMessageBox.Show("Backup thành công !");
             }

@@ -127,7 +127,7 @@ namespace QuanLyCuaHangDM
                 if (rs > 0)
                 {
                     int i = 0;
-                    i = Controllers.HangSanXuatCtrl.DeleteHSX(_MaHangSanXuat);
+                    //i = Controllers.HangSanXuatCtrl.DeleteHSX(_MaHangSanXuat);
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");

@@ -29,21 +29,11 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            txtMaKH.DataBindings.Clear();
-            txtMaKH.DataBindings.Add("Text", gridCtrlKhachHang.DataSource, "MaKhachHang");
-            txtTenKH.DataBindings.Clear();
-            txtTenKH.DataBindings.Add("Text", gridCtrlKhachHang.DataSource, "TenKhachHang");
-            dtpNgaySinh.DataBindings.Clear();
-            dtpNgaySinh.DataBindings.Add("Text", gridCtrlKhachHang.DataSource, "NgaySinh");
-            cboGioiTinh.DataBindings.Clear();
-            cboGioiTinh.DataBindings.Add("Text", gridCtrlKhachHang.DataSource, "GioiTinh");
-            txtDC.DataBindings.Clear();
-            txtDC.DataBindings.Add("Text", gridCtrlKhachHang.DataSource, "DiaChi");
-            cboLoaiKH.DataBindings.Clear();
-            cboLoaiKH.DataBindings.Add("SelectedValue", gridCtrlKhachHang.DataSource, "LoaiKhachHang");
+
         }
         void disEnd(bool e)
         {
+            txtMaKH.Enabled = e;
             txtTenKH.Enabled = e;
             txtDC.Enabled = e;
             cboLoaiKH.Enabled = e;
@@ -64,6 +54,7 @@ namespace QuanLyCuaHangDM
         {
             cboLoaiKH.DataSource = bll_lkh.GetLoaiKhachHangs();
             cboLoaiKH.ValueMember = "MaLoaiKhachHang";
+            cboLoaiKH.DisplayMember = "TenLoaiKhachHang";
             cboLoaiKH.SelectedIndex = 0;
         }
         void clearData()

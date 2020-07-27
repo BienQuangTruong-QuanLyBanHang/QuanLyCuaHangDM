@@ -22,7 +22,7 @@ namespace QuanLyCuaHangDM
         public static frmUser us = new frmUser();
         public void HienThiDSUser()
         {
-            gridCtrlUser.DataSource = Models.UserModel.FillDataSetUser().Tables[0];
+            //gridCtrlUser.DataSource = Models.UserModel.FillDataSetUser().Tables[0];
         }
         void binding()
         {
@@ -50,7 +50,7 @@ namespace QuanLyCuaHangDM
         }
         void loadControl_cboMaNV()
         {
-            cboMaNV.DataSource = Models.NhanVienModel.FillDataSetNhanVien().Tables[0];
+            //cboMaNV.DataSource = Models.NhanVienModel.FillDataSetNhanVien().Tables[0];
             cboMaNV.DisplayMember = "MaNhanVien";
             cboMaNV.ValueMember = "MaNhanVien";
             cboMaNV.SelectedIndex = 0;
@@ -91,7 +91,7 @@ namespace QuanLyCuaHangDM
             catch { }
             try
             {
-                _MatKhau = Models.UserControl.SHA256(txtMatKhau.Text);
+                //_MatKhau = Models.UserControl.SHA256(txtMatKhau.Text);
             }
             catch { }
             try
@@ -116,7 +116,7 @@ namespace QuanLyCuaHangDM
                 else
                 {
                     int i = 0;
-                    i = Controllers.UserCtrl.InsertUser(_ID, _MaNhanVien, _TenDangNhap, _MatKhau, _ChuThich);
+                    //i = Controllers.UserCtrl.InsertUser(_ID, _MaNhanVien, _TenDangNhap, _MatKhau, _ChuThich);
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
@@ -129,7 +129,7 @@ namespace QuanLyCuaHangDM
             else
             {
                 int i = 0;
-                i = Controllers.UserCtrl.UpdateUser(_ID, _MaNhanVien, _TenDangNhap, _MatKhau, _ChuThich);
+                //i = Controllers.UserCtrl.UpdateUser(_ID, _MaNhanVien, _TenDangNhap, _MatKhau, _ChuThich);
                 if (i > 0)
                 {
                     XtraMessageBox.Show("Sửa thành công");
@@ -160,7 +160,7 @@ namespace QuanLyCuaHangDM
             if (dr == DialogResult.Yes)
             {
                 int i = 0;
-                i = Controllers.UserCtrl.DeleteNhanVien(_ID);
+                //i = Controllers.UserCtrl.DeleteNhanVien(_ID);
                 if (i > 0)
                 {
                     XtraMessageBox.Show("Xóa thành công !");

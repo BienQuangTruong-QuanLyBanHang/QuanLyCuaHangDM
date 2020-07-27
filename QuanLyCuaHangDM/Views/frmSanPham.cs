@@ -140,7 +140,7 @@ namespace QuanLyCuaHangDM
                 if (rs > 0)
                 {
                     int i = 0;
-                    i = Controllers.SanPhamCtrl.DeleteSanPham(_MaSanPham);
+                    //i = Controllers.SanPhamCtrl.DeleteSanPham(_MaSanPham);
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
