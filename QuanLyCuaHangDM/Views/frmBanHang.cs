@@ -19,6 +19,7 @@ namespace QuanLyCuaHangDM
         DAL_BLL_HoaDon bll_hd = new DAL_BLL_HoaDon();
         DAL_BLL_ChiTietHoaDon bll_cthd = new DAL_BLL_ChiTietHoaDon();
         DAL_BLL_SanPham bll_sp = new DAL_BLL_SanPham();
+        DAL_BLL_NhanVien bll_nv = new DAL_BLL_NhanVien();
         DAL_BLL_KhachHang bll_kh = new DAL_BLL_KhachHang();
         List<ChiTietHoaDon> lst = new List<ChiTietHoaDon>();
         public static string MaHD;
@@ -47,10 +48,11 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            cboMaSP.DataBindings.Clear();
-            cboMaSP.DataBindings.Add("SelectedValue", gridCtrlCTHD.DataSource, "MaSanPham");
-            txtSoLuong.DataBindings.Clear();
-            txtSoLuong.DataBindings.Add("Text", gridCtrlCTHD.DataSource, "SoLuong");
+            //cboMaSP.DataBindings.Clear();
+            //cboMaSP.DataBindings.Add("SelectedValue", gridCtrlCTHD.DataSource, "MaSanPham");
+            //txtSoLuong.DataBindings.Clear();
+            //txtSoLuong.DataBindings.Add("Text", gridCtrlCTHD.DataSource, "SoLuong");
+            //gridView1.
         }
         void disEndPN(bool e)
         {
@@ -63,7 +65,8 @@ namespace QuanLyCuaHangDM
         {
             cboMaSP.Enabled = e;
             txtSoLuong.Enabled = e;
-            btnLuuCTHD.Enabled = e;
+            btnXoaCTHD.Enabled = e;
+            btnSuaCTHD.Enabled = e;
         }
         public void loadControl_cboMaHD()
         {
@@ -89,9 +92,9 @@ namespace QuanLyCuaHangDM
         void clearDataHD()
         {
             txtTongTien.Text = "";
-            txtNgayLapHoaDon.Text = DateTime.Now.ToShortDateString();
+            txtNgayLapHoaDon.Text = Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("dd-MM-yyyy");
             loadControl_cboMaKH();
-            txtMaNV.Text = MaNV;
+            txtMaNV.Text = bll_nv.GetTenNhanVien(MaNV);
         }
         void clearDataCTHD()
         {
@@ -109,7 +112,6 @@ namespace QuanLyCuaHangDM
             loadControl_cboMaHD();
             loadControl_cboMaKH();
             loadControl_cboMaSP();
-            txtNgayLapHoaDon.Text = DateTime.Now.ToShortDateString();
             MaHD = cboMaHD.Text;
             clearDataHD();
             cboMaHD.SelectedIndexChanged += cboMaHD_SelectedIndexChanged_1;
@@ -121,6 +123,7 @@ namespace QuanLyCuaHangDM
             flagHD = 0;
             //cboMaHD.Text = cboMaHD.Items.Count.ToString();
             //int count = cboMaHD.Items.Count;
+
             string str = bll_hd.GetLastHoaDons();
             int str2 = Convert.ToInt32(str.Remove(0, 2));
             if(str2 + 1 < 10)
@@ -135,10 +138,12 @@ namespace QuanLyCuaHangDM
             {
                 cboMaHD.Text = "HD" + (str2 + 1).ToString();
             }
+
             cboMaHD.Enabled = false;
             disEndPN(true);
             clearDataHD();
             txtMaHD.Text = cboMaHD.Text;
+            disEndCTPN(true);
         }
 
         private void btnLuuHD_Click(object sender, EventArgs e)
@@ -193,6 +198,8 @@ namespace QuanLyCuaHangDM
                 else
                     MessageBox.Show("Đơn hàng đang rỗng");
             }
+            disEndCTPN(false);
+            clearDataCTHD();
             //frmBanHang_Load(sender, e);
             //cboMaHD.Text = Models.Connection.GetLastID("HoaDon", "MaHoaDon");
         }
@@ -207,13 +214,6 @@ namespace QuanLyCuaHangDM
         }
 
         private void btnThemCTHD_Click(object sender, EventArgs e)
-        {
-            flagCTHD = 0;
-            disEndCTPN(true);
-            clearDataCTHD();
-        }
-
-        private void btnLuuCTHD_Click(object sender, EventArgs e)
         {
             string _MaHoaDon = "";
             string _MaSanPham = "";
@@ -251,12 +251,11 @@ namespace QuanLyCuaHangDM
                         source.DataSource = lst;
                         gridCtrlCTHD.DataSource = source;
                         int money = 0;
-                        for(int i = 0; i< lst.Count; i++)
+                        for (int i = 0; i < lst.Count; i++)
                         {
                             money += Convert.ToInt32(lst[i].TongTien);
                         }
                         txtTongTien.Text = money.ToString();
-                        disEndCTPN(false);
                     }
                     else
                         XtraMessageBox.Show(cboMaSP.Text + " tồn kho còn: " + tonkho + " .Không đủ số lượng để bán !");
@@ -266,9 +265,14 @@ namespace QuanLyCuaHangDM
                     XtraMessageBox.Show("Hãy nhập số lượng !");
                 }
                 //HienThiDSCTHD(_MaHoaDon);
-                disEndCTPN(false);
+                //disEndCTPN(false);
                 //binding();
             }
+        }
+
+        private void btnLuuCTHD_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -324,6 +328,21 @@ namespace QuanLyCuaHangDM
             binding();
 
             MaHD = cboMaHD.Text;
+        }
+
+        private void gv_CTHD_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            MessageBox.Show(gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn4).ToString());
+        }
+
+        private void gv_CTHD_GridMenuItemClick(object sender, DevExpress.XtraGrid.Views.Grid.GridMenuItemClickEventArgs e)
+        {
+            
+        }
+
+        private void gv_CTHD_RowClick_1(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            MessageBox.Show(gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn4).ToString());
         }
     }
 }

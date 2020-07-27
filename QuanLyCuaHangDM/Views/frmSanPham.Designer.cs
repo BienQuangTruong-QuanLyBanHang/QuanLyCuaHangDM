@@ -153,9 +153,9 @@
             this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(33, 3);
+            this.labelControl3.Location = new System.Drawing.Point(16, 3);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(89, 17);
+            this.labelControl3.Size = new System.Drawing.Size(106, 20);
             this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "Mã sản phẩm:";
             // 
@@ -164,9 +164,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(269, 0);
+            this.label1.Location = new System.Drawing.Point(252, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 17);
+            this.label1.Size = new System.Drawing.Size(120, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Tên sản phẩm:";
             // 
@@ -175,9 +175,9 @@
             this.labelControl11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(718, 3);
+            this.labelControl11.Location = new System.Drawing.Point(701, 3);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(93, 17);
+            this.labelControl11.Size = new System.Drawing.Size(110, 20);
             this.labelControl11.TabIndex = 2;
             this.labelControl11.Text = "Loại sản phẩm";
             // 
@@ -189,7 +189,7 @@
             this.txtMaSP.Name = "txtMaSP";
             this.txtMaSP.Properties.AppearanceDisabled.Options.UseTextOptions = true;
             this.txtMaSP.Properties.AppearanceDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtMaSP.Size = new System.Drawing.Size(94, 20);
+            this.txtMaSP.Size = new System.Drawing.Size(94, 22);
             this.txtMaSP.TabIndex = 4;
             // 
             // txtTenSP
@@ -197,7 +197,7 @@
             this.txtTenSP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTenSP.Location = new System.Drawing.Point(378, 3);
             this.txtTenSP.Name = "txtTenSP";
-            this.txtTenSP.Size = new System.Drawing.Size(308, 20);
+            this.txtTenSP.Size = new System.Drawing.Size(308, 22);
             this.txtTenSP.TabIndex = 5;
             // 
             // labelControl6
@@ -205,9 +205,9 @@
             this.labelControl6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(60, 84);
+            this.labelControl6.Location = new System.Drawing.Point(50, 84);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(62, 17);
+            this.labelControl6.Size = new System.Drawing.Size(72, 20);
             this.labelControl6.TabIndex = 7;
             this.labelControl6.Text = "Giá nhập:";
             // 
@@ -216,9 +216,9 @@
             this.labelControl7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(318, 84);
+            this.labelControl7.Location = new System.Drawing.Point(309, 84);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(54, 17);
+            this.labelControl7.Size = new System.Drawing.Size(63, 20);
             this.labelControl7.TabIndex = 8;
             this.labelControl7.Text = "Giá bán:";
             // 
@@ -227,9 +227,9 @@
             this.labelControl8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(755, 84);
+            this.labelControl8.Location = new System.Drawing.Point(747, 84);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(56, 17);
+            this.labelControl8.Size = new System.Drawing.Size(64, 20);
             this.labelControl8.TabIndex = 9;
             this.labelControl8.Text = "Tồn kho:";
             // 
@@ -238,9 +238,9 @@
             this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(1036, 84);
+            this.labelControl5.Location = new System.Drawing.Point(1024, 84);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(57, 17);
+            this.labelControl5.Size = new System.Drawing.Size(69, 20);
             this.labelControl5.TabIndex = 3;
             this.labelControl5.Text = "Màu sắc:";
             // 
@@ -250,7 +250,7 @@
             this.cboBangMau.FormattingEnabled = true;
             this.cboBangMau.Location = new System.Drawing.Point(1099, 84);
             this.cboBangMau.Name = "cboBangMau";
-            this.cboBangMau.Size = new System.Drawing.Size(156, 24);
+            this.cboBangMau.Size = new System.Drawing.Size(156, 29);
             this.cboBangMau.TabIndex = 6;
             // 
             // cboHSX
@@ -258,7 +258,7 @@
             this.cboHSX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboHSX.Location = new System.Drawing.Point(1099, 3);
             this.cboHSX.Name = "cboHSX";
-            this.cboHSX.Size = new System.Drawing.Size(156, 24);
+            this.cboHSX.Size = new System.Drawing.Size(156, 29);
             this.cboHSX.TabIndex = 0;
             // 
             // labelControl4
@@ -266,9 +266,9 @@
             this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(998, 3);
+            this.labelControl4.Location = new System.Drawing.Point(980, 3);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(95, 17);
+            this.labelControl4.Size = new System.Drawing.Size(113, 20);
             this.labelControl4.TabIndex = 2;
             this.labelControl4.Text = "Hãng sản xuất:";
             // 
@@ -278,7 +278,7 @@
             this.cboLoaiSP.FormattingEnabled = true;
             this.cboLoaiSP.Location = new System.Drawing.Point(817, 3);
             this.cboLoaiSP.Name = "cboLoaiSP";
-            this.cboLoaiSP.Size = new System.Drawing.Size(151, 24);
+            this.cboLoaiSP.Size = new System.Drawing.Size(151, 29);
             this.cboLoaiSP.TabIndex = 10;
             // 
             // txtGiaNhap
@@ -288,7 +288,7 @@
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.Properties.Appearance.Options.UseTextOptions = true;
             this.txtGiaNhap.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtGiaNhap.Size = new System.Drawing.Size(94, 20);
+            this.txtGiaNhap.Size = new System.Drawing.Size(94, 22);
             this.txtGiaNhap.TabIndex = 11;
             this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
             // 
@@ -299,7 +299,7 @@
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Properties.Appearance.Options.UseTextOptions = true;
             this.txtGiaBan.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtGiaBan.Size = new System.Drawing.Size(308, 20);
+            this.txtGiaBan.Size = new System.Drawing.Size(308, 22);
             this.txtGiaBan.TabIndex = 12;
             this.txtGiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
             // 
@@ -310,7 +310,7 @@
             this.txtTonKho.Name = "txtTonKho";
             this.txtTonKho.Properties.Appearance.Options.UseTextOptions = true;
             this.txtTonKho.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtTonKho.Size = new System.Drawing.Size(151, 20);
+            this.txtTonKho.Size = new System.Drawing.Size(151, 22);
             this.txtTonKho.TabIndex = 13;
             this.txtTonKho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
             // 
@@ -350,9 +350,9 @@
             this.labelControl9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(41, 3);
+            this.labelControl9.Location = new System.Drawing.Point(22, 3);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(99, 17);
+            this.labelControl9.Size = new System.Drawing.Size(118, 20);
             this.labelControl9.TabIndex = 10;
             this.labelControl9.Text = "Hình sản phẩm:";
             // 
@@ -362,7 +362,7 @@
             this.txtHinhSanPham.Enabled = false;
             this.txtHinhSanPham.Location = new System.Drawing.Point(504, 3);
             this.txtHinhSanPham.Name = "txtHinhSanPham";
-            this.txtHinhSanPham.Size = new System.Drawing.Size(278, 20);
+            this.txtHinhSanPham.Size = new System.Drawing.Size(278, 22);
             this.txtHinhSanPham.TabIndex = 12;
             this.txtHinhSanPham.EditValueChanged += new System.EventHandler(this.txtHinhSanPham_EditValueChanged);
             // 
@@ -677,7 +677,7 @@
             // frmSanPham
             // 
             this.Appearance.Options.UseFont = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 740);

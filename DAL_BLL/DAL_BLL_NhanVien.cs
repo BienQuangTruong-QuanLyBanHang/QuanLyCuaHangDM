@@ -86,5 +86,9 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public string GetTenNhanVien(string qId)
+        {
+            return qlhh.NhanViens.Where(t => t.MaNhanVien == qId).FirstOrDefault().TenNhanVien;
+        }
     }
 }
