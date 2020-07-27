@@ -40,6 +40,11 @@ namespace DAL_BLL
         }
         public string GetLastHoaDons()
         {
+            HoaDon hd = qlhh.HoaDons.Where(t => t.MaHoaDon == "HD001").FirstOrDefault();
+            if(hd == null)
+            {
+                return "HD001";
+            }
             return qlhh.HoaDons.OrderByDescending(t => t.MaHoaDon).FirstOrDefault().MaHoaDon;
         }
     }
