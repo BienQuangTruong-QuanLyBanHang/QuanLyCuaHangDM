@@ -74,5 +74,14 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public string GetLastMaHangSanXuats()
+        {
+            HangSanXuat hsx = qlhh.HangSanXuats.Where(t => t.MaHangSanXuat == "HSX001").FirstOrDefault();
+            if (hsx == null)
+            {
+                return "HSX001";
+            }
+            return qlhh.HangSanXuats.OrderByDescending(t => t.MaHangSanXuat).FirstOrDefault().MaHangSanXuat;
+        }
     }
 }

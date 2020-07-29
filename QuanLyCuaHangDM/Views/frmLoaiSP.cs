@@ -27,10 +27,7 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            txtMaLoai.DataBindings.Clear();
-            txtMaLoai.DataBindings.Add("Text", gridCtrlLoaiSP.DataSource, "MaLoaiSanPham");
-            txtTenLoai.DataBindings.Clear();
-            txtTenLoai.DataBindings.Add("Text", gridCtrlLoaiSP.DataSource, "TenLoaiSanPham");
+            
         }
         void disEnd(bool e)
         {
@@ -161,6 +158,12 @@ namespace QuanLyCuaHangDM
         private void btnIn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void gv_LoaiKhachHang_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            txtMaLoai.Text = gv_LoaiKhachHang.GetRowCellValue(e.RowHandle, gridColumn2).ToString();
+            txtTenLoai.Text = gv_LoaiKhachHang.GetRowCellValue(e.RowHandle, gridColumn3).ToString();
         }
     }
 }

@@ -97,5 +97,14 @@ namespace DAL_BLL
         {
             return qlhh.SanPhams.Where(t => t.MaSanPham == qMaSP).FirstOrDefault().GiaBan;
         }
+        public string GetLastMaSanPhams()
+        {
+            SanPham sp = qlhh.SanPhams.Where(t => t.MaSanPham == "SP001").FirstOrDefault();
+            if (sp == null)
+            {
+                return "SP001";
+            }
+            return qlhh.SanPhams.OrderByDescending(t => t.MaSanPham).FirstOrDefault().MaSanPham;
+        }
     }
 }

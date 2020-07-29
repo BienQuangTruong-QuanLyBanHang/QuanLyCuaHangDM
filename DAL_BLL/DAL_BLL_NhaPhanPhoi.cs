@@ -80,5 +80,14 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public string GetLastMaNhaPhanPhois()
+        {
+            NhaPhanPhoi npp = qlhh.NhaPhanPhois.Where(t => t.MaNhaPhanPhoi == "NPP001").FirstOrDefault();
+            if (npp == null)
+            {
+                return "NPP001";
+            }
+            return qlhh.NhaPhanPhois.OrderByDescending(t => t.MaNhaPhanPhoi).FirstOrDefault().MaNhaPhanPhoi;
+        }
     }
 }

@@ -37,5 +37,14 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public string GetLastMaPhieuNhaps()
+        {
+            PhieuNhap pn = qlhh.PhieuNhaps.Where(t => t.MaPhieuNhap == "PN001").FirstOrDefault();
+            if (pn == null)
+            {
+                return "PN001";
+            }
+            return qlhh.PhieuNhaps.OrderByDescending(t => t.MaPhieuNhap).FirstOrDefault().MaPhieuNhap;
+        }
     }
 }

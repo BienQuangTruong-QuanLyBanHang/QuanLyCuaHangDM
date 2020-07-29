@@ -66,5 +66,14 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public string GetLastMaChucVus()
+        {
+            ChucVu cv = qlhh.ChucVus.Where(t => t.MaChucVu == "CV001").FirstOrDefault();
+            if (cv == null)
+            {
+                return "CV001";
+            }
+            return qlhh.ChucVus.OrderByDescending(t => t.MaChucVu).FirstOrDefault().MaChucVu;
+        }
     }
 }

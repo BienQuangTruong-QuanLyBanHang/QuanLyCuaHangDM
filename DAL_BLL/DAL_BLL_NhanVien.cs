@@ -9,6 +9,7 @@ namespace DAL_BLL
     public class DAL_BLL_NhanVien
     {
         QLHHDataContext qlhh = new QLHHDataContext();
+        public NhanVien NhanVien1 { get; set; }
         public DAL_BLL_NhanVien()
         {
 
@@ -16,7 +17,37 @@ namespace DAL_BLL
         public IQueryable<NhanVien> GetNhanViens()
         {
             return qlhh.NhanViens.Select(t => t);
+            //return (from nv in qlhh.NhanViens
+            //        join cv in qlhh.ChucVus on nv.ChucVu equals cv.MaChucVu
+            //        select new
+            //        {
+            //            nv.MaNhanVien,
+            //            nv.TenNhanVien,
+            //            nv.NgaySinh,
+            //            nv.GioiTinh,
+            //            nv.NgayVaoLam,
+            //            cv.TenChucVu,
+            //            nv.DiaChi,
+            //            nv.SDT
+            //        }).FirstOrDefault();
         }
+        //public List<NhanVien> GetNhanVien()
+        //{
+        //    var nhanviens = from nv in qlhh.NhanViens
+        //                    join cv in qlhh.ChucVus on nv.ChucVu equals cv.MaChucVu
+        //                    select new
+        //                    {
+        //                        nv.MaNhanVien,
+        //                        nv.TenNhanVien,
+        //                        nv.NgaySinh,
+        //                        nv.GioiTinh,
+        //                        nv.NgayVaoLam,
+        //                        cv.TenChucVu,
+        //                        nv.DiaChi,
+        //                        nv.SDT
+        //                    }.ToList<NhanVien>;
+        //    return nhanviens;
+        //}
         public int AddNhanViens(string qMaNV, string qTenNV, DateTime qNgaySinh, string qGioiTinh, DateTime qNgayVaoLam, string qChucVu, string qDiaChi, string qDienThoai)
         {
             NhanVien nhanViens = qlhh.NhanViens.Where(t => t.MaNhanVien == qMaNV).FirstOrDefault();
@@ -89,6 +120,15 @@ namespace DAL_BLL
         public string GetTenNhanVien(string qId)
         {
             return qlhh.NhanViens.Where(t => t.MaNhanVien == qId).FirstOrDefault().TenNhanVien;
+        }
+        public string GetLastMaNhanViens()
+        {
+            NhanVien nv = qlhh.NhanViens.Where(t => t.MaNhanVien == "NV001").FirstOrDefault();
+            if (nv == null)
+            {
+                return "NV001";
+            }
+            return qlhh.NhanViens.OrderByDescending(t => t.MaNhanVien).FirstOrDefault().MaNhanVien;
         }
     }
 }

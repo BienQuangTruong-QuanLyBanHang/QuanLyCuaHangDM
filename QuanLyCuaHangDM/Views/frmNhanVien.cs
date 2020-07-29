@@ -30,20 +30,7 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            txtMaNV.DataBindings.Clear();
-            txtMaNV.DataBindings.Add("Text", gridCtrlNhanVien.DataSource, "MaNhanVien");
-            txtTenNV.DataBindings.Clear();
-            txtTenNV.DataBindings.Add("Text", gridCtrlNhanVien.DataSource, "TenNhanVien");
-            txtDT.DataBindings.Clear();
-            txtDT.DataBindings.Add("Text", gridCtrlNhanVien.DataSource, "SDT");
-            dtpNgaySinh.DataBindings.Clear();
-            dtpNgaySinh.DataBindings.Add("Text", gridCtrlNhanVien.DataSource, "NgaySinh");
-            cboGioiTinh.DataBindings.Clear();
-            cboGioiTinh.DataBindings.Add("Text", gridCtrlNhanVien.DataSource, "GioiTinh");
-            txtDC.DataBindings.Clear();
-            txtDC.DataBindings.Add("Text", gridCtrlNhanVien.DataSource, "DiaChi");
-            cboChucVu.DataBindings.Clear();
-            cboChucVu.DataBindings.Add("SelectedValue", gridCtrlNhanVien.DataSource, "ChucVu");
+            
         }
         void disEnd(bool e)
         {
@@ -77,12 +64,14 @@ namespace QuanLyCuaHangDM
             txtTenNV.Text = "";
             txtDC.Text = "";
             txtDT.Text = "";
+            txtNgayVaoLam.Text = Convert.ToDateTime(DateTime.Now).ToString("dd-MM-yyyy");
             loadControl_cboGT();
             loadControl_cboCV();
         }
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             HienThiDSNhanVien();
+            clearData();
             disEnd(false);
             binding();
         }
@@ -247,6 +236,17 @@ namespace QuanLyCuaHangDM
             {
                 prt.ShowDialog();
             }
+        }
+
+        private void gv_NhanVien_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            txtMaNV.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_MaNhanVien).ToString();
+            txtTenNV.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_TenNV).ToString();
+            txtDT.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_DienThoai).ToString();
+            txtDC.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_DiaChi).ToString();
+            dtpNgaySinh.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_NgaySinh).ToString();
+            cboChucVu.SelectedValue = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_ChucVu).ToString();
+            cboGioiTinh.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_GioiTinh).ToString();
         }
     }
 }
