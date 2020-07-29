@@ -258,6 +258,16 @@ namespace QuanLyCuaHangDM
                 int tonkho = bll_sp.GetSoLuongTonKho(_MaSanPham);
                 if (Convert.ToInt32(txtSoLuong.Text) <= tonkho)
                 {
+                    for(int k = 0; k < lst.Count; k++)
+                    {
+                        if(lst[k].MaSanPham == cboMaSP.SelectedValue.ToString())
+                        {
+                            lst[k].MaSanPham = cboMaSP.SelectedValue.ToString();
+                            MessageBox.Show("Đã cập nhật hóa đơn");
+                            loadListCTHD();
+                            return;
+                        }
+                    }
                     lst.Add(new ChiTietHoaDon { MaHoaDon = _MaHoaDon, MaSanPham = _MaSanPham, SoLuong = _SoLuong, TongTien = _TongTien });
                     loadListCTHD();
                     int money = 0;
