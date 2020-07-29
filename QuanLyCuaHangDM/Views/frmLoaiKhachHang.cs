@@ -23,14 +23,11 @@ namespace QuanLyCuaHangDM
         public static frmLoaiSP loaisp = new frmLoaiSP();
         public void HienThiDSLoaiKhachHang()
         {
-            //gridCtrlLoaiKH.DataSource = Models.LoaiKhachHangModel.FillDataSetLoaiKhachHang().Tables[0];
+            gridCtrlLoaiKH.DataSource = bll_lkh.GetLoaiKhachHangs();
         }
         void binding()
         {
-            txtMaLoai.DataBindings.Clear();
-            txtMaLoai.DataBindings.Add("Text", gridCtrlLoaiKH.DataSource, "MaLoaiKhachHang");
-            txtTenLoai.DataBindings.Clear();
-            txtTenLoai.DataBindings.Add("Text", gridCtrlLoaiKH.DataSource, "TenLoaiKhachHang");
+
         }
         void disEnd(bool e)
         {
@@ -54,9 +51,23 @@ namespace QuanLyCuaHangDM
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            clearData();
             flag = 0;
             disEnd(true);
-            clearData();
+            string str = bll_lkh.GetLastMaLoaiKhachHangs();
+            int str2 = Convert.ToInt32(str.Remove(0, 3));
+            if (str2 + 1 < 10)
+            {
+                txtMaLoai.Text = "LKH00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtMaLoai.Text = "LKH0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtMaLoai.Text = "LKH" + (str2 + 1).ToString();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -132,8 +143,7 @@ namespace QuanLyCuaHangDM
                         XtraMessageBox.Show("Xóa thành công !");
                         HienThiDSLoaiKhachHang();
                         frmLoaiKhachHang_Load(sender, e);
-                    }
-                    else
+                    }                    else
                         XtraMessageBox.Show("Xóa thất bại !");
                 }
                 else

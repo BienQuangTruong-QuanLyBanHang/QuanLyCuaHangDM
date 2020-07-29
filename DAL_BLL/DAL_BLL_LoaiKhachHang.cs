@@ -74,5 +74,14 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public string GetLastMaLoaiKhachHangs()
+        {
+            LoaiKhachHang lkh = qlhh.LoaiKhachHangs.Where(t => t.MaLoaiKhachHang == "LKH001").FirstOrDefault();
+            if (lkh == null)
+            {
+                return "LKH001";
+            }
+            return qlhh.LoaiKhachHangs.OrderByDescending(t => t.MaLoaiKhachHang).FirstOrDefault().MaLoaiKhachHang;
+        }
     }
 }

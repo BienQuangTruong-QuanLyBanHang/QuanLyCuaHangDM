@@ -54,7 +54,7 @@ namespace QuanLyCuaHangDM
             //cboMaSP.DataBindings.Add("SelectedValue", gridCtrlCTHD.DataSource, "MaSanPham");
             //txtSoLuong.DataBindings.Clear();
             //txtSoLuong.DataBindings.Add("Text", gridCtrlCTHD.DataSource, "SoLuong");
-            GridView gridView1 = gridCtrlCTHD.MainView as GridView;
+            //GridView gridView1 = gridCtrlCTHD.MainView as GridView;
         }
         void disEndPN(bool e)
         {

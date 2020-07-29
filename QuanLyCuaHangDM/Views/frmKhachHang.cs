@@ -195,6 +195,8 @@ namespace QuanLyCuaHangDM
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
             HienThiDSKhachHang();
+            loadControl_cboGT();
+            loadControl_cboLoaiKH();
             disEnd(false);
             binding();
         }
@@ -227,6 +229,16 @@ namespace QuanLyCuaHangDM
             {
                 prt.ShowDialog();
             }
+        }
+
+        private void gv_KhachHang_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            txtMaKH.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn2).ToString();
+            txtTenKH.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn3).ToString();
+            dtpNgaySinh.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn4).ToString();
+            cboLoaiKH.SelectedValue = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn8).ToString();
+            txtDC.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn7).ToString();
+            cboGioiTinh.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn1).ToString();
         }
     }
 }
