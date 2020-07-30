@@ -30,10 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChucVu));
             this.gridCtrlChucVu = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gv_ChucVu = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gc_MaCV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc_TenCV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnelButton = new System.Windows.Forms.Panel();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
@@ -44,17 +43,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtMaCV = new DevExpress.XtraEditors.TextEdit();
             this.txtTenCV = new DevExpress.XtraEditors.TextEdit();
-            this.txtGhiChu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrlChucVu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_ChucVu)).BeginInit();
             this.pnelButton.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaCV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCV.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGhiChu.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridCtrlChucVu
@@ -62,62 +58,52 @@
             this.gridCtrlChucVu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCtrlChucVu.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
             this.gridCtrlChucVu.Location = new System.Drawing.Point(0, 168);
-            this.gridCtrlChucVu.MainView = this.gridView1;
+            this.gridCtrlChucVu.MainView = this.gv_ChucVu;
             this.gridCtrlChucVu.Margin = new System.Windows.Forms.Padding(2);
             this.gridCtrlChucVu.Name = "gridCtrlChucVu";
             this.gridCtrlChucVu.Size = new System.Drawing.Size(838, 231);
             this.gridCtrlChucVu.TabIndex = 33;
             this.gridCtrlChucVu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gv_ChucVu});
             // 
-            // gridView1
+            // gv_ChucVu
             // 
-            this.gridView1.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.gridView1.Appearance.ColumnFilterButton.Options.UseFont = true;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn1});
-            this.gridView1.DetailHeight = 334;
-            this.gridView1.GridControl = this.gridCtrlChucVu;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gv_ChucVu.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gv_ChucVu.Appearance.ColumnFilterButton.Options.UseFont = true;
+            this.gv_ChucVu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gc_MaCV,
+            this.gc_TenCV});
+            this.gv_ChucVu.DetailHeight = 334;
+            this.gv_ChucVu.GridControl = this.gridCtrlChucVu;
+            this.gv_ChucVu.Name = "gv_ChucVu";
+            this.gv_ChucVu.OptionsView.ShowGroupPanel = false;
+            this.gv_ChucVu.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gv_ChucVu_RowClick);
             // 
-            // gridColumn2
+            // gc_MaCV
             // 
-            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.Caption = "Mã chức vụ";
-            this.gridColumn2.FieldName = "MaChucVu";
-            this.gridColumn2.MinWidth = 17;
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 141;
+            this.gc_MaCV.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gc_MaCV.AppearanceHeader.Options.UseFont = true;
+            this.gc_MaCV.Caption = "Mã chức vụ";
+            this.gc_MaCV.FieldName = "MaChucVu";
+            this.gc_MaCV.MinWidth = 17;
+            this.gc_MaCV.Name = "gc_MaCV";
+            this.gc_MaCV.OptionsColumn.AllowEdit = false;
+            this.gc_MaCV.Visible = true;
+            this.gc_MaCV.VisibleIndex = 0;
+            this.gc_MaCV.Width = 141;
             // 
-            // gridColumn3
+            // gc_TenCV
             // 
-            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn3.Caption = "Tên chức vụ";
-            this.gridColumn3.FieldName = "TenChucVu";
-            this.gridColumn3.MinWidth = 17;
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 274;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn1.Caption = "Ghi chú";
-            this.gridColumn1.FieldName = "GhiChu";
-            this.gridColumn1.MinWidth = 25;
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 324;
+            this.gc_TenCV.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gc_TenCV.AppearanceHeader.Options.UseFont = true;
+            this.gc_TenCV.Caption = "Tên chức vụ";
+            this.gc_TenCV.FieldName = "TenChucVu";
+            this.gc_TenCV.MinWidth = 17;
+            this.gc_TenCV.Name = "gc_TenCV";
+            this.gc_TenCV.OptionsColumn.AllowEdit = false;
+            this.gc_TenCV.Visible = true;
+            this.gc_TenCV.VisibleIndex = 1;
+            this.gc_TenCV.Width = 274;
             // 
             // pnelButton
             // 
@@ -210,10 +196,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.txtMaCV, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtTenCV, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtGhiChu, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelControl6, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelControl1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl2, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -242,14 +226,6 @@
             this.txtTenCV.Size = new System.Drawing.Size(371, 22);
             this.txtTenCV.TabIndex = 3;
             // 
-            // txtGhiChu
-            // 
-            this.txtGhiChu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtGhiChu.Location = new System.Drawing.Point(295, 86);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(371, 22);
-            this.txtGhiChu.TabIndex = 5;
-            // 
             // labelControl6
             // 
             this.labelControl6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -272,17 +248,6 @@
             this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "Tên chức vụ:";
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(226, 86);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(63, 20);
-            this.labelControl2.TabIndex = 10;
-            this.labelControl2.Text = "Ghi chú:";
-            // 
             // frmChucVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -296,13 +261,12 @@
             this.Text = "frmChucVu";
             this.Load += new System.EventHandler(this.frmChucVu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridCtrlChucVu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_ChucVu)).EndInit();
             this.pnelButton.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaCV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCV.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGhiChu.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,10 +274,9 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl gridCtrlChucVu;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gv_ChucVu;
+        private DevExpress.XtraGrid.Columns.GridColumn gc_MaCV;
+        private DevExpress.XtraGrid.Columns.GridColumn gc_TenCV;
         private System.Windows.Forms.Panel pnelButton;
         private DevExpress.XtraEditors.SimpleButton btnThoat;
         private DevExpress.XtraEditors.SimpleButton btnXoa;
@@ -323,10 +286,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.TextEdit txtMaCV;
         private DevExpress.XtraEditors.TextEdit txtTenCV;
-        private DevExpress.XtraEditors.TextEdit txtGhiChu;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton btnHuy;
     }
 }

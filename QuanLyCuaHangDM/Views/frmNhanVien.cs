@@ -91,6 +91,20 @@ namespace QuanLyCuaHangDM
             loadControl_cboGT();
             loadControl_cboCV();
             clearData();
+            string str = bll_nv.GetLastMaNhanViens();
+            int str2 = Convert.ToInt32(str.Remove(0, 2));
+            if (str2 + 1 < 10)
+            {
+                txtMaNV.Text = "NV00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtMaNV.Text = "NV0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtMaNV.Text = "NV" + (str2 + 1).ToString();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -152,6 +166,7 @@ namespace QuanLyCuaHangDM
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
+                    disEnd(false);
                 }
             }
             else
@@ -164,8 +179,8 @@ namespace QuanLyCuaHangDM
                 }
                 else
                     XtraMessageBox.Show("Sửa thất bại");
+                disEnd(false);
             }
-            frmNhanVien_Load(sender, e);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -187,7 +202,7 @@ namespace QuanLyCuaHangDM
                     {
                         XtraMessageBox.Show("Xóa thành công !");
                         HienThiDSNhanVien();
-                        frmNhanVien_Load(sender, e);
+                        disEnd(false);
                     }
                     else
                         XtraMessageBox.Show("Xóa thất bại !");
@@ -240,13 +255,17 @@ namespace QuanLyCuaHangDM
 
         private void gv_NhanVien_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            txtMaNV.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_MaNhanVien).ToString();
-            txtTenNV.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_TenNV).ToString();
-            txtDT.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_DienThoai).ToString();
-            txtDC.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_DiaChi).ToString();
-            dtpNgaySinh.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_NgaySinh).ToString();
-            cboChucVu.SelectedValue = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_ChucVu).ToString();
-            cboGioiTinh.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_GioiTinh).ToString();
+            try
+            {
+                txtMaNV.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_MaNhanVien).ToString();
+                txtTenNV.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_TenNV).ToString();
+                txtDT.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_DienThoai).ToString();
+                txtDC.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_DiaChi).ToString();
+                dtpNgaySinh.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_NgaySinh).ToString();
+                cboChucVu.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_ChucVu).ToString();
+                cboGioiTinh.Text = gv_NhanVien.GetRowCellValue(e.RowHandle, gc_GioiTinh).ToString();
+            }
+            catch { }
         }
     }
 }

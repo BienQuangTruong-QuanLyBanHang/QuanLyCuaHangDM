@@ -38,7 +38,6 @@ namespace QuanLyCuaHangDM
             MaNV = _MaNV;
         }
         int flagHD = 0;
-        int flagCTHD = 0;
         public static frmNhapHang nv = new frmNhapHang();
         public void HienThiDSCTHD(string _MaHoaDon)
         {

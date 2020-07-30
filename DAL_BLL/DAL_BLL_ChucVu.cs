@@ -66,6 +66,18 @@ namespace DAL_BLL
                 return 0;
             }
         }
+        public int kiemTraKhoaNgoai(string qMaCV)
+        {
+            NhanVien nhanviens = qlhh.NhanViens.Where(t => t.MaNhanVien == qMaCV).FirstOrDefault();
+            if (nhanviens == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public string GetLastMaChucVus()
         {
             ChucVu cv = qlhh.ChucVus.Where(t => t.MaChucVu == "CV001").FirstOrDefault();

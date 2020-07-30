@@ -14,9 +14,9 @@ namespace DAL_BLL
         {
 
         }
-        public IQueryable<NhanVien> GetNhanViens()
+        public IQueryable GetNhanViens()
         {
-            return qlhh.NhanViens.Select(t => t);
+            //return qlhh.NhanViens.Select(t => t);
             //return (from nv in qlhh.NhanViens
             //        join cv in qlhh.ChucVus on nv.ChucVu equals cv.MaChucVu
             //        select new
@@ -29,25 +29,18 @@ namespace DAL_BLL
             //            cv.TenChucVu,
             //            nv.DiaChi,
             //            nv.SDT
-            //        }).FirstOrDefault();
+            //        });
+            return qlhh.NhanViens.Join(qlhh.ChucVus, nv => nv.ChucVu, cv => cv.MaChucVu, (nv, cv) => new {
+                nv.MaNhanVien,
+                nv.TenNhanVien,
+                nv.NgaySinh,
+                nv.GioiTinh,
+                nv.NgayVaoLam,
+                cv.TenChucVu,
+                nv.DiaChi,
+                nv.SDT
+            });
         }
-        //public List<NhanVien> GetNhanVien()
-        //{
-        //    var nhanviens = from nv in qlhh.NhanViens
-        //                    join cv in qlhh.ChucVus on nv.ChucVu equals cv.MaChucVu
-        //                    select new
-        //                    {
-        //                        nv.MaNhanVien,
-        //                        nv.TenNhanVien,
-        //                        nv.NgaySinh,
-        //                        nv.GioiTinh,
-        //                        nv.NgayVaoLam,
-        //                        cv.TenChucVu,
-        //                        nv.DiaChi,
-        //                        nv.SDT
-        //                    }.ToList<NhanVien>;
-        //    return nhanviens;
-        //}
         public int AddNhanViens(string qMaNV, string qTenNV, DateTime qNgaySinh, string qGioiTinh, DateTime qNgayVaoLam, string qChucVu, string qDiaChi, string qDienThoai)
         {
             NhanVien nhanViens = qlhh.NhanViens.Where(t => t.MaNhanVien == qMaNV).FirstOrDefault();

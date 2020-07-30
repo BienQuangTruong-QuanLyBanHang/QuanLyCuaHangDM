@@ -27,12 +27,7 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            txtMaCV.DataBindings.Clear();
-            txtMaCV.DataBindings.Add("Text", gridCtrlChucVu.DataSource, "MaChucVu");
-            txtTenCV.DataBindings.Clear();
-            txtTenCV.DataBindings.Add("Text", gridCtrlChucVu.DataSource, "TenChucVu");
-
-            //txtMaCV.Text = 
+            
         }
         void disEnd(bool e)
         {
@@ -60,6 +55,20 @@ namespace QuanLyCuaHangDM
             flag = 0;
             disEnd(true);
             clearData();
+            string str = bll_chucvu.GetLastMaChucVus();
+            int str2 = Convert.ToInt32(str.Remove(0, 2));
+            if (str2 + 1 < 10)
+            {
+                txtMaCV.Text = "CV00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtMaCV.Text = "CV0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtMaCV.Text = "CV" + (str2 + 1).ToString();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -89,6 +98,8 @@ namespace QuanLyCuaHangDM
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
+                    disEnd(false);
+                    HienThiDSCV();
                 }
             }
             else
@@ -104,9 +115,10 @@ namespace QuanLyCuaHangDM
                     }
                     else
                         XtraMessageBox.Show("Sửa thất bại");
+                    disEnd(false);
+                    HienThiDSCV();
                 }
             }
-            frmChucVu_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -117,34 +129,34 @@ namespace QuanLyCuaHangDM
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            //string _MaChucVu = "";
-            //try
-            //{
-            //    _MaChucVu = (txtMaCV.Text);
-            //}
-            //catch { }
-            //DialogResult dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (dr == DialogResult.Yes)
-            //{
-            //    int chk = Models.Connection.CheckForeignKey("NhanVien", "ChucVu", _MaChucVu);
-            //    if (chk == 0)
-            //    {
-            //        int i = 0;
-            //        i = Controllers.ChucVuCtrl.DeleteChucVu(_MaChucVu);
-            //        if (i > 0)
-            //        {
-            //            XtraMessageBox.Show("Xóa thành công !");
-            //            HienThiDSCV();
-            //            frmChucVu_Load(sender, e);
-            //        }
-            //        else
-            //            XtraMessageBox.Show("Xóa thất bại !");
-            //    }
-            //    else
-            //        XtraMessageBox.Show("Dữ liệu này đang được sử dụng !");
-            //}
-            //else
-            //    return;
+            string _MaChucVu = "";
+            try
+            {
+                _MaChucVu = (txtMaCV.Text);
+            }
+            catch { }
+            DialogResult dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                int chk = bll_chucvu.kiemTraKhoaNgoai(_MaChucVu);
+                if (chk > 0)
+                {
+                    int i = 0;
+                    i = bll_chucvu.deleteChucVu(_MaChucVu);
+                    if (i > 0)
+                    {
+                        XtraMessageBox.Show("Xóa thành công !");
+                        HienThiDSCV();
+                        frmChucVu_Load(sender, e);
+                    }
+                    else
+                        XtraMessageBox.Show("Xóa thất bại !");
+                }
+                else
+                    XtraMessageBox.Show("Dữ liệu này đang được sử dụng !");
+            }
+            else
+                return;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -164,6 +176,16 @@ namespace QuanLyCuaHangDM
         private void btnIn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void gv_ChucVu_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                txtMaCV.Text = gv_ChucVu.GetRowCellValue(e.RowHandle, gc_MaCV).ToString();
+                txtTenCV.Text = gv_ChucVu.GetRowCellValue(e.RowHandle, gc_TenCV).ToString();
+            }
+            catch { }
         }
     }
 }
