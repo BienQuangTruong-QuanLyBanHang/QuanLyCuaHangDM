@@ -59,7 +59,7 @@ namespace QuanLyCuaHangDM
                 case 4:
                     {
                         Views.rpt.rptCTPN rpt = new Views.rpt.rptCTPN();
-                        rpt.Parameters["MaPhieuNhap"].Value = frmNhapHang.mapn;
+                        rpt.Parameters["MaPhieuNhap"].Value = frmNhapHang.MaPN;
                         documentViewer1.DocumentSource = rpt;
                         documentViewer1.Refresh();
                         rpt.CreateDocument();

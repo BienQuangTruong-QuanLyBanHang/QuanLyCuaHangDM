@@ -48,7 +48,7 @@ namespace DAL_BLL
                 return 0;
             }
         }
-        public int deleteHangSanXuat(string maSX, string tenNSX)
+        public int deleteHangSanXuat(string maSX)
         {
             HangSanXuat hsx = qlhh.HangSanXuats.Where(t => t.MaHangSanXuat == maSX).FirstOrDefault();
             if(hsx != null)

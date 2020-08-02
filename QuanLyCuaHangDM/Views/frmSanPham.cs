@@ -11,6 +11,10 @@ using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using System.IO;
 using DAL_BLL;
+using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraLayout.Converter;
+using System.Globalization;
+using DevExpress.Utils.MVVM;
 
 namespace QuanLyCuaHangDM
 {
@@ -19,40 +23,41 @@ namespace QuanLyCuaHangDM
         DAL_BLL_SanPham bll_sp = new DAL_BLL_SanPham();
         DAL_BLL_HangSanXuat bll_hsx = new DAL_BLL_HangSanXuat();
         DAL_BLL_LoaiSanPham bll_lsp = new DAL_BLL_LoaiSanPham();
+        DAL_BLL_BangMau bll_bangmau = new DAL_BLL_BangMau();
         public frmSanPham()
         {
             InitializeComponent();
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.ControlBox = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
         int flag = 0;
         public static frmSanPham nv = new frmSanPham();
         public void HienThiDSSanPham()
         {
-            gridCtrlSanPham.DataSource = bll_sp.GetSanPhams();
+            try
+            {
+                gridCtrlSanPham.DataSource = bll_sp.GetSanPhams();
+                //CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");
+                //string a = double.Parse("12345").ToString("#,###", cul.NumberFormat);
+
+                gv_SanPham.Columns["GiaNhap"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gv_SanPham.Columns["GiaNhap"].DisplayFormat.FormatString = "#,###";
+
+                gv_SanPham.Columns["GiaBan"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gv_SanPham.Columns["GiaBan"].DisplayFormat.FormatString = "#,###";
+
+                gv_SanPham.Columns["TonKho"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gv_SanPham.Columns["TonKho"].DisplayFormat.FormatString = "#,###";
+
+                rep_Image.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+                rep_Image.BestFitWidth = 100;
+                gv_SanPham.Columns["Image"].ColumnEdit = rep_Image;
+                
+            }
+            catch { }
         }
         void binding()
         {
-            txtMaSP.DataBindings.Clear();
-            txtMaSP.DataBindings.Add("Text", gridCtrlSanPham.DataSource, "MaSanPham");
-            txtTenSP.DataBindings.Clear();
-            txtTenSP.DataBindings.Add("Text", gridCtrlSanPham.DataSource, "TenSanPham");
-            cboLoaiSP.DataBindings.Clear();
-            cboLoaiSP.DataBindings.Add("SelectedValue", gridCtrlSanPham.DataSource, "LoaiSanPham");
-            cboHSX.DataBindings.Clear();
-            cboHSX.DataBindings.Add("SelectedValue", gridCtrlSanPham.DataSource, "HangSanXuat");
-            txtGiaNhap.DataBindings.Clear();
-            txtGiaNhap.DataBindings.Add("Text", gridCtrlSanPham.DataSource, "GiaNhap");
-            txtGiaBan.DataBindings.Clear();
-            txtGiaBan.DataBindings.Add("Text", gridCtrlSanPham.DataSource, "GiaBan");
-            txtTonKho.DataBindings.Clear();
-            txtTonKho.DataBindings.Add("Text", gridCtrlSanPham.DataSource, "TonKho");
-            txtHinhSanPham.DataBindings.Clear();
-            txtHinhSanPham.DataBindings.Add("Text", gridCtrlSanPham.DataSource, "Image");
-            picHinhSP.DataBindings.Clear();
-            cboBangMau.DataBindings.Clear();
-            cboBangMau.DataBindings.Add("Text", gridCtrlSanPham.DataSource, "BangMau");
+            
         }
         void disEnd(bool e)
         {
@@ -63,6 +68,7 @@ namespace QuanLyCuaHangDM
             txtGiaBan.Enabled = e;
             txtTonKho.Enabled = e;
             cboBangMau.Enabled = e;
+            cboDVT.Enabled = e;
             btnThem.Enabled = !e;
             btnSua.Enabled = !e;
             btnXoa.Enabled = !e;
@@ -76,6 +82,13 @@ namespace QuanLyCuaHangDM
             cboHSX.ValueMember = "MaHangSanXuat";
             cboHSX.SelectedIndex = 0;
         }
+        public void loadControl_cboBangMau()
+        {
+            cboBangMau.DataSource = bll_bangmau.GetBangMaus();
+            cboBangMau.DisplayMember = "TenMau";
+            cboBangMau.ValueMember = "MaMau";
+            cboBangMau.SelectedIndex = 0;
+        }
         public void loadControl_cboLSP()
         {
             cboLoaiSP.DataSource = bll_lsp.GetLoaiSanPhams();
@@ -83,12 +96,11 @@ namespace QuanLyCuaHangDM
             cboLoaiSP.ValueMember = "MaLoaiSanPham";
             cboLoaiSP.SelectedIndex = 0;
         }
-        public void loadControl_cboTT()
+        public void loadControl_cboDVT()
         {
-            cboBangMau.Items.Clear();
-            cboBangMau.Items.Add("Còn");
-            cboBangMau.Items.Add("Hết");
-            cboBangMau.SelectedIndex = 0;
+            List<string> lst = new List<string>() { "Cái", "Bộ", "Thùng", "Hộp", "Chai" };
+            cboDVT.Items.Clear();
+            cboDVT.DataSource = lst;
         }
         void clearData()
         {
@@ -100,7 +112,13 @@ namespace QuanLyCuaHangDM
             txtHinhSanPham.Text = "";
             loadControl_cboHSX();
             loadControl_cboLSP();
-            loadControl_cboTT();
+            loadControl_cboBangMau();
+        }
+        void reActive()
+        {
+            HienThiDSSanPham();
+            disEnd(false);
+            gv_SanPham.RowClick += gv_SanPham_RowClick;
         }
         private void frmSanPham_Load(object sender, EventArgs e)
         {
@@ -108,7 +126,8 @@ namespace QuanLyCuaHangDM
             disEnd(false);
             loadControl_cboHSX();
             loadControl_cboLSP();
-            loadControl_cboTT();
+            loadControl_cboDVT();
+            loadControl_cboBangMau();
             binding();
         }
 
@@ -117,12 +136,28 @@ namespace QuanLyCuaHangDM
             flag = 0;
             disEnd(true);
             clearData();
+            gv_SanPham.RowClick -= gv_SanPham_RowClick;
+            string str = bll_sp.GetLastMaSanPhams();
+            int str2 = Convert.ToInt32(str.Remove(0, 2));
+            if (str2 + 1 < 10)
+            {
+                txtMaSP.Text = "SP00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtMaSP.Text = "SP0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtMaSP.Text = "SP" + (str2 + 1).ToString();
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             flag = 1;
             disEnd(true);
+            gv_SanPham.RowClick -= gv_SanPham_RowClick;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -139,12 +174,10 @@ namespace QuanLyCuaHangDM
                 int rs = bll_sp.kiemTraKhoaNgoai(_MaSanPham);
                 if (rs > 0)
                 {
-                    int i = 0;
-                    //i = Controllers.SanPhamCtrl.DeleteSanPham(_MaSanPham);
+                    int i = bll_sp.DeleteSanPhams(_MaSanPham);
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSSanPham();
                         frmSanPham_Load(sender, e);
                     }
                     else
@@ -166,6 +199,7 @@ namespace QuanLyCuaHangDM
             int _GiaNhap = 0;
             int _GiaBan = 0;
             int _TonKho = 0;
+            string _DVT = "";
             string _MaMau = "";
             string _HinhSanPham = "";
             try
@@ -200,12 +234,17 @@ namespace QuanLyCuaHangDM
             catch { }
             try
             {
+                _DVT = cboDVT.Text;
+            }
+            catch { }
+            try
+            {
                 _TonKho = Convert.ToInt32(txtTonKho.Text);
             }
             catch { }
             try
             {
-                _MaMau = cboBangMau.Text;
+                _MaMau = cboBangMau.SelectedValue.ToString();
             }
             catch { }
             try
@@ -215,14 +254,15 @@ namespace QuanLyCuaHangDM
             catch { }
             if (flag == 0)
             {
-                if (_TenSanPham == "" || _GiaNhap <= 0 || _GiaBan <= 0 || _TonKho < 0)
+                if (_TenSanPham == "" || txtGiaNhap.Text == string.Empty || txtGiaBan.Text == string.Empty || txtTonKho.Text == string.Empty)
                     XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
                 else
                 {
-                    int i = bll_sp.AddSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _TonKho, _MaMau, _HinhSanPham);
+                    int i = bll_sp.AddSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _DVT, _TonKho, _MaMau, _HinhSanPham);
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
@@ -234,16 +274,16 @@ namespace QuanLyCuaHangDM
                     XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
                 else
                 {
-                    int i = bll_sp.UpdateSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _TonKho, _MaMau, _HinhSanPham);
+                    int i = bll_sp.UpdateSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _DVT, _TonKho, _MaMau, _HinhSanPham);
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Sửa thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Sửa thất bại");
                 }
             }
-            frmSanPham_Load(sender, e);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -311,7 +351,7 @@ namespace QuanLyCuaHangDM
         {
             try
             {
-                if (txtHinhSanPham.Text != "")
+                if (txtHinhSanPham.Text != string.Empty)
                     picHinhSP.Image = Image.FromFile(@"" + txtHinhSanPham.Text);
                 else
                     picHinhSP.Image = Image.FromFile("/Resources/image-not-found.jpg");
@@ -339,6 +379,58 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmSanPham_Load(sender, e);
+        }
+
+        private void gv_SanPham_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                txtMaSP.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_MaSanPham).ToString();
+                txtTenSP.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_TenSanPham).ToString();
+                cboLoaiSP.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_LoaiSanPham).ToString();
+                cboHSX.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_HangSanXuat).ToString();
+                txtGiaNhap.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_GiaNhap).ToString();
+                txtGiaBan.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_GiaBan).ToString();
+                txtTonKho.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_TonKho).ToString();
+                cboBangMau.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_Mau).ToString();
+                txtMaSP.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_MaSanPham).ToString();
+                picHinhSP.Image = Image.FromFile(gv_SanPham.GetRowCellValue(e.RowHandle, gc_Image).ToString());
+                txtHinhSanPham.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_Image).ToString();
+                cboDVT.Text = gv_SanPham.GetRowCellValue(e.RowHandle, gc_DVT).ToString();
+            }
+            catch { }
+        }
+
+        private void gv_SanPham_CustomDrawRowPreview(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
+        {
+            try
+            {
+                int dx = 5;
+                Rectangle r = e.Bounds;
+                r.X += e.Bounds.Height + dx + 2;
+                r.Width -= (e.Bounds.Height + dx + 3);
+                e.Graphics.DrawImage(DevExpress.XtraEditors.Controls.ByteImageConverter.FromByteArray(
+                    (byte[])gv_SanPham.GetDataRow(e.RowHandle)["gridCtrlSanPham"]), e.Bounds.X + dx,
+                    e.Bounds.Y, e.Bounds.Height, e.Bounds.Height);
+                e.Appearance.DrawString(e.Cache, gv_SanPham.GetRowPreviewDisplayText(e.RowHandle), r);
+                e.Handled = true;
+            }
+            catch { }
+        }
+
+        private void txtGiaNhap_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtGiaNhap.Text.Replace(",", "").Replace("đ", "");
+            decimal ul;
+            //Check we are indeed handling a number
+            if (decimal.TryParse(value, out ul))
+            {
+                //Unsub the event so we don't enter a loop
+                txtGiaNhap.TextChanged -= txtGiaNhap_TextChanged;
+                //Format the text as currency
+                txtGiaNhap.Text = string.Format(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"), "{0:N0}", ul);
+                txtGiaNhap.TextChanged += txtGiaNhap_TextChanged;
+            }
         }
     }
 }

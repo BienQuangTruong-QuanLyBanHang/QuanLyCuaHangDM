@@ -14,7 +14,6 @@ D:\HK6\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.pdb
 C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll.config
 C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll
 C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.pdb
-C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csprojAssemblyReference.cache
 C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csproj.CoreCompileInputs.cache
 C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.dll
 C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.pdb
@@ -32,3 +31,4 @@ D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csprojAssemblyReference.cach
 D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csproj.CoreCompileInputs.cache
 D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.dll
 D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.pdb
+C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csprojAssemblyReference.cache

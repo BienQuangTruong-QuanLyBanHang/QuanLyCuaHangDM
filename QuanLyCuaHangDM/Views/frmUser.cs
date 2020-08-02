@@ -8,11 +8,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DAL_BLL;
 
 namespace QuanLyCuaHangDM
 {
     public partial class frmUser : DevExpress.XtraEditors.XtraForm
     {
+        DAL_BLL_User bll_user = new DAL_BLL_User();
         public frmUser()
         {
             InitializeComponent();
@@ -22,20 +24,11 @@ namespace QuanLyCuaHangDM
         public static frmUser us = new frmUser();
         public void HienThiDSUser()
         {
-            //gridCtrlUser.DataSource = Models.UserModel.FillDataSetUser().Tables[0];
+            gridCtrlUser.DataSource = bll_user.GetUsers();
         }
         void binding()
         {
-            txtID.DataBindings.Clear();
-            txtID.DataBindings.Add("Text", gridCtrlUser.DataSource, "ID");
-            txtMatKhau.DataBindings.Clear();
-            txtMatKhau.DataBindings.Add("Text", gridCtrlUser.DataSource, "MatKhau");
-            txtTenDN.DataBindings.Clear();
-            txtTenDN.DataBindings.Add("Text", gridCtrlUser.DataSource, "TenDangNhap");
-            txtChuThich.DataBindings.Clear();
-            txtChuThich.DataBindings.Add("Text", gridCtrlUser.DataSource, "ChuThich");
-            cboMaNV.DataBindings.Clear();
-            cboMaNV.DataBindings.Add("Text", gridCtrlUser.DataSource, "MaNhanVien");
+            
         }
         void disEnd(bool e)
         {
@@ -159,8 +152,7 @@ namespace QuanLyCuaHangDM
             DialogResult dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                int i = 0;
-                //i = Controllers.UserCtrl.DeleteNhanVien(_ID);
+                int i = bll_user.DeleteUsers(_ID);
                 if (i > 0)
                 {
                     XtraMessageBox.Show("Xóa thành công !");

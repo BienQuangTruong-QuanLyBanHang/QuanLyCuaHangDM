@@ -15,11 +15,25 @@ namespace DAL_BLL
         {
 
         }
-        public IQueryable<ChiTietPhieuNhap> GetChiTietPhieuNhaps()
+        public IQueryable GetChiTietPhieuNhaps()
         {
             return qlhh.ChiTietPhieuNhaps.Select(t => t);
         }
-        public int AddChiTietPhieuNhaps(string MaPN, string MaSP, int soLuong, int tongTien)
+        public IQueryable GetChiTietPhieuNhaps(string qMaPN)
+        {
+            return (from ctpn in qlhh.ChiTietPhieuNhaps
+                    join sp in qlhh.SanPhams on ctpn.MaSanPham equals sp.MaSanPham
+                    where ctpn.MaPhieuNhap == qMaPN
+                    select new
+                    {
+                        ctpn.MaPhieuNhap,
+                        sp.TenSanPham,
+                        ctpn.SoLuong,
+                        ctpn.GiaNhap,
+                        ctpn.TongTien
+                    });
+        }
+        public int AddChiTietPhieuNhaps(string MaPN, string MaSP, int soLuong, int gianhap, int tongTien)
         {
             ChiTietPhieuNhap chiietphieunhaps = qlhh.ChiTietPhieuNhaps.Where(t => t.MaPhieuNhap == MaPN && t.MaSanPham == MaPN).FirstOrDefault();
             if(chiietphieunhaps == null)
@@ -28,6 +42,7 @@ namespace DAL_BLL
                 ctpn.MaPhieuNhap = MaPN;
                 ctpn.MaSanPham = MaSP;
                 ctpn.SoLuong = soLuong;
+                ctpn.GiaNhap = gianhap;
                 ctpn.TongTien = tongTien;
                 qlhh.ChiTietPhieuNhaps.InsertOnSubmit(ctpn);
                 qlhh.SubmitChanges();

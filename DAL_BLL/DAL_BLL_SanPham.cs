@@ -13,11 +13,27 @@ namespace DAL_BLL
         {
 
         }
-        public IQueryable<SanPham> GetSanPhams()
+        public IQueryable GetSanPhams()
         {
-            return qlhh.SanPhams.Select(t => t);
+            return (from sp in qlhh.SanPhams
+                    join lsp in qlhh.LoaiSanPhams on sp.LoaiSanPham equals lsp.MaLoaiSanPham
+                    join hsx in qlhh.HangSanXuats on sp.HangSanXuat equals hsx.MaHangSanXuat
+                    join m in qlhh.BangMaus on sp.MaMau equals m.MaMau
+                    select new
+                    {
+                        sp.MaSanPham,
+                        sp.TenSanPham,
+                        lsp.TenLoaiSanPham,
+                        hsx.TenHangSanXuat,
+                        sp.GiaNhap,
+                        sp.GiaBan,
+                        sp.TonKho,
+                        m.TenMau,
+                        sp.DVT,
+                        sp.Image
+                    });
         }
-        public int AddSanPhams(string qMaSP, string qTenSP, string qLoaiSP, string qHangSX, long qGiaNhap, long qGiaBan, int qTonKho, string qMaMau, string qImage)
+        public int AddSanPhams(string qMaSP, string qTenSP, string qLoaiSP, string qHangSX, long qGiaNhap, long qGiaBan, string qDVT, int qTonKho, string qMaMau, string qImage)
         {
             SanPham sanphams = qlhh.SanPhams.Where(t => t.MaSanPham == qMaSP).FirstOrDefault();
             if(sanphams == null)
@@ -31,6 +47,7 @@ namespace DAL_BLL
                 sp.GiaBan = qGiaBan;
                 sp.TonKho = qTonKho;
                 sp.MaMau = qMaMau;
+                sp.DVT = qDVT;
                 sp.Image = qImage;
                 qlhh.SanPhams.InsertOnSubmit(sp);
                 qlhh.SubmitChanges();
@@ -55,10 +72,10 @@ namespace DAL_BLL
                 return 0;
             }
         }
-        public int UpdateSanPhams(string qMaSP, string qTenSP, string qLoaiSP, string qHangSX, long qGiaNhap, long qGiaBan, int qTonKho, string qMaMau, string qImage)
+        public int UpdateSanPhams(string qMaSP, string qTenSP, string qLoaiSP, string qHangSX, long qGiaNhap, long qGiaBan, string qDVT, int qTonKho, string qMaMau, string qImage)
         {
             SanPham sanphams = qlhh.SanPhams.Where(t => t.MaSanPham == qMaSP).FirstOrDefault();
-            if (sanphams == null)
+            if (sanphams != null)
             {
                 sanphams.TenSanPham = qTenSP;
                 sanphams.LoaiSanPham = qLoaiSP;
@@ -68,6 +85,7 @@ namespace DAL_BLL
                 sanphams.TonKho = qTonKho;
                 sanphams.Image = qImage;
                 sanphams.MaMau = qMaMau;
+                sanphams.DVT = qDVT;
                 qlhh.SubmitChanges();
                 return 1;
             }
@@ -105,6 +123,10 @@ namespace DAL_BLL
                 return "SP001";
             }
             return qlhh.SanPhams.OrderByDescending(t => t.MaSanPham).FirstOrDefault().MaSanPham;
+        }
+        public string GetMaSanPhamByTen(string qTenSP)
+        {
+            return qlhh.SanPhams.Where(t => Equals(t.TenSanPham, qTenSP.Trim())).FirstOrDefault().MaSanPham;
         }
     }
 }

@@ -42,7 +42,12 @@ namespace QuanLyCuaHangDM
             txtTenLoai.Text = "";
             txtMaLoai.Text = "";
         }
-
+        void reActive()
+        {
+            gv_LoaiKhachHang.RowClick += gv_LoaiKhachHang_RowClick;
+            disEnd(false);
+            HienThiDSLoaiSanPham();
+        }
         private void frmLoaiSP_Load(object sender, EventArgs e)
         {
             HienThiDSLoaiSanPham();
@@ -55,6 +60,21 @@ namespace QuanLyCuaHangDM
             flag = 0;
             disEnd(true);
             clearData();
+            gv_LoaiKhachHang.RowClick -= gv_LoaiKhachHang_RowClick;
+            string str = bll_lsp.GetLastMaLoaiSanPhams();
+            int str2 = Convert.ToInt32(str.Remove(0, 3));
+            if (str2 + 1 < 10)
+            {
+                txtMaLoai.Text = "LSP00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtMaLoai.Text = "LSP0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtMaLoai.Text = "LSP" + (str2 + 1).ToString();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -81,6 +101,7 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
@@ -96,18 +117,19 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Sửa thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Sửa thất bại");
                 }
             }
-            frmLoaiSP_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             flag = 1;
             disEnd(true);
+            gv_LoaiKhachHang.RowClick -= gv_LoaiKhachHang_RowClick;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -128,7 +150,6 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSLoaiSanPham();
                         frmLoaiSP_Load(sender, e);
                     }
                     else

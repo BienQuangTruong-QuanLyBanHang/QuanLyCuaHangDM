@@ -28,16 +28,7 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            txtMaNPP.DataBindings.Clear();
-            txtMaNPP.DataBindings.Add("Text", gridCtrlNPP.DataSource, "MaNhaPhanPhoi");
-            txtTenNPP.DataBindings.Clear();
-            txtTenNPP.DataBindings.Add("Text", gridCtrlNPP.DataSource, "TenNhaPhanPhoi");
-            txtDT.DataBindings.Clear();
-            txtDT.DataBindings.Add("Text", gridCtrlNPP.DataSource, "SDT");
-            txtEmail.DataBindings.Clear();
-            txtEmail.DataBindings.Add("Text", gridCtrlNPP.DataSource, "Email");
-            txtDiaChi.DataBindings.Clear();
-            txtDiaChi.DataBindings.Add("Text", gridCtrlNPP.DataSource, "DiaChi");
+            
         }
         void disEnd(bool e)
         {
@@ -58,6 +49,12 @@ namespace QuanLyCuaHangDM
             txtDT.Text = "";
             txtEmail.Text = "";
         }
+        void reActive()
+        {
+            HienThiDSNPP();
+            disEnd(false);
+            gv_NhaPhanPhoi.RowClick += gv_NhaPhanPhoi_RowClick;
+        }
 
         private void frmNhaPhanPhoi_Load(object sender, EventArgs e)
         {
@@ -71,6 +68,21 @@ namespace QuanLyCuaHangDM
             flag = 0;
             disEnd(true);
             clearData();
+            gv_NhaPhanPhoi.RowClick -= gv_NhaPhanPhoi_RowClick;
+            string str = bll_npp.GetLastMaNhaPhanPhois();
+            int str2 = Convert.ToInt32(str.Remove(0, 3));
+            if (str2 + 1 < 10)
+            {
+                txtMaNPP.Text = "NPP00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtMaNPP.Text = "NPP0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtMaNPP.Text = "NPP" + (str2 + 1).ToString();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -115,7 +127,7 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
-                        HienThiDSNPP();
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
@@ -127,18 +139,18 @@ namespace QuanLyCuaHangDM
                 if (i > 0)
                 {
                     XtraMessageBox.Show("Sửa thành công");
-                    HienThiDSNPP();
+                    reActive();
                 }
                 else
                     XtraMessageBox.Show("Sửa thất bại");
             }
-            frmNhaPhanPhoi_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             flag = 1;
             disEnd(true);
+            gv_NhaPhanPhoi.RowClick -= gv_NhaPhanPhoi_RowClick;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -159,7 +171,6 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSNPP();
                         frmNhaPhanPhoi_Load(sender, e);
                     }
                     else
@@ -184,6 +195,7 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmNhaPhanPhoi_Load(sender, e);
+            HienThiDSNPP();
         }
 
         private void txtDT_KeyPress(object sender, KeyPressEventArgs e)
@@ -201,6 +213,19 @@ namespace QuanLyCuaHangDM
             {
                 prt.ShowDialog();
             }
+        }
+
+        private void gv_NhaPhanPhoi_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                txtMaNPP.Text = gv_NhaPhanPhoi.GetRowCellValue(e.RowHandle, gc_MaNPP).ToString();
+                txtTenNPP.Text = gv_NhaPhanPhoi.GetRowCellValue(e.RowHandle, gc_TenNPP).ToString();
+                txtDT.Text = gv_NhaPhanPhoi.GetRowCellValue(e.RowHandle, gc_DienThoai).ToString();
+                txtDiaChi.Text = gv_NhaPhanPhoi.GetRowCellValue(e.RowHandle, gc_DiaChi).ToString();
+                txtEmail.Text = gv_NhaPhanPhoi.GetRowCellValue(e.RowHandle, gc_Email).ToString();
+            }
+            catch { }
         }
     }
 }

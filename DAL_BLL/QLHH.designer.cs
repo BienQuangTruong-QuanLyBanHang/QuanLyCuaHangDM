@@ -756,6 +756,8 @@ namespace DAL_BLL
 		
 		private int _SoLuong;
 		
+		private System.Nullable<long> _GiaNhap;
+		
 		private long _TongTien;
 		
 		private EntityRef<PhieuNhap> _PhieuNhap;
@@ -772,6 +774,8 @@ namespace DAL_BLL
     partial void OnMaSanPhamChanged();
     partial void OnSoLuongChanging(int value);
     partial void OnSoLuongChanged();
+    partial void OnGiaNhapChanging(System.Nullable<long> value);
+    partial void OnGiaNhapChanged();
     partial void OnTongTienChanging(long value);
     partial void OnTongTienChanged();
     #endregion
@@ -847,6 +851,26 @@ namespace DAL_BLL
 					this._SoLuong = value;
 					this.SendPropertyChanged("SoLuong");
 					this.OnSoLuongChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaNhap", DbType="BigInt")]
+		public System.Nullable<long> GiaNhap
+		{
+			get
+			{
+				return this._GiaNhap;
+			}
+			set
+			{
+				if ((this._GiaNhap != value))
+				{
+					this.OnGiaNhapChanging(value);
+					this.SendPropertyChanging();
+					this._GiaNhap = value;
+					this.SendPropertyChanged("GiaNhap");
+					this.OnGiaNhapChanged();
 				}
 			}
 		}
@@ -2374,10 +2398,8 @@ namespace DAL_BLL
 				}
 			}
 		}
-
-        public NhanVien Table1 { get; internal set; }
-
-        public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
 		
@@ -3098,6 +3120,8 @@ namespace DAL_BLL
 		
 		private long _GiaBan;
 		
+		private string _DVT;
+		
 		private int _TonKho;
 		
 		private string _MaMau;
@@ -3130,6 +3154,8 @@ namespace DAL_BLL
     partial void OnGiaNhapChanged();
     partial void OnGiaBanChanging(long value);
     partial void OnGiaBanChanged();
+    partial void OnDVTChanging(string value);
+    partial void OnDVTChanged();
     partial void OnTonKhoChanging(int value);
     partial void OnTonKhoChanged();
     partial void OnMaMauChanging(string value);
@@ -3272,6 +3298,26 @@ namespace DAL_BLL
 					this._GiaBan = value;
 					this.SendPropertyChanged("GiaBan");
 					this.OnGiaBanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DVT", DbType="NVarChar(10)")]
+		public string DVT
+		{
+			get
+			{
+				return this._DVT;
+			}
+			set
+			{
+				if ((this._DVT != value))
+				{
+					this.OnDVTChanging(value);
+					this.SendPropertyChanging();
+					this._DVT = value;
+					this.SendPropertyChanged("DVT");
+					this.OnDVTChanged();
 				}
 			}
 		}

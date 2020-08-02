@@ -13,9 +13,16 @@ namespace DAL_BLL
         {
 
         }
-        public IQueryable<KhachHang> GetKhachHangs()
+        public IQueryable GetKhachHangs()
         {
-            return qlhh.KhachHangs.Select(t => t);
+            return qlhh.KhachHangs.Join(qlhh.LoaiKhachHangs, kh => kh.LoaiKhachHang, lkh => lkh.MaLoaiKhachHang, (kh, lkh) => new {
+                kh.MaKhachHang,
+                kh.TenKhachHang,
+                lkh.TenLoaiKhachHang,
+                kh.NgaySinh,
+                kh.GioiTinh,
+                kh.DiaChi
+            });
         }
         public int addKhachHang(string maKH, string tenKH, DateTime NgaySinh, string gioiTinh, string diaChi, string loaiKH)
         {

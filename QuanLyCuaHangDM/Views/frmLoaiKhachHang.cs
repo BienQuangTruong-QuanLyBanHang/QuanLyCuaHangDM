@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DAL_BLL;
+using DevExpress.XtraGrid;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraReports.ReportGeneration;
 
 namespace QuanLyCuaHangDM
 {
@@ -42,6 +45,12 @@ namespace QuanLyCuaHangDM
             txtTenLoai.Text = "";
             txtMaLoai.Text = "";
         }
+        void reActive()
+        {
+            HienThiDSLoaiKhachHang();
+            disEnd(false);
+            gv_LoaiKH.RowClick += gv_LoaiKH_RowClick;
+        }
         private void frmLoaiKhachHang_Load(object sender, EventArgs e)
         {
             HienThiDSLoaiKhachHang();
@@ -54,6 +63,7 @@ namespace QuanLyCuaHangDM
             clearData();
             flag = 0;
             disEnd(true);
+            gv_LoaiKH.RowClick -= gv_LoaiKH_RowClick;
             string str = bll_lkh.GetLastMaLoaiKhachHangs();
             int str2 = Convert.ToInt32(str.Remove(0, 3));
             if (str2 + 1 < 10)
@@ -94,6 +104,7 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
@@ -109,18 +120,19 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Sửa thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Sửa thất bại");
                 }
             }
-            frmLoaiKhachHang_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             flag = 1;
             disEnd(true);
+            gv_LoaiKH.RowClick -= gv_LoaiKH_RowClick;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -141,9 +153,9 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSLoaiKhachHang();
                         frmLoaiKhachHang_Load(sender, e);
-                    }                    else
+                    }                    
+                    else
                         XtraMessageBox.Show("Xóa thất bại !");
                 }
                 else
@@ -165,11 +177,47 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmLoaiKhachHang_Load(sender, e);
+            //XtraReport report = ReportGenerator.GenerateReport(gv_LoaiKH);
         }
 
         private void btnIn_Click(object sender, EventArgs e)
         {
 
+        }
+        private void ShowGridPreview(GridControl grid)
+        {
+            // Check whether the GridControl can be previewed.
+            if (!grid.IsPrintingAvailable)
+            {
+                MessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
+                return;
+            }
+
+            // Open the Preview window.
+            grid.ShowPrintPreview();
+        }
+
+        private void PrintGrid(GridControl grid)
+        {
+            // Check whether the GridControl can be printed.
+            if (!grid.IsPrintingAvailable)
+            {
+                MessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
+                return;
+            }
+
+            // Print.
+            grid.Print();
+        }
+
+        private void gv_LoaiKH_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                txtMaLoai.Text = gv_LoaiKH.GetRowCellValue(e.RowHandle, gc_MaLoai).ToString();
+                txtTenLoai.Text = gv_LoaiKH.GetRowCellValue(e.RowHandle, gc_TenLoai).ToString();
+            }
+            catch { }
         }
     }
 }

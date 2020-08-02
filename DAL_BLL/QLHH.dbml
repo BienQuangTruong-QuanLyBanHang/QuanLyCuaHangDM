@@ -31,6 +31,7 @@
       <Column Name="MaPhieuNhap" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaSanPham" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GiaNhap" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="TongTien" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="PhieuNhap" ThisKey="MaPhieuNhap" OtherKey="MaPhieuNhap" Type="PhieuNhap" IsForeignKey="true" />
       <Association Name="SanPham_ChiTietPhieuNhap" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
@@ -151,6 +152,7 @@
       <Column Name="HangSanXuat" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="GiaNhap" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="GiaBan" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="DVT" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="TonKho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="MaMau" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Image" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />

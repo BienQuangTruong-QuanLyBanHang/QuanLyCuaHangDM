@@ -17,6 +17,10 @@ namespace DAL_BLL
         {
             return qlhh.PhieuNhaps.Select(t => t);
         }
+        public IQueryable<PhieuNhap> GetPhieuNhaps(string qMaPN)
+        {
+            return qlhh.PhieuNhaps.Where(t => t.MaPhieuNhap == qMaPN);
+        }
         public int AddPhieuNhaps(string qMaPN, string qMaNV, string qMaNPP, long qTongTien, DateTime qNgayNhap)
         {
             PhieuNhap phieuNhaps = qlhh.PhieuNhaps.Where(t => t.MaPhieuNhap == qMaPN).FirstOrDefault();

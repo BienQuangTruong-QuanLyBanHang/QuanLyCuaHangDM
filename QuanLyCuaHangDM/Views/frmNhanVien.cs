@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using DAL_BLL;
+using DevExpress.XtraReports.UI;
 
 namespace QuanLyCuaHangDM
 {
@@ -68,6 +69,12 @@ namespace QuanLyCuaHangDM
             loadControl_cboGT();
             loadControl_cboCV();
         }
+        void reActive()
+        {
+            HienThiDSNhanVien();
+            disEnd(false);
+            gv_NhanVien.RowClick += gv_NhanVien_RowClick;
+        }
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             HienThiDSNhanVien();
@@ -82,6 +89,7 @@ namespace QuanLyCuaHangDM
             disEnd(true);
             loadControl_cboGT();
             loadControl_cboCV();
+            gv_NhanVien.RowClick -= gv_NhanVien_RowClick;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -91,6 +99,7 @@ namespace QuanLyCuaHangDM
             loadControl_cboGT();
             loadControl_cboCV();
             clearData();
+            gv_NhanVien.RowClick -= gv_NhanVien_RowClick;
             string str = bll_nv.GetLastMaNhanViens();
             int str2 = Convert.ToInt32(str.Remove(0, 2));
             if (str2 + 1 < 10)
@@ -162,11 +171,10 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
-                        HienThiDSNhanVien();
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
-                    disEnd(false);
                 }
             }
             else
@@ -175,11 +183,10 @@ namespace QuanLyCuaHangDM
                 if (i > 0)
                 {
                     XtraMessageBox.Show("Sửa thành công");
-                    HienThiDSNhanVien();
+                    reActive();
                 }
                 else
                     XtraMessageBox.Show("Sửa thất bại");
-                disEnd(false);
             }
         }
 
@@ -201,8 +208,7 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSNhanVien();
-                        disEnd(false);
+                        frmNhanVien_Load(sender, e);
                     }
                     else
                         XtraMessageBox.Show("Xóa thất bại !");

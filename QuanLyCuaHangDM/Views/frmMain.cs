@@ -161,7 +161,7 @@ namespace QuanLyCuaHangDM
 
         private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmNhapHang np = new frmNhapHang();
+            frmNhapHang np = new frmNhapHang(bll_us.GetIdUsers(IdUser));
             np.MdiParent = this;
             np.Show();
         }

@@ -54,7 +54,6 @@
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
-            this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnLoaiKH = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.btnIn = new DevExpress.XtraEditors.SimpleButton();
@@ -85,6 +84,7 @@
             this.gv_KhachHang.GridControl = this.gridCtrlKhachHang;
             this.gv_KhachHang.Name = "gv_KhachHang";
             this.gv_KhachHang.OptionsBehavior.ReadOnly = true;
+            this.gv_KhachHang.OptionsFind.AlwaysVisible = true;
             this.gv_KhachHang.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gv_KhachHang.OptionsView.RowAutoHeight = true;
             this.gv_KhachHang.OptionsView.ShowGroupPanel = false;
@@ -150,7 +150,7 @@
             this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn8.Caption = "Loại khách hàng";
-            this.gridColumn8.FieldName = "LoaiKhachHang";
+            this.gridColumn8.FieldName = "TenLoaiKhachHang";
             this.gridColumn8.MinWidth = 15;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
@@ -425,27 +425,13 @@
             this.btnXoa.Text = "XÓA";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // btnThoat
-            // 
-            this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThoat.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.btnThoat.Appearance.Options.UseFont = true;
-            this.btnThoat.ImageOptions.Image = global::QuanLyCuaHangDM.Properties.Resources.Cancel_32x32;
-            this.btnThoat.Location = new System.Drawing.Point(1012, 6);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(105, 50);
-            this.btnThoat.TabIndex = 4;
-            this.btnThoat.Text = "THOÁT";
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
             // btnLoaiKH
             // 
             this.btnLoaiKH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoaiKH.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.btnLoaiKH.Appearance.Options.UseFont = true;
             this.btnLoaiKH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLoaiKH.ImageOptions.Image")));
-            this.btnLoaiKH.Location = new System.Drawing.Point(764, 6);
+            this.btnLoaiKH.Location = new System.Drawing.Point(933, 6);
             this.btnLoaiKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoaiKH.Name = "btnLoaiKH";
             this.btnLoaiKH.Size = new System.Drawing.Size(109, 50);
@@ -458,7 +444,7 @@
             this.btnHuy.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.btnHuy.Appearance.Options.UseFont = true;
             this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
-            this.btnHuy.Location = new System.Drawing.Point(690, 6);
+            this.btnHuy.Location = new System.Drawing.Point(701, 6);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(100, 50);
@@ -472,7 +458,7 @@
             this.btnIn.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.btnIn.Appearance.Options.UseFont = true;
             this.btnIn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnIn.ImageOptions.Image")));
-            this.btnIn.Location = new System.Drawing.Point(893, 6);
+            this.btnIn.Location = new System.Drawing.Point(1058, 6);
             this.btnIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(90, 50);
@@ -485,7 +471,6 @@
             this.pnelButton.Controls.Add(this.btnIn);
             this.pnelButton.Controls.Add(this.btnHuy);
             this.pnelButton.Controls.Add(this.btnLoaiKH);
-            this.pnelButton.Controls.Add(this.btnThoat);
             this.pnelButton.Controls.Add(this.btnXoa);
             this.pnelButton.Controls.Add(this.btnSua);
             this.pnelButton.Controls.Add(this.btnLuu);
@@ -559,7 +544,6 @@
         private DevExpress.XtraEditors.SimpleButton btnLuu;
         private DevExpress.XtraEditors.SimpleButton btnSua;
         private DevExpress.XtraEditors.SimpleButton btnXoa;
-        private DevExpress.XtraEditors.SimpleButton btnThoat;
         private DevExpress.XtraEditors.SimpleButton btnLoaiKH;
         private DevExpress.XtraEditors.SimpleButton btnHuy;
         private DevExpress.XtraEditors.SimpleButton btnIn;

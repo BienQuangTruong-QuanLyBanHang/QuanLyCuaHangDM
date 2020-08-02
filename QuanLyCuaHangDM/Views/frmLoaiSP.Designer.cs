@@ -224,6 +224,7 @@
             this.gv_LoaiKhachHang.DetailHeight = 271;
             this.gv_LoaiKhachHang.GridControl = this.gridCtrlLoaiSP;
             this.gv_LoaiKhachHang.Name = "gv_LoaiKhachHang";
+            this.gv_LoaiKhachHang.OptionsFind.AlwaysVisible = true;
             this.gv_LoaiKhachHang.OptionsView.ShowGroupPanel = false;
             this.gv_LoaiKhachHang.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gv_LoaiKhachHang_RowClick);
             // 
@@ -235,6 +236,7 @@
             this.gridColumn2.FieldName = "MaLoaiSanPham";
             this.gridColumn2.MinWidth = 15;
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 34;
@@ -247,6 +249,7 @@
             this.gridColumn3.FieldName = "TenLoaiSanPham";
             this.gridColumn3.MinWidth = 15;
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 133;

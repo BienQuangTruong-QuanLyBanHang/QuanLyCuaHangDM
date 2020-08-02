@@ -27,10 +27,7 @@ namespace QuanLyCuaHangDM
         }
         void binding()
         {
-            txtMaHang.DataBindings.Clear();
-            txtMaHang.DataBindings.Add("Text", gridCtrlHangSX.DataSource, "MaHangSanXuat");
-            txtTenHang.DataBindings.Clear();
-            txtTenHang.DataBindings.Add("Text", gridCtrlHangSX.DataSource, "TenHangSanXuat");
+            
         }
         void disEnd(bool e)
         {
@@ -45,6 +42,12 @@ namespace QuanLyCuaHangDM
             txtTenHang.Text = "";
             txtMaHang.Text = "";
         }
+        void reActive()
+        {
+            HienThiDSHangSX();
+            disEnd(false);
+            gv_HangSanXuat.RowClick += gv_HangSanXuat_RowClick;
+        }
         private void frmHangSX_Load(object sender, EventArgs e)
         {
             HienThiDSHangSX();
@@ -57,6 +60,21 @@ namespace QuanLyCuaHangDM
             flag = 0;
             disEnd(true);
             clearData();
+            gv_HangSanXuat.RowClick -= gv_HangSanXuat_RowClick;
+            string str = bll_hsx.GetLastMaHangSanXuats();
+            int str2 = Convert.ToInt32(str.Remove(0, 3));
+            if (str2 + 1 < 10)
+            {
+                txtMaHang.Text = "HSX00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtMaHang.Text = "HSX0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtMaHang.Text = "HSX" + (str2 + 1).ToString();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -83,6 +101,7 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
@@ -98,18 +117,19 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Sửa thành công");
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Sửa thất bại");
                 }
             }
-            frmHangSX_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             flag = 1;
             disEnd(true);
+            gv_HangSanXuat.RowClick -= gv_HangSanXuat_RowClick;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -126,12 +146,10 @@ namespace QuanLyCuaHangDM
                 int rs = bll_hsx.kiemTraKhoaNgoai(_MaHangSanXuat);
                 if (rs > 0)
                 {
-                    int i = 0;
-                    //i = Controllers.HangSanXuatCtrl.DeleteHSX(_MaHangSanXuat);
+                    int i = bll_hsx.deleteHangSanXuat(_MaHangSanXuat);
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSHangSX();
                         frmHangSX_Load(sender, e);
                     }
                     else
@@ -165,6 +183,16 @@ namespace QuanLyCuaHangDM
             {
                 prt.ShowDialog();
             }
+        }
+
+        private void gv_HangSanXuat_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                txtMaHang.Text = gv_HangSanXuat.GetRowCellValue(e.RowHandle, gc_MaHSX).ToString();
+                txtTenHang.Text = gv_HangSanXuat.GetRowCellValue(e.RowHandle, gc_TenHSX).ToString();
+            }
+            catch { }
         }
     }
 }

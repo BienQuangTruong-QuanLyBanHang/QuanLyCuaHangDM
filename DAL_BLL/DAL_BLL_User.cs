@@ -77,6 +77,15 @@ namespace DAL_BLL
             }
             return 0;
         }
+        public string GetLastMaUsers()
+        {
+            User us = qlhh.Users.Where(t => t.ID == "U001").FirstOrDefault();
+            if (us == null)
+            {
+                return "U001";
+            }
+            return qlhh.Users.OrderByDescending(t => t.ID).FirstOrDefault().ID;
+        }
         public string SHA256(string qMatKhau)
         {
             try

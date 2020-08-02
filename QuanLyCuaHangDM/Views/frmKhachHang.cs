@@ -65,6 +65,12 @@ namespace QuanLyCuaHangDM
             loadControl_cboGT();
             loadControl_cboLoaiKH();
         }
+        void reActive()
+        {
+            HienThiDSKhachHang();
+            disEnd(false);
+            gv_KhachHang.RowClick += gv_KhachHang_RowClick;
+        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -73,6 +79,7 @@ namespace QuanLyCuaHangDM
             loadControl_cboGT();
             loadControl_cboLoaiKH();
             clearData();
+            gv_KhachHang.RowClick -= gv_KhachHang_RowClick;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -123,7 +130,7 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
-                        HienThiDSKhachHang();
+                        reActive();
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
@@ -135,12 +142,11 @@ namespace QuanLyCuaHangDM
                 if (i > 0)
                 {
                     XtraMessageBox.Show("Sửa thành công");
-                    HienThiDSKhachHang();
+                    reActive();
                 }
                 else
                     XtraMessageBox.Show("Sửa thất bại");
             }
-            frmKhachHang_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -149,6 +155,7 @@ namespace QuanLyCuaHangDM
             disEnd(true);
             loadControl_cboGT();
             loadControl_cboLoaiKH();
+            gv_KhachHang.RowClick -= gv_KhachHang_RowClick;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -170,7 +177,6 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Xóa thành công !");
-                        HienThiDSKhachHang();
                         frmKhachHang_Load(sender, e);
                     }
                     else
@@ -233,12 +239,16 @@ namespace QuanLyCuaHangDM
 
         private void gv_KhachHang_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            txtMaKH.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn2).ToString();
-            txtTenKH.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn3).ToString();
-            dtpNgaySinh.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn4).ToString();
-            cboLoaiKH.SelectedValue = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn8).ToString();
-            txtDC.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn7).ToString();
-            cboGioiTinh.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn1).ToString();
+            try
+            {
+                txtMaKH.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn2).ToString();
+                txtTenKH.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn3).ToString();
+                dtpNgaySinh.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn4).ToString();
+                cboLoaiKH.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn8).ToString();
+                txtDC.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn7).ToString();
+                cboGioiTinh.Text = gv_KhachHang.GetRowCellValue(e.RowHandle, gridColumn1).ToString();
+            }
+            catch { }
         }
     }
 }

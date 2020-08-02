@@ -26,6 +26,8 @@ namespace QuanLyCuaHangDM
         List<ChiTietHoaDon> lst = new List<ChiTietHoaDon>();
         public static string MaHD;
         string MaNV;
+        string MaSP = null;
+        int flagHD = 0;
         public frmBanHang()
         {
             InitializeComponent();
@@ -37,7 +39,6 @@ namespace QuanLyCuaHangDM
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             MaNV = _MaNV;
         }
-        int flagHD = 0;
         public static frmNhapHang nv = new frmNhapHang();
         public void HienThiDSCTHD(string _MaHoaDon)
         {
@@ -46,14 +47,6 @@ namespace QuanLyCuaHangDM
                 gridCtrlCTHD.DataSource = bll_cthd.GetChiTietHoaDons(_MaHoaDon);
             }
             catch { }
-        }
-        void binding()
-        {
-            //cboMaSP.DataBindings.Clear();
-            //cboMaSP.DataBindings.Add("SelectedValue", gridCtrlCTHD.DataSource, "MaSanPham");
-            //txtSoLuong.DataBindings.Clear();
-            //txtSoLuong.DataBindings.Add("Text", gridCtrlCTHD.DataSource, "SoLuong");
-            //GridView gridView1 = gridCtrlCTHD.MainView as GridView;
         }
         void disEndPN(bool e)
         {
@@ -99,7 +92,7 @@ namespace QuanLyCuaHangDM
             txtTongTien.Text = "";
             txtNgayLapHoaDon.Text = Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("dd-MM-yyyy");
             loadControl_cboMaKH();
-            txtMaNV.Text = bll_nv.GetTenNhanVien(MaNV);
+            //txtMaNV.Text = bll_nv.GetTenNhanVien(MaNV);
         }
         void clearDataCTHD()
         {
@@ -112,6 +105,15 @@ namespace QuanLyCuaHangDM
             var source = new BindingSource();
             source.DataSource = lst;
             gridCtrlCTHD.DataSource = source;
+            formatGV();
+        }
+        void formatGV()
+        {
+            gv_CTHD.Columns["SoLuong"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gv_CTHD.Columns["SoLuong"].DisplayFormat.FormatString = "#,###";
+
+            gv_CTHD.Columns["TongTien"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gv_CTHD.Columns["TongTien"].DisplayFormat.FormatString = "#,###";
         }
 
         private void frmBanHang_Load(object sender, EventArgs e)
@@ -134,8 +136,6 @@ namespace QuanLyCuaHangDM
         private void btnThemHD_Click(object sender, EventArgs e)
         {
             flagHD = 0;
-            //cboMaHD.Text = cboMaHD.Items.Count.ToString();
-            //int count = cboMaHD.Items.Count;
             string str = bll_hd.GetLastHoaDons();
             int str2 = Convert.ToInt32(str.Remove(0, 2));
             if(str2 + 1 < 10)
@@ -189,7 +189,7 @@ namespace QuanLyCuaHangDM
             {
                 if (lst.Count > 0)
                 {
-                    int i = bll_hd.addHoaDon(_MaHoaDon, _MaKhachHang, _MaNhanVien, _NgayNhap, _TongTien + (_TongTien * 1) / 10);
+                    int i = bll_hd.addHoaDon(_MaHoaDon, _MaKhachHang, _MaNhanVien, _NgayNhap, _TongTien);
                     for (int j = 0; j < lst.Count; j++)
                     {
                         int k = bll_cthd.AddChiTietHoaDons(lst[j].MaHoaDon, lst[j].MaSanPham, lst[j].SoLuong, Convert.ToInt32(lst[j].TongTien));
@@ -212,8 +212,6 @@ namespace QuanLyCuaHangDM
                 else
                     XtraMessageBox.Show("Đơn hàng đang rỗng");
             }
-            //frmBanHang_Load(sender, e);
-            //cboMaHD.Text = Models.Connection.GetLastID("HoaDon", "MaHoaDon");
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -261,7 +259,8 @@ namespace QuanLyCuaHangDM
                     {
                         if(lst[k].MaSanPham == cboMaSP.SelectedValue.ToString())
                         {
-                            lst[k].MaSanPham = cboMaSP.SelectedValue.ToString();
+                            lst[k].SoLuong = _SoLuong;
+                            lst[k].TongTien = _TongTien;
                             MessageBox.Show("Đã cập nhật hóa đơn");
                             loadListCTHD();
                             return;
@@ -274,7 +273,7 @@ namespace QuanLyCuaHangDM
                     {
                         money += Convert.ToInt32(lst[i].TongTien);
                     }
-                    txtTongTien.Text = money.ToString();
+                    txtTongTien.Text = (money + (money * 1) / 10).ToString();
                     disEndBtnCTHD(true);
                 }
                 else
@@ -336,67 +335,70 @@ namespace QuanLyCuaHangDM
                 cboMaKH.Text = bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().MaKhachHang;
                 txtTongTien.Text = bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().TongTien.ToString();
                 txtNgayLapHoaDon.Text = Convert.ToDateTime(bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().NgayLapHoaDon.ToString()).ToString("dd-MM-yyyy");
-                txtMaHD.Text = bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().MaKhachHang;
+                txtMaHD.Text = bll_nv.GetTenNhanVien(bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().MaNhanVien);
             }
             catch { }
 
             HienThiDSCTHD(_MaHoaDon);
-            binding();
-
+            formatGV();
             MaHD = cboMaHD.Text;
         }
 
         private void gv_CTHD_RowClick(object sender, RowClickEventArgs e)
         {
-            cboMaSP.SelectedValue = gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn4).ToString();
-            txtSoLuong.Text = gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn5).ToString();
+            try
+            {
+                MaSP = bll_sp.GetMaSanPhamByTen(gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn4).ToString());
+                cboMaSP.SelectedValue = gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn4).ToString();
+                txtSoLuong.Text = gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn5).ToString();
+            }
+            catch { }
         }
 
         private void btnSuaCTHD_Click(object sender, EventArgs e)
         {
-            bool ex = false;
-            string _MaHoaDon = "";
-            string _MaSanPham = "";
-            int _SoLuong = 0;
-            int _TongTien = 0;
-            try
+            if (MaSP != null)
             {
-                _MaHoaDon = (cboMaHD.Text);
-            }
-            catch { }
-            try
-            {
-                _MaSanPham = (cboMaSP.SelectedValue.ToString());
-            }
-            catch { }
-            try
-            {
-                _SoLuong = Convert.ToInt32(txtSoLuong.Text);
-            }
-            catch { }
-            try
-            {
-                _TongTien = Convert.ToInt32(txtGiaBan.Text) * Convert.ToInt32(txtSoLuong.Text);
-            }
-            catch { }
-            for (int i = 0; i< lst.Count; i++)
-            {
-                if (lst[i].MaHoaDon == _MaHoaDon)
+                bool ex = false;
+                string _MaSanPham = "";
+                int _SoLuong = 0;
+                int _TongTien = 0;
+                try
                 {
-                    lst[i].MaSanPham = _MaSanPham;
-                    lst[i].SoLuong = _SoLuong;
-                    lst[i].TongTien = _TongTien;
-                    ex = true;
-                    break;
+                    _MaSanPham = (cboMaSP.SelectedValue.ToString());
                 }
+                catch { }
+                try
+                {
+                    _SoLuong = Convert.ToInt32(txtSoLuong.Text);
+                }
+                catch { }
+                try
+                {
+                    _TongTien = Convert.ToInt32(txtGiaBan.Text) * Convert.ToInt32(txtSoLuong.Text);
+                }
+                catch { }
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    if (lst[i].MaSanPham == MaSP)
+                    {
+                        lst[i].MaSanPham = _MaSanPham;
+                        lst[i].SoLuong = _SoLuong;
+                        lst[i].TongTien = _TongTien;
+                        ex = true;
+                        break;
+                    }
+                }
+                if (ex)
+                {
+                    XtraMessageBox.Show("Sửa thành công");
+                    loadListCTHD();
+                }
+                else
+                    XtraMessageBox.Show("Không thể sửa sản phẩm không có trong hóa đơn");
             }
-            if(ex)
-            {
-                XtraMessageBox.Show("Sửa thành công");
-                loadListCTHD();
-            }    
             else
-                XtraMessageBox.Show("Không thể sửa sản phẩm không có trong hóa đơn");
+                XtraMessageBox.Show("Hãy chọn chi tiết hóa đơn cần sửa");
         }
 
         private void btnXoaCTHD_Click(object sender, EventArgs e)
