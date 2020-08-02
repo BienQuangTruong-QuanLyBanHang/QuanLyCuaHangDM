@@ -51,6 +51,7 @@ namespace QuanLyCuaHangDM
         void disEndPN(bool e)
         {
             cboMaKH.Enabled = e;
+            cboMaHD.Enabled = !e;
             btnThemHD.Enabled = !e;
             btnLuuHD.Enabled = e;
             btnThemCTHD.Enabled = e;
@@ -92,7 +93,7 @@ namespace QuanLyCuaHangDM
             txtTongTien.Text = "";
             txtNgayLapHoaDon.Text = Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("dd-MM-yyyy");
             loadControl_cboMaKH();
-            //txtMaNV.Text = bll_nv.GetTenNhanVien(MaNV);
+            txtMaNV.Text = bll_nv.GetTenNhanVien(MaNV);
         }
         void clearDataCTHD()
         {
@@ -201,13 +202,12 @@ namespace QuanLyCuaHangDM
                     }
                     if (i > 0)
                     {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        disEndPN(false);
-                        disEndCTPN(false);
-                        disEndBtnCTHD(false);
+                        XtraMessageBox.Show("Lưu thành công");
+                        lst.Clear();
+                        frmBanHang_Load(sender, e);
                     }
                     else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                        XtraMessageBox.Show("Lưu thất bại");
                 }
                 else
                     XtraMessageBox.Show("Đơn hàng đang rỗng");
@@ -228,6 +228,7 @@ namespace QuanLyCuaHangDM
             disEndBtnCTHD(true);
             string _MaHoaDon = "";
             string _MaSanPham = "";
+            string _TenSanPham = "";
             int _SoLuong = 0;
             int _TongTien = 0;
             try
@@ -238,6 +239,11 @@ namespace QuanLyCuaHangDM
             try
             {
                 _MaSanPham = (cboMaSP.SelectedValue.ToString());
+            }
+            catch { }
+            try
+            {
+                _TenSanPham = (cboMaSP.Text.Trim());
             }
             catch { }
             try
@@ -259,6 +265,7 @@ namespace QuanLyCuaHangDM
                     {
                         if(lst[k].MaSanPham == cboMaSP.SelectedValue.ToString())
                         {
+                            lst[k].TenSanPham = _TenSanPham;
                             lst[k].SoLuong = _SoLuong;
                             lst[k].TongTien = _TongTien;
                             MessageBox.Show("Đã cập nhật hóa đơn");
@@ -266,7 +273,7 @@ namespace QuanLyCuaHangDM
                             return;
                         }
                     }
-                    lst.Add(new ChiTietHoaDon { MaHoaDon = _MaHoaDon, MaSanPham = _MaSanPham, SoLuong = _SoLuong, TongTien = _TongTien });
+                    lst.Add(new ChiTietHoaDon { MaHoaDon = _MaHoaDon, MaSanPham = _MaSanPham, TenSanPham = _TenSanPham, SoLuong = _SoLuong, TongTien = _TongTien });
                     loadListCTHD();
                     int money = 0;
                     for (int i = 0; i < lst.Count; i++)
@@ -335,7 +342,7 @@ namespace QuanLyCuaHangDM
                 cboMaKH.Text = bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().MaKhachHang;
                 txtTongTien.Text = bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().TongTien.ToString();
                 txtNgayLapHoaDon.Text = Convert.ToDateTime(bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().NgayLapHoaDon.ToString()).ToString("dd-MM-yyyy");
-                txtMaHD.Text = bll_nv.GetTenNhanVien(bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().MaNhanVien);
+                txtMaNV.Text = bll_nv.GetTenNhanVien(bll_hd.GetHoaDons(_MaHoaDon).FirstOrDefault().MaNhanVien);
             }
             catch { }
 
@@ -348,9 +355,9 @@ namespace QuanLyCuaHangDM
         {
             try
             {
-                MaSP = bll_sp.GetMaSanPhamByTen(gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn4).ToString());
-                cboMaSP.SelectedValue = gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn4).ToString();
-                txtSoLuong.Text = gv_CTHD.GetRowCellValue(e.RowHandle, gridColumn5).ToString();
+                MaSP = gv_CTHD.GetRowCellValue(e.RowHandle, gc_MaSP).ToString();
+                cboMaSP.Text = gv_CTHD.GetRowCellValue(e.RowHandle, gc_TenSanPham).ToString();
+                txtSoLuong.Text = gv_CTHD.GetRowCellValue(e.RowHandle, gc_SoLuong).ToString();
             }
             catch { }
         }
@@ -361,11 +368,17 @@ namespace QuanLyCuaHangDM
             {
                 bool ex = false;
                 string _MaSanPham = "";
+                string _TenSanPham = "";
                 int _SoLuong = 0;
                 int _TongTien = 0;
                 try
                 {
                     _MaSanPham = (cboMaSP.SelectedValue.ToString());
+                }
+                catch { }
+                try
+                {
+                    _TenSanPham = (cboMaSP.Text.Trim());
                 }
                 catch { }
                 try
@@ -383,6 +396,7 @@ namespace QuanLyCuaHangDM
                     if (lst[i].MaSanPham == MaSP)
                     {
                         lst[i].MaSanPham = _MaSanPham;
+                        lst[i].TenSanPham = _TenSanPham;
                         lst[i].SoLuong = _SoLuong;
                         lst[i].TongTien = _TongTien;
                         ex = true;
@@ -392,6 +406,7 @@ namespace QuanLyCuaHangDM
                 if (ex)
                 {
                     XtraMessageBox.Show("Sửa thành công");
+                    MaSP = null;
                     loadListCTHD();
                 }
                 else
@@ -421,6 +436,12 @@ namespace QuanLyCuaHangDM
                 if (lst[i].MaHoaDon == _MaHoaDon && lst[i].MaSanPham == _MaSanPham)
                 {
                     lst.RemoveAt(i);
+                    int money = 0;
+                    for (int j = 0; j < lst.Count; j++)
+                    {
+                        money += Convert.ToInt32(lst[j].TongTien);
+                    }
+                    txtTongTien.Text = (money + (money * 1) / 10).ToString();
                     ex = true;
                     break;
                 }

@@ -69,6 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHH.dbml</DependentUpon>
     </Compile>
+    <Compile Include="SanPham.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

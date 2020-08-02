@@ -19,9 +19,19 @@ namespace DAL_BLL
         {
             return qlhh.ChiTietHoaDons.Select(t => t);
         }
-        public IQueryable<ChiTietHoaDon> GetChiTietHoaDons(string qMaHoaDon)
+        public IQueryable GetChiTietHoaDons(string qMaHD)
         {
-            return qlhh.ChiTietHoaDons.Where(t => t.MaHoaDon == qMaHoaDon);
+            return (from cthd in qlhh.ChiTietHoaDons
+                    join sp in qlhh.SanPhams on cthd.MaSanPham equals sp.MaSanPham
+                    where cthd.MaHoaDon == qMaHD
+                    select new
+                    {
+                        cthd.MaHoaDon,
+                        cthd.MaSanPham,
+                        sp.TenSanPham,
+                        cthd.SoLuong,
+                        cthd.TongTien
+                    });
         }
         public int AddChiTietHoaDons(string MaPN, string MaSP, int soLuong, int tongTien)
         {
