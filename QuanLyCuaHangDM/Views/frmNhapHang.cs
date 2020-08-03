@@ -48,6 +48,7 @@ namespace QuanLyCuaHangDM
         void disEndPN(bool e)
         {
             cboNPP.Enabled = e;
+            cboMaPN.Enabled = !e;
             btnThemPN.Enabled = !e;
             btnLuuPN.Enabled = e;
             btnThemCTPN.Enabled = e;
@@ -121,11 +122,13 @@ namespace QuanLyCuaHangDM
             cboMaSP.SelectedIndexChanged -= cboMaSP_SelectedIndexChanged;
             disEndPN(false);
             disEndCTPN(false);
+            disEndBtnCTPN(false);
+            clearDataPN();
+            clearDataCTPN();
             cboMaPN.Enabled = true;
             loadControl_cboMaPN();
             loadControl_cboNPP();
             loadControl_cboMaSP();
-            //txtMaNV.Text = bll_nhanvien.GetTenNhanVien(MaNV);
             txtNgayNhap.Text = Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("dd-MM-yyyy");
             cboMaPN.SelectedIndexChanged += cboMaPN_SelectedIndexChanged;
             cboMaSP.SelectedIndexChanged += cboMaSP_SelectedIndexChanged;
@@ -201,9 +204,8 @@ namespace QuanLyCuaHangDM
                     if (i > 0)
                     {
                         XtraMessageBox.Show("Thêm mới thành công");
-                        disEndPN(false);
-                        disEndCTPN(false);
-                        disEndBtnCTPN(false);
+                        lst.Clear();
+                        frmNhapHang_Load(sender, e);
                     }
                     else
                         XtraMessageBox.Show("Thêm mới thất bại");
@@ -226,6 +228,7 @@ namespace QuanLyCuaHangDM
             disEndBtnCTPN(true);
             string _MaPhieuNhap = "";
             string _MaSanPham = "";
+            string _TenSanPham = "";
             int _GiaNhap = 0;
             int _SoLuong = 0;
             int _TongTien = 0;
@@ -237,6 +240,11 @@ namespace QuanLyCuaHangDM
             try
             {
                 _MaSanPham = (cboMaSP.SelectedValue.ToString());
+            }
+            catch { }
+            try
+            {
+                _TenSanPham = (cboMaSP.Text.Trim());
             }
             catch { }
             try
@@ -261,6 +269,7 @@ namespace QuanLyCuaHangDM
                     if (lst[k].MaSanPham == cboMaSP.SelectedValue.ToString())
                     {
                         lst[k].SoLuong = _SoLuong;
+                        lst[k].TenSanPham = _TenSanPham;
                         lst[k].GiaNhap = _GiaNhap;
                         lst[k].TongTien = _TongTien;
                         MessageBox.Show("Đã cập nhật hóa đơn");
@@ -275,7 +284,7 @@ namespace QuanLyCuaHangDM
                 {
                     money += Convert.ToInt32(lst[i].TongTien);
                 }
-                txtTongTien.Text = (money + (money * 1) / 10).ToString();
+                txtTongTien.Text = money.ToString();
                 disEndBtnCTPN(true);
             }
             else
@@ -290,6 +299,7 @@ namespace QuanLyCuaHangDM
                 bool ex = false;
                 string _MaPhieuNhap = "";
                 string _MaSanPham = "";
+                string _TenSanPham = "";
                 int _GiaNhap = 0;
                 int _SoLuong = 0;
                 int _TongTien = 0;
@@ -301,6 +311,11 @@ namespace QuanLyCuaHangDM
                 try
                 {
                     _MaSanPham = (cboMaSP.SelectedValue.ToString());
+                }
+                catch { }
+                try
+                {
+                    _TenSanPham = (cboMaSP.Text.Trim());
                 }
                 catch { }
                 try
@@ -323,6 +338,7 @@ namespace QuanLyCuaHangDM
                     if (lst[i].MaSanPham == MaSP)
                     {
                         lst[i].GiaNhap = _GiaNhap;
+                        lst[i].TenSanPham = _TenSanPham;
                         lst[i].SoLuong = _SoLuong;
                         lst[i].TongTien = _TongTien;
                         ex = true;
@@ -424,7 +440,7 @@ namespace QuanLyCuaHangDM
         {
             try
             {
-                MaSP = bll_sanpham.GetMaSanPhamByTen(gv_CTPN.GetRowCellValue(e.RowHandle, gc_TenSP).ToString());
+                MaSP = gv_CTPN.GetRowCellValue(e.RowHandle, gc_TenSP).ToString();
                 cboMaSP.Text = gv_CTPN.GetRowCellValue(e.RowHandle, gc_TenSP).ToString();
                 txtSoLuong.Text = gv_CTPN.GetRowCellValue(e.RowHandle, gc_SoLuong).ToString();
                 txtGiaNhap.Text = gv_CTPN.GetRowCellValue(e.RowHandle, gc_GiaNhap).ToString();

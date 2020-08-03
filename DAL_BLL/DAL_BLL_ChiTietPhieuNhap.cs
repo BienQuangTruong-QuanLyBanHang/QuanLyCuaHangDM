@@ -27,6 +27,7 @@ namespace DAL_BLL
                     select new
                     {
                         ctpn.MaPhieuNhap,
+                        ctpn.MaSanPham,
                         sp.TenSanPham,
                         ctpn.SoLuong,
                         ctpn.GiaNhap,

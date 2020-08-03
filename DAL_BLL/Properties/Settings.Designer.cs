@@ -12,7 +12,7 @@ namespace DAL_BLL.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,8 +26,8 @@ namespace DAL_BLL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-ONTGILH;Initial Catalog=QuanLySanPham;User ID=sa;Password=sa2" +
-            "012")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-H6BPC8N\\SQLEXPRESS;Initial Catalog=QuanLySanPham;User ID=sa;P" +
+            "assword=sa2012")]
         public string QuanLySanPhamConnectionString {
             get {
                 return ((string)(this["QuanLySanPhamConnectionString"]));

@@ -280,7 +280,7 @@ namespace QuanLyCuaHangDM
                     {
                         money += Convert.ToInt32(lst[i].TongTien);
                     }
-                    txtTongTien.Text = (money + (money * 1) / 10).ToString();
+                    txtTongTien.Text = money.ToString();
                     disEndBtnCTHD(true);
                 }
                 else

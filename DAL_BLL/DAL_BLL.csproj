@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChiTietPhieuNHap.cs" />
     <Compile Include="DAL_BLL_BangMau.cs" />
     <Compile Include="DAL_BLL_ChiTietHoaDon.cs" />
     <Compile Include="DAL_BLL_ChiTietPhieuNhap.cs" />
@@ -69,7 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLHH.dbml</DependentUpon>
     </Compile>
-    <Compile Include="SanPham.cs" />
+    <Compile Include="ChiTietHoaDon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
