@@ -29,6 +29,7 @@ namespace DAL_BLL
                         cthd.MaHoaDon,
                         cthd.MaSanPham,
                         sp.TenSanPham,
+                        sp.GiaBan,
                         cthd.SoLuong,
                         cthd.TongTien
                     });

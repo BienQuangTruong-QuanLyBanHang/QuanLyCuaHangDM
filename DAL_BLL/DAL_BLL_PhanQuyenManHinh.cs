@@ -13,9 +13,17 @@ namespace DAL_BLL
         {
 
         }
-        public IQueryable<PhanQuyenManHinh> GetPhanQuyenManHinhs()
+        public IQueryable GetPhanQuyenManHinhs(string qMaCV)
         {
-            return qlhh.PhanQuyenManHinhs.Select(t => t);
+            return (from pqmh in qlhh.PhanQuyenManHinhs
+                    join mh in qlhh.ManHinhs on pqmh.MaMH equals mh.MaMH into gj
+                    from cq in gj.DefaultIfEmpty()
+                    select new
+                    {
+                        pqmh.MaMH,
+                        cq.TenMH,
+                        pqmh.CoQuyen
+                    });
         }
         public int AddPhanQuyenManHinhs(string qMaChucVu, string qMaMH, bool qCoQuyen)
         {
@@ -35,9 +43,9 @@ namespace DAL_BLL
                 return 0;
             }
         }
-        public int DeletePhanQuyenManHinhs(string qMaChucVu)
+        public int DeletePhanQuyenManHinhs(string qMaChucVu, string qMaMH)
         {
-            PhanQuyenManHinh phanQuyenManHinhs = qlhh.PhanQuyenManHinhs.Where(t => t.MaChucVu == qMaChucVu).FirstOrDefault();
+            PhanQuyenManHinh phanQuyenManHinhs = qlhh.PhanQuyenManHinhs.Where(t => t.MaChucVu == qMaChucVu && t.MaMH == qMaMH).FirstOrDefault();
             if (phanQuyenManHinhs != null)
             {
                 qlhh.PhanQuyenManHinhs.DeleteOnSubmit(phanQuyenManHinhs);
@@ -54,15 +62,16 @@ namespace DAL_BLL
             PhanQuyenManHinh phanQuyenManHinhs = qlhh.PhanQuyenManHinhs.Where(t => t.MaChucVu == qMaChucVu).FirstOrDefault();
             if (phanQuyenManHinhs != null)
             {
-                phanQuyenManHinhs.MaMH = qMaMH;
                 phanQuyenManHinhs.CoQuyen = qCoQuyen;
                 qlhh.SubmitChanges();
                 return 1;
             }
-            else
+            else if (phanQuyenManHinhs == null)
             {
-                return 0;
+                AddPhanQuyenManHinhs(qMaChucVu, qMaMH, qCoQuyen);
+                return 1;
             }
+            return 0;
         }
     }
 }

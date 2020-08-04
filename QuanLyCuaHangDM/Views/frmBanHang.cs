@@ -115,6 +115,9 @@ namespace QuanLyCuaHangDM
 
             gv_CTHD.Columns["TongTien"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             gv_CTHD.Columns["TongTien"].DisplayFormat.FormatString = "#,###";
+
+            gv_CTHD.Columns["GiaBan"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gv_CTHD.Columns["GiaBan"].DisplayFormat.FormatString = "#,###";
         }
 
         private void frmBanHang_Load(object sender, EventArgs e)
@@ -229,6 +232,7 @@ namespace QuanLyCuaHangDM
             string _MaHoaDon = "";
             string _MaSanPham = "";
             string _TenSanPham = "";
+            int _GiaBan = 0;
             int _SoLuong = 0;
             int _TongTien = 0;
             try
@@ -244,6 +248,11 @@ namespace QuanLyCuaHangDM
             try
             {
                 _TenSanPham = (cboMaSP.Text.Trim());
+            }
+            catch { }
+            try
+            {
+                _GiaBan = Convert.ToInt32(txtGiaBan.Text);
             }
             catch { }
             try
@@ -266,6 +275,7 @@ namespace QuanLyCuaHangDM
                         if(lst[k].MaSanPham == cboMaSP.SelectedValue.ToString())
                         {
                             lst[k].TenSanPham = _TenSanPham;
+                            lst[k].DonGia = _GiaBan;
                             lst[k].SoLuong = _SoLuong;
                             lst[k].TongTien = _TongTien;
                             MessageBox.Show("Đã cập nhật hóa đơn");
@@ -369,6 +379,7 @@ namespace QuanLyCuaHangDM
                 bool ex = false;
                 string _MaSanPham = "";
                 string _TenSanPham = "";
+                int _GiaBan = 0;
                 int _SoLuong = 0;
                 int _TongTien = 0;
                 try
@@ -379,6 +390,11 @@ namespace QuanLyCuaHangDM
                 try
                 {
                     _TenSanPham = (cboMaSP.Text.Trim());
+                }
+                catch { }
+                try
+                {
+                    _GiaBan = Convert.ToInt32(txtGiaBan.Text);
                 }
                 catch { }
                 try
@@ -397,6 +413,7 @@ namespace QuanLyCuaHangDM
                     {
                         lst[i].MaSanPham = _MaSanPham;
                         lst[i].TenSanPham = _TenSanPham;
+                        lst[i].DonGia = _GiaBan;
                         lst[i].SoLuong = _SoLuong;
                         lst[i].TongTien = _TongTien;
                         ex = true;

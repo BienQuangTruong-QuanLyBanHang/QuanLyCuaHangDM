@@ -177,6 +177,12 @@
     <Compile Include="Views\frmNhaPhanPhoi.Designer.cs">
       <DependentUpon>frmNhaPhanPhoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmPhanQuyenManHinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmPhanQuyenManHinh.Designer.cs">
+      <DependentUpon>frmPhanQuyenManHinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmPrint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmNhaPhanPhoi.resx">
       <DependentUpon>frmNhaPhanPhoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmPhanQuyenManHinh.resx">
+      <DependentUpon>frmPhanQuyenManHinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmPrint.resx">
       <DependentUpon>frmPrint.cs</DependentUpon>

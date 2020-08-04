@@ -1423,3 +1423,4 @@ D:\GitHub\QuanLyCuaHangDM\QuanLyCuaHangDM\obj\Debug\QuanLyCuaHangDM.csproj.CoreC
 D:\GitHub\QuanLyCuaHangDM\QuanLyCuaHangDM\obj\Debug\QuanLyCuaHangDM.csproj.CopyComplete
 D:\GitHub\QuanLyCuaHangDM\QuanLyCuaHangDM\obj\Debug\QuanLyCuaHangDM.exe
 D:\GitHub\QuanLyCuaHangDM\QuanLyCuaHangDM\obj\Debug\QuanLyCuaHangDM.pdb
+C:\Users\wwwtr\OneDrive\Tài liệu\GitHub\QuanLyCuaHangDM\QuanLyCuaHangDM\obj\Debug\QuanLyCuaHangDM.frmPhanQuyenManHinh.resources
