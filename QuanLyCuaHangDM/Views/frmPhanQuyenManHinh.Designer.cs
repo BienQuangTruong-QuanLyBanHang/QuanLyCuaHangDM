@@ -189,8 +189,10 @@
             this.gc_CoQuyen.AppearanceHeader.Options.UseTextOptions = true;
             this.gc_CoQuyen.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gc_CoQuyen.Caption = "Có quyền";
+            this.gc_CoQuyen.ColumnEdit = this.rep_Check;
             this.gc_CoQuyen.FieldName = "CoQuyen";
             this.gc_CoQuyen.Name = "gc_CoQuyen";
+            this.gc_CoQuyen.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
             this.gc_CoQuyen.Visible = true;
             this.gc_CoQuyen.VisibleIndex = 2;
             // 
@@ -198,6 +200,7 @@
             // 
             this.rep_Check.AutoHeight = false;
             this.rep_Check.Name = "rep_Check";
+            this.rep_Check.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             // 
             // groupBox1
             // 

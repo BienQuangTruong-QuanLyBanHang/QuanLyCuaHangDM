@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DAL_BLL;
+using DevExpress.Data.ODataLinq.Helpers;
+using DevExpress.DataProcessing;
 
 namespace QuanLyCuaHangDM
 {
@@ -33,7 +35,7 @@ namespace QuanLyCuaHangDM
         {
             try
             {
-                gridCtrlPhanQuyen.DataSource = bll_pqmh.GetPhanQuyenManHinhs();
+                gridCtrlPhanQuyen.DataSource = bll_pqmh.GetPhanQuyenManHinhs(gv_ChucVu.GetRowCellValue(e.RowHandle, gc_MaCV).ToString());
             }
             catch { }
         }

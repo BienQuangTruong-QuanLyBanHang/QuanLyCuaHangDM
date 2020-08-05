@@ -13,16 +13,20 @@ namespace DAL_BLL
         {
 
         }
+        public IQueryable GetPhanQuyenManHinhs()
+        {
+            return qlhh.PhanQuyenManHinhs.Select(t => t);
+        }
         public IQueryable GetPhanQuyenManHinhs(string qMaCV)
         {
-            return (from pqmh in qlhh.PhanQuyenManHinhs
-                    join mh in qlhh.ManHinhs on pqmh.MaMH equals mh.MaMH into gj
-                    from cq in gj.DefaultIfEmpty()
+            return (from mh in qlhh.ManHinhs
+                    join pqmh in qlhh.PhanQuyenManHinhs on mh.MaMH equals pqmh.MaMH into gj
+                    from cq in gj.DefaultIfEmpty().Where(t => t.MaChucVu == qMaCV).DefaultIfEmpty()
                     select new
                     {
-                        pqmh.MaMH,
-                        cq.TenMH,
-                        pqmh.CoQuyen
+                        mh.MaMH,
+                        mh.TenMH,
+                        cq.CoQuyen
                     });
         }
         public int AddPhanQuyenManHinhs(string qMaChucVu, string qMaMH, bool qCoQuyen)
