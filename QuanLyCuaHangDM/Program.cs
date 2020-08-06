@@ -19,7 +19,7 @@ namespace QuanLyCuaHangDM
             Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
-            Application.Run(new frmDanhSachPhieuNhap());
+            Application.Run(new frmMain());
             //Application.Run(new frmPrint());
         }
     }
