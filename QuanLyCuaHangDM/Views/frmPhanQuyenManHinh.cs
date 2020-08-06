@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using DAL_BLL;
 using DevExpress.Data.ODataLinq.Helpers;
 using DevExpress.DataProcessing;
+using DevExpress.Utils.Extensions;
 
 namespace QuanLyCuaHangDM
 {
@@ -18,6 +19,7 @@ namespace QuanLyCuaHangDM
     {
         DAL_BLL_PhanQuyenManHinh bll_pqmh = new DAL_BLL_PhanQuyenManHinh();
         DAL_BLL_ChucVu bll_cv = new DAL_BLL_ChucVu();
+        List<PhanQuyenManHinh> lst = new List<PhanQuyenManHinh>();
         public frmPhanQuyenManHinh()
         {
             InitializeComponent();
@@ -35,6 +37,10 @@ namespace QuanLyCuaHangDM
         {
             try
             {
+                //lst = bll_pqmh.GetPhanQuyenManHinhs(gv_ChucVu.GetRowCellValue(e.RowHandle, gc_MaCV).ToString());
+                //var source = new BindingSource();
+                //source.DataSource = lst;
+                //gridCtrlPhanQuyen.DataSource = source;
                 gridCtrlPhanQuyen.DataSource = bll_pqmh.GetPhanQuyenManHinhs(gv_ChucVu.GetRowCellValue(e.RowHandle, gc_MaCV).ToString());
             }
             catch { }
@@ -43,6 +49,19 @@ namespace QuanLyCuaHangDM
         private void frmPhanQuyenManHinh_Load(object sender, EventArgs e)
         {
             HienThiDSCV();
+            gridCtrlPhanQuyen.DataSource = GetData();
+        }
+        public class Custom
+        {
+            public string ID { get; set; }
+            public string Name { get; set; }
+        }
+        private BindingList<Custom> GetData()
+        {
+            BindingList<Custom> list = new BindingList<Custom>();
+            for (int i = 0; i < 10; i++)
+                list.Add(new Custom() { ID = "false", Name = "Name" + i });
+            return list;
         }
     }
 }

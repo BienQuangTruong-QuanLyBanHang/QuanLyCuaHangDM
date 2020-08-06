@@ -270,7 +270,7 @@ namespace QuanLyCuaHangDM
             }
             else
             {
-                if (_TenSanPham == "" || _GiaNhap <= 0 || _GiaBan <= 0 || _TonKho < 0)
+                if (_TenSanPham == "" || txtGiaNhap.Text == string.Empty || txtGiaBan.Text == string.Empty || txtTonKho.Text == string.Empty)
                     XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
                 else
                 {

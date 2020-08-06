@@ -381,25 +381,21 @@ namespace QuanLyCuaHangDM
             //        $"Details:\n\n{ex.StackTrace}");
             //    }
             //}
-            XtraMessageBox.Show("Liên hệ Admin để Restore !");
+            //XtraMessageBox.Show("Liên hệ Admin để Restore !");
         }
 
         private void btnInDSPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmMain.num = 8;
-            using (frmPrint prt = new frmPrint())
-            {
-                prt.ShowDialog();
-            }
+            frmDanhSachPhieuNhap d = new frmDanhSachPhieuNhap();
+            d.MdiParent = this;
+            d.Show();
         }
 
         private void btnInDSHoaDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmMain.num = 9;
-            using (frmPrint prt = new frmPrint())
-            {
-                prt.ShowDialog();
-            }
+            frmDanhSachHoaDon d = new frmDanhSachHoaDon();
+            d.MdiParent = this;
+            d.Show();
         }
     }
 }

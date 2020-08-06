@@ -17,17 +17,25 @@ namespace DAL_BLL
         {
             return qlhh.PhanQuyenManHinhs.Select(t => t);
         }
-        public IQueryable GetPhanQuyenManHinhs(string qMaCV)
+        public List<PhanQuyenManHinh> GetPhanQuyenManHinhs(string qMaCV)
         {
-            return (from mh in qlhh.ManHinhs
-                    join pqmh in qlhh.PhanQuyenManHinhs on mh.MaMH equals pqmh.MaMH into gj
-                    from cq in gj.DefaultIfEmpty().Where(t => t.MaChucVu == qMaCV).DefaultIfEmpty()
-                    select new
-                    {
-                        mh.MaMH,
-                        mh.TenMH,
-                        cq.CoQuyen
-                    });
+            var ls = (from mh in qlhh.ManHinhs
+                      join pqmh in qlhh.PhanQuyenManHinhs on mh.MaMH equals pqmh.MaMH into gj
+                      from cq in gj.DefaultIfEmpty().Where(t => t.MaChucVu == qMaCV).DefaultIfEmpty()
+                      select new
+                      {
+                          mh.MaMH,
+                          mh.TenMH,
+                          cq.CoQuyen
+                      });
+
+            var kq = ls.ToList().ConvertAll(l => new PhanQuyenManHinh()
+            {
+                MaMH = l.MaMH,
+                TenMH = l.TenMH,
+                CoQuyen = l.CoQuyen
+            });
+            return kq;
         }
         public int AddPhanQuyenManHinhs(string qMaChucVu, string qMaMH, bool qCoQuyen)
         {

@@ -37,8 +37,10 @@
             this.gv_PhanQuyenManHinh = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gc_MaMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc_TenMH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gc_CoQuyen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rep_Check = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc_CoQuyen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -142,10 +144,14 @@
             this.gv_PhanQuyenManHinh.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gc_MaMH,
             this.gc_TenMH,
+            this.gridColumn2,
+            this.gridColumn1,
             this.gc_CoQuyen});
             this.gv_PhanQuyenManHinh.DetailHeight = 271;
             this.gv_PhanQuyenManHinh.GridControl = this.gridCtrlPhanQuyen;
             this.gv_PhanQuyenManHinh.Name = "gv_PhanQuyenManHinh";
+            this.gv_PhanQuyenManHinh.OptionsSelection.MultiSelect = true;
+            this.gv_PhanQuyenManHinh.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gv_PhanQuyenManHinh.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gv_PhanQuyenManHinh.OptionsView.RowAutoHeight = true;
             this.gv_PhanQuyenManHinh.OptionsView.ShowGroupPanel = false;
@@ -162,7 +168,7 @@
             this.gc_MaMH.Name = "gc_MaMH";
             this.gc_MaMH.OptionsColumn.AllowEdit = false;
             this.gc_MaMH.Visible = true;
-            this.gc_MaMH.VisibleIndex = 0;
+            this.gc_MaMH.VisibleIndex = 1;
             this.gc_MaMH.Width = 121;
             // 
             // gc_TenMH
@@ -177,8 +183,31 @@
             this.gc_TenMH.Name = "gc_TenMH";
             this.gc_TenMH.OptionsColumn.AllowEdit = false;
             this.gc_TenMH.Visible = true;
-            this.gc_TenMH.VisibleIndex = 1;
+            this.gc_TenMH.VisibleIndex = 2;
             this.gc_TenMH.Width = 235;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "gridColumn2";
+            this.gridColumn2.ColumnEdit = this.rep_Check;
+            this.gridColumn2.FieldName = "ID";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 3;
+            // 
+            // rep_Check
+            // 
+            this.rep_Check.AutoHeight = false;
+            this.rep_Check.Name = "rep_Check";
+            this.rep_Check.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.FieldName = "Name";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
             // 
             // gc_CoQuyen
             // 
@@ -194,13 +223,7 @@
             this.gc_CoQuyen.Name = "gc_CoQuyen";
             this.gc_CoQuyen.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.True;
             this.gc_CoQuyen.Visible = true;
-            this.gc_CoQuyen.VisibleIndex = 2;
-            // 
-            // rep_Check
-            // 
-            this.rep_Check.AutoHeight = false;
-            this.rep_Check.Name = "rep_Check";
-            this.rep_Check.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            this.gc_CoQuyen.VisibleIndex = 5;
             // 
             // groupBox1
             // 
@@ -280,5 +303,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

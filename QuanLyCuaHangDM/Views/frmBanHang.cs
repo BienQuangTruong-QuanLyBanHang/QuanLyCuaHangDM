@@ -24,7 +24,6 @@ namespace QuanLyCuaHangDM
         DAL_BLL_KhachHang bll_kh = new DAL_BLL_KhachHang();
         DAL_BLL_NhanVien bll_nv = new DAL_BLL_NhanVien();
         List<ChiTietHoaDon> lst = new List<ChiTietHoaDon>();
-        public static string MaHD;
         string MaNV;
         string MaSP = null;
         int flagHD = 0;
@@ -40,6 +39,7 @@ namespace QuanLyCuaHangDM
             MaNV = _MaNV;
         }
         public static frmNhapHang nv = new frmNhapHang();
+
         public void HienThiDSCTHD(string _MaHoaDon)
         {
             try
@@ -131,7 +131,6 @@ namespace QuanLyCuaHangDM
             loadControl_cboMaHD();
             loadControl_cboMaKH();
             loadControl_cboMaSP();
-            MaHD = cboMaHD.Text;
             clearDataHD();
             cboMaHD.SelectedIndexChanged += cboMaHD_SelectedIndexChanged_1;
             cboMaSP.SelectedIndexChanged += cboMaSP_SelectedIndexChanged_1;
@@ -314,10 +313,12 @@ namespace QuanLyCuaHangDM
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            frmMain.num = 0;
-            using (frmPrint prt = new frmPrint())
+            using (frmPrint frm = new frmPrint())
             {
-                prt.ShowDialog();
+                Properties.Settings.Default.MaHD = bll_hd.GetLastHoaDons();
+                Properties.Settings.Default.Save();
+                frm.InHoaDon();
+                frm.ShowDialog();
             }
         }
 
@@ -358,7 +359,6 @@ namespace QuanLyCuaHangDM
 
             HienThiDSCTHD(_MaHoaDon);
             formatGV();
-            MaHD = cboMaHD.Text;
         }
 
         private void gv_CTHD_RowClick(object sender, RowClickEventArgs e)

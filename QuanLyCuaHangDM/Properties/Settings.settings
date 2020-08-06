@@ -16,5 +16,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-H6BPC8N\SQLEXPRESS;Initial Catalog=QuanLySanPham;Persist Security Info=True;User ID=sa</Value>
     </Setting>
+    <Setting Name="MaHD" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MaPN" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

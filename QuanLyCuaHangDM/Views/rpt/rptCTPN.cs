@@ -13,5 +13,9 @@ namespace QuanLyCuaHangDM.Views.rpt
             InitializeComponent();
         }
 
+        private void rptCTPN_ParametersRequestBeforeShow(object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e)
+        {
+            Parameters["MaPhieuNhap"].Value = Properties.Settings.Default.MaPN;
+        }
     }
 }

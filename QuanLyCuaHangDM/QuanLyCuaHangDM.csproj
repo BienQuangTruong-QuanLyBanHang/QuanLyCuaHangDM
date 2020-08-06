@@ -121,6 +121,18 @@
     <Compile Include="Views\frmChucVu.Designer.cs">
       <DependentUpon>frmChucVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmDanhSachHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmDanhSachHoaDon.Designer.cs">
+      <DependentUpon>frmDanhSachHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmDanhSachPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmDanhSachPhieuNhap.Designer.cs">
+      <DependentUpon>frmDanhSachPhieuNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmDoiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +290,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmChucVu.resx">
       <DependentUpon>frmChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmDanhSachHoaDon.resx">
+      <DependentUpon>frmDanhSachHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmDanhSachPhieuNhap.resx">
+      <DependentUpon>frmDanhSachPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmDoiMatKhau.resx">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>

@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
+using DAL_BLL;
+using System.Windows.Forms;
 
 namespace QuanLyCuaHangDM.Views.rpt
 {
@@ -13,5 +15,9 @@ namespace QuanLyCuaHangDM.Views.rpt
             InitializeComponent();
         }
 
+        private void rptCTHD_ParametersRequestBeforeShow(object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e)
+        {
+            Parameters["MaHoaDon"].Value = Properties.Settings.Default.MaHD;
+        }
     }
 }

@@ -24,7 +24,6 @@ namespace QuanLyCuaHangDM
         string MaNV;
         int flagPN = 0;
         string MaSP = null;
-        public static string MaPN;
         public static frmNhapHang nv = new frmNhapHang();
         public frmNhapHang()
         {
@@ -132,7 +131,6 @@ namespace QuanLyCuaHangDM
             txtNgayNhap.Text = Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("dd-MM-yyyy");
             cboMaPN.SelectedIndexChanged += cboMaPN_SelectedIndexChanged;
             cboMaSP.SelectedIndexChanged += cboMaSP_SelectedIndexChanged;
-            MaPN = cboMaPN.Text;//lay ma phieu nhap de print
         }
 
         private void btnThemPN_Click(object sender, EventArgs e)
@@ -412,7 +410,6 @@ namespace QuanLyCuaHangDM
 
             HienThiDSCTPN(_MaPhieuNhap);
             formatGV();
-            MaPN = cboMaPN.Text;
         }
         private void btnHuy_Click(object sender, EventArgs e)
         {
@@ -421,10 +418,12 @@ namespace QuanLyCuaHangDM
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            frmMain.num = 4;
-            using (frmPrint prt = new frmPrint())
+            using (frmPrint frm = new frmPrint())
             {
-                prt.ShowDialog();
+                Properties.Settings.Default.MaPN = bll_phieunhap.GetLastMaPhieuNhaps();
+                Properties.Settings.Default.Save();
+                frm.InPhieuNhap();
+                frm.ShowDialog();
             }
         }
 
