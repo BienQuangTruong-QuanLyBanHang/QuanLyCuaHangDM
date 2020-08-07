@@ -471,5 +471,11 @@ namespace QuanLyCuaHangDM
             else
                 XtraMessageBox.Show("Không thể xóa sản phẩm không có trong hóa đơn");
         }
+
+        private void txtSoLuong_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

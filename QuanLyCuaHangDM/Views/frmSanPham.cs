@@ -432,5 +432,13 @@ namespace QuanLyCuaHangDM
                 txtGiaNhap.TextChanged += txtGiaNhap_TextChanged;
             }
         }
+
+        private void txtTenSP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -194,5 +194,13 @@ namespace QuanLyCuaHangDM
             }
             catch { }
         }
+
+        private void txtTenHang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

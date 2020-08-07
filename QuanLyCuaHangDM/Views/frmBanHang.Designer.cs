@@ -306,6 +306,7 @@
             this.txtSoLuong.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSoLuong.Size = new System.Drawing.Size(247, 28);
             this.txtSoLuong.TabIndex = 5;
+            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress_1);
             // 
             // txtGiaBan
             // 

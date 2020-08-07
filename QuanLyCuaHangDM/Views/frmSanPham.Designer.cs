@@ -206,6 +206,7 @@
             this.txtTenSP.Properties.Appearance.Options.UseFont = true;
             this.txtTenSP.Size = new System.Drawing.Size(308, 30);
             this.txtTenSP.TabIndex = 5;
+            this.txtTenSP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenSP_KeyPress);
             // 
             // labelControl6
             // 

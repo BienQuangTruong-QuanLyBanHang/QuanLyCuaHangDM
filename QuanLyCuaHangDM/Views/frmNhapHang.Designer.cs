@@ -536,6 +536,7 @@
             this.txtGiaNhap.Properties.Appearance.Options.UseFont = true;
             this.txtGiaNhap.Size = new System.Drawing.Size(155, 30);
             this.txtGiaNhap.TabIndex = 4;
+            this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
             // 
             // cboMaSP
             // 

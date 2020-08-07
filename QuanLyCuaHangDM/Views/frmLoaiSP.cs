@@ -186,5 +186,13 @@ namespace QuanLyCuaHangDM
             txtMaLoai.Text = gv_LoaiKhachHang.GetRowCellValue(e.RowHandle, gridColumn2).ToString();
             txtTenLoai.Text = gv_LoaiKhachHang.GetRowCellValue(e.RowHandle, gridColumn3).ToString();
         }
+
+        private void txtTenLoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

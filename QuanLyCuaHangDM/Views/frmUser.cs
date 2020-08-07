@@ -15,6 +15,7 @@ namespace QuanLyCuaHangDM
     public partial class frmUser : DevExpress.XtraEditors.XtraForm
     {
         DAL_BLL_User bll_user = new DAL_BLL_User();
+        DAL_BLL_NhanVien bll_nv = new DAL_BLL_NhanVien();
         public frmUser()
         {
             InitializeComponent();
@@ -26,15 +27,10 @@ namespace QuanLyCuaHangDM
         {
             gridCtrlUser.DataSource = bll_user.GetUsers();
         }
-        void binding()
-        {
-            
-        }
         void disEnd(bool e)
         {
             txtMatKhau.Enabled = e;
             txtTenDN.Enabled = e;
-            txtChuThich.Enabled = e;
             cboMaNV.Enabled = e;
             btnThem.Enabled = !e;
             btnSua.Enabled = !e;
@@ -43,7 +39,7 @@ namespace QuanLyCuaHangDM
         }
         void loadControl_cboMaNV()
         {
-            //cboMaNV.DataSource = Models.NhanVienModel.FillDataSetNhanVien().Tables[0];
+            cboMaNV.DataSource = bll_nv.GetNhanViens();
             cboMaNV.DisplayMember = "MaNhanVien";
             cboMaNV.ValueMember = "MaNhanVien";
             cboMaNV.SelectedIndex = 0;
@@ -53,13 +49,18 @@ namespace QuanLyCuaHangDM
             txtID.Text = "";
             txtMatKhau.Text = "";
             txtTenDN.Text = "";
-            txtChuThich.Text = "";
+        }
+        void reActive()
+        {
+            HienThiDSUser();
+            disEnd(false);
+            gv_User.RowClick += gv_User_RowClick;
         }
         private void frmUser_Load(object sender, EventArgs e)
         {
             HienThiDSUser();
             disEnd(false);
-            binding();
+            loadControl_cboMaNV();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -68,6 +69,22 @@ namespace QuanLyCuaHangDM
             disEnd(true);
             loadControl_cboMaNV();
             clearData();
+
+            gv_User.RowClick -= gv_User_RowClick;
+            string str = bll_user.GetLastMaUsers();
+            int str2 = Convert.ToInt32(str.Remove(0, 1));
+            if (str2 + 1 < 10)
+            {
+                txtID.Text = "U00" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 100)
+            {
+                txtID.Text = "U0" + (str2 + 1).ToString();
+            }
+            else if (str2 + 1 < 1000)
+            {
+                txtID.Text = "U" + (str2 + 1).ToString();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -76,7 +93,6 @@ namespace QuanLyCuaHangDM
             string _MaNhanVien = "";
             string _TenDangNhap = "";
             string _MatKhau = "";
-            string _ChuThich = "";
             try
             {
                 _ID = (txtID.Text);
@@ -84,7 +100,7 @@ namespace QuanLyCuaHangDM
             catch { }
             try
             {
-                //_MatKhau = Models.UserControl.SHA256(txtMatKhau.Text);
+                _MatKhau = txtMatKhau.Text;
             }
             catch { }
             try
@@ -97,48 +113,63 @@ namespace QuanLyCuaHangDM
                 _TenDangNhap = txtTenDN.Text;
             }
             catch { }
-            try
-            {
-                _ChuThich = txtChuThich.Text;
-            }
-            catch { }
             if (flag == 0)
             {
                 if (_MatKhau == "" || _TenDangNhap == "")
                     XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
                 else
                 {
-                    int i = 0;
-                    //i = Controllers.UserCtrl.InsertUser(_ID, _MaNhanVien, _TenDangNhap, _MatKhau, _ChuThich);
-                    if (i > 0)
+                    int rs2 = bll_user.KiemTraMaNV(_MaNhanVien);
+                    if (rs2 > 0)
                     {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        HienThiDSUser();
+                        int rs = bll_user.KiemTraTenDangNhap(_TenDangNhap);
+                        if (rs > 0)
+                        {
+                            int i = bll_user.AddUsers(_ID, _MaNhanVien, _TenDangNhap, _MatKhau);
+                            if (i > 0)
+                            {
+                                XtraMessageBox.Show("Thêm mới thành công");
+                                reActive();
+                            }
+                            else
+                                XtraMessageBox.Show("Thêm mới thất bại");
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Tên đăng nhập này đã tồn tại");
+                        }
                     }
                     else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                    {
+                        XtraMessageBox.Show("Nhân viên này đã có tài khoản");
+                    }
                 }
             }
             else
             {
-                int i = 0;
-                //i = Controllers.UserCtrl.UpdateUser(_ID, _MaNhanVien, _TenDangNhap, _MatKhau, _ChuThich);
-                if (i > 0)
+                if (_ID != string.Empty)
                 {
-                    XtraMessageBox.Show("Sửa thành công");
-                    HienThiDSUser();
+                    int i = bll_user.UpdateUsers(_ID, _MaNhanVien, _TenDangNhap, _MatKhau);
+                    if (i > 0)
+                    {
+                        XtraMessageBox.Show("Sửa thành công");
+                        reActive();
+                    }
+                    else
+                        XtraMessageBox.Show("Sửa thất bại");
                 }
                 else
-                    XtraMessageBox.Show("Sửa thất bại");
+                {
+                    XtraMessageBox.Show("Hãy chọn tài khoản cần sửa");
+                }
             }
-            frmUser_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             flag = 1;
             disEnd(true);
-            loadControl_cboMaNV();
+            gv_User.RowClick -= gv_User_RowClick;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -149,21 +180,28 @@ namespace QuanLyCuaHangDM
                 _ID = (txtID.Text);
             }
             catch { }
-            DialogResult dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
+            if (_ID != string.Empty)
             {
-                int i = bll_user.DeleteUsers(_ID);
-                if (i > 0)
+                DialogResult dr = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
                 {
-                    XtraMessageBox.Show("Xóa thành công !");
-                    HienThiDSUser();
-                    frmUser_Load(sender, e);
+                    int i = bll_user.DeleteUsers(_ID);
+                    if (i > 0)
+                    {
+                        XtraMessageBox.Show("Xóa thành công !");
+                        HienThiDSUser();
+                        frmUser_Load(sender, e);
+                    }
+                    else
+                        XtraMessageBox.Show("Xóa thất bại !");
                 }
                 else
-                    XtraMessageBox.Show("Xóa thất bại !");
+                    return;
             }
             else
-                return;
+            {
+                XtraMessageBox.Show("Hãy chọn tài khoản cần xóa");
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -178,6 +216,7 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmUser_Load(sender, e);
+            reActive();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -187,6 +226,18 @@ namespace QuanLyCuaHangDM
             {
                 prt.ShowDialog();
             }
+        }
+
+        private void gv_User_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                txtID.Text = gv_User.GetRowCellValue(e.RowHandle, gc_ID).ToString();
+                txtTenDN.Text = gv_User.GetRowCellValue(e.RowHandle, gc_TenDN).ToString();
+                txtMatKhau.Text = gv_User.GetRowCellValue(e.RowHandle, gc_MK).ToString();
+                cboMaNV.SelectedValue = gv_User.GetRowCellValue(e.RowHandle, gc_MaNV).ToString();
+            }
+            catch { }
         }
     }
 }

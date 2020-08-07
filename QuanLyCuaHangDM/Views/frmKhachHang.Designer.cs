@@ -240,6 +240,7 @@
             this.txtTenKH.Properties.Appearance.Options.UseFont = true;
             this.txtTenKH.Size = new System.Drawing.Size(520, 30);
             this.txtTenKH.TabIndex = 5;
+            this.txtTenKH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDC_KeyPress);
             // 
             // txtMaKH
             // 
@@ -251,6 +252,7 @@
             this.txtMaKH.Properties.Appearance.Options.UseFont = true;
             this.txtMaKH.Size = new System.Drawing.Size(520, 30);
             this.txtMaKH.TabIndex = 4;
+            this.txtMaKH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDT_KeyPress);
             // 
             // label3
             // 
@@ -360,6 +362,7 @@
             this.txtDC.Properties.Appearance.Options.UseFont = true;
             this.txtDC.Size = new System.Drawing.Size(520, 30);
             this.txtDC.TabIndex = 9;
+            this.txtDC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDC_KeyPress);
             // 
             // label6
             // 

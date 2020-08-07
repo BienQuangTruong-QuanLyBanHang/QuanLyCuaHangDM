@@ -238,6 +238,7 @@
             this.txtTenHang.Name = "txtTenHang";
             this.txtTenHang.Size = new System.Drawing.Size(308, 20);
             this.txtTenHang.TabIndex = 3;
+            this.txtTenHang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenHang_KeyPress);
             // 
             // labelControl6
             // 

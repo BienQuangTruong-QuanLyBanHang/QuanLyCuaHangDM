@@ -214,6 +214,8 @@
             this.txtTenCV.Name = "txtTenCV";
             this.txtTenCV.Size = new System.Drawing.Size(317, 20);
             this.txtTenCV.TabIndex = 3;
+            this.txtTenCV.EditValueChanged += new System.EventHandler(this.txtTenCV_EditValueChanged);
+            this.txtTenCV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenCV_KeyPress);
             // 
             // labelControl6
             // 

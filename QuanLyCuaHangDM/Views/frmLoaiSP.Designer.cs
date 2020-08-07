@@ -94,6 +94,7 @@
             this.txtTenLoai.Name = "txtTenLoai";
             this.txtTenLoai.Size = new System.Drawing.Size(315, 20);
             this.txtTenLoai.TabIndex = 3;
+            this.txtTenLoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenLoai_KeyPress);
             // 
             // labelControl6
             // 

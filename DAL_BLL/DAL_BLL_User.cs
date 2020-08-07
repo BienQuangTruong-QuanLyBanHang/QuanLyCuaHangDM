@@ -14,9 +14,18 @@ namespace DAL_BLL
         {
 
         }
-        public IQueryable<User> GetUsers()
+        public IQueryable GetUsers()
         {
-            return qlhh.Users.Select(t => t);
+            return (from us in qlhh.Users
+                    join nv in qlhh.NhanViens on us.MaNhanVien equals nv.MaNhanVien
+                    select new
+                    {
+                        us.ID,
+                        us.TenDangNhap,
+                        us.MatKhau,
+                        us.MaNhanVien,
+                        nv.TenNhanVien
+                    });
         }
         public int AddUsers(string qId, string qMaNV, string qTenDN, string qMatKhau)
         {
@@ -27,7 +36,7 @@ namespace DAL_BLL
                 us.ID = qId;
                 us.MaNhanVien = qMaNV;
                 us.TenDangNhap = qTenDN;
-                users.MatKhau = SHA256(qMatKhau);
+                us.MatKhau = SHA256(qMatKhau);
                 qlhh.Users.InsertOnSubmit(us);
                 qlhh.SubmitChanges();
                 return 1;
@@ -56,7 +65,6 @@ namespace DAL_BLL
             User users = qlhh.Users.Where(t => t.ID == qId).FirstOrDefault();
             if (users != null)
             {
-                users.ID = qId;
                 users.MaNhanVien = qMaNV;
                 users.TenDangNhap = qTenDN;
                 users.MatKhau = SHA256(qMatKhau);
@@ -118,6 +126,24 @@ namespace DAL_BLL
         public string GetIdUsers(string qTenDN)
         {
             return qlhh.Users.Where(t => t.TenDangNhap == qTenDN).FirstOrDefault().MaNhanVien;
+        }
+        public int KiemTraTenDangNhap(string qTenDN)
+        {
+            User u = qlhh.Users.Where(t => t.TenDangNhap == qTenDN).FirstOrDefault();
+            if(u == null)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        public int KiemTraMaNV(string _qMaNV)
+        {
+            User u = qlhh.Users.Where(t => t.MaNhanVien == _qMaNV).FirstOrDefault();
+            if (u == null)
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 }

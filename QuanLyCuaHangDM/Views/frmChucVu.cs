@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DAL_BLL;
+using System.Text.RegularExpressions;
 
 namespace QuanLyCuaHangDM
 {
@@ -186,6 +187,19 @@ namespace QuanLyCuaHangDM
                 txtTenCV.Text = gv_ChucVu.GetRowCellValue(e.RowHandle, gc_TenCV).ToString();
             }
             catch { }
+        }
+
+        private void txtTenCV_EditValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtTenCV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
