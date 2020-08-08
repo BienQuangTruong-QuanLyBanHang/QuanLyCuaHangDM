@@ -13785,7 +13785,7 @@
       <summary>
         <para>Unregisters the summary function with the specified name.</para>
       </summary>
-      <param name="name">A <see cref="T:System.String"/> value representing the name of the summary function to be unregistered.</param>
+      <param name="name">A  value representing the name of the summary function to be unregistered.</param>
     </member>
     <member name="M:DevExpress.XtraReports.UI.XRChart.UnregisterSummaryFunction(System.String)">
       <summary>
@@ -15997,9 +15997,9 @@
     </member>
     <member name="P:DevExpress.XtraReports.UI.XRLabel.Multiline">
       <summary>
-        <para>Gets or sets whether carriage return (CRLF) characters split the label&#39;s text into multiple lines.</para>
+        <para>Gets or sets a value specifying whether carriage returns (CRLF) stored in a label&#39;s text should be processed.</para>
       </summary>
-      <value>true, if carriage return (CRLF) characters split the label&#39;s text into multiple lines ; otherwise, false.</value>
+      <value>true if carriage returns should be processed; otherwise, false.</value>
     </member>
     <member name="P:DevExpress.XtraReports.UI.XRLabel.NullValueText">
       <summary>
@@ -20532,8 +20532,8 @@
       <summary>
         <para>Gets the current value of the specified column in the report&#39;s <see cref="P:DevExpress.XtraReports.UI.XtraReportBase.DataSource"/>.</para>
       </summary>
-      <param name="columnName">The name of the column to obtain the value from.</param>
-      <returns>The current value of the specified column in the report&#39;s <see cref="P:DevExpress.XtraReports.UI.XtraReportBase.DataSource"/>. If the specified column was not found, this method returns null (Nothing in Visual Basic).</returns>
+      <param name="columnName">A <see cref="T:System.String"/>, which specifies the name of the column whose value is to be obtained.</param>
+      <returns>An object which represents the current value of the specified column in the data source. If the specified column was not found, this method returns null (Nothing in Visual Basic).</returns>
     </member>
     <member name="M:DevExpress.XtraReports.UI.XtraReportBase.GetCurrentColumnValue``1(System.String)">
       <summary>
@@ -20544,9 +20544,9 @@
     </member>
     <member name="M:DevExpress.XtraReports.UI.XtraReportBase.GetCurrentRow">
       <summary>
-        <para>Returns the current data object from the report&#39;s data source.</para>
+        <para>Returns the current data row in the report&#39;s data source.</para>
       </summary>
-      <returns>A data object from the report&#39;s data source.</returns>
+      <returns>A <see cref="T:System.Data.DataRowView"/> value (if the report&#39;s data source is a <see cref="T:System.Data.DataTable"/>), or a collection item (if the report&#39;s data source is an object implementing the <see cref="T:System.Collections.IList"/> interface).</returns>
     </member>
     <member name="M:DevExpress.XtraReports.UI.XtraReportBase.GetNextColumnValue(System.String)">
       <summary>
@@ -23191,7 +23191,7 @@
       <param name="view">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Views.IConfigureQueryPageView"/> interface that provides a view for a wizard page.</param>
       <param name="context">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.IWizardRunnerContext"/> interface that provides the functionality to run the wizard.</param>
       <param name="options">An object that specifies the wizard options.</param>
-      <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface that provides the capability to customize the data source schema.</param>
+      <param name="dbSchemaProviderEx">An object implementing the  interface that provides the capability to customize the data source schema.</param>
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface that provides a service functionality to manage query parameters.</param>
       <param name="customQueryValidator">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.ICustomQueryValidator"/> interface that provides custom validation logic for SQL queries.</param>
     </member>
@@ -23289,7 +23289,7 @@
       <param name="view">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Views.IConfigureParametersPageView"/> interface that provides a view for a wizard page.</param>
       <param name="context">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.IWizardRunnerContext"/> interface that provides the functionality to run the wizard.</param>
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface that provides a service functionality to manage query parameters.</param>
-      <param name="dbSchemaProvider">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface that provides the capability to customize the data source schema.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface that provides the capability to customize the data source schema.</param>
       <param name="customQueryValidator">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.ICustomQueryValidator"/> interface that provides custom validation logic for SQL queries.</param>
       <param name="options">An object that specifies the wizard options.</param>
     </member>
@@ -23776,7 +23776,7 @@
       </summary>
       <param name="context">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.IWizardRunnerContext"/> interface that provides the functionality to run the wizard.</param>
       <param name="view">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Views.IMultiQueryConfigurePageView"/> interface that provides a view for a wizard page.</param>
-      <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface that provides the capability to customize the data source schema.</param>
+      <param name="dbSchemaProviderEx">An object implementing the  interface that provides the capability to customize the data source schema.</param>
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface that provides a service functionality to manage query parameters.</param>
     </member>
     <member name="P:DevExpress.XtraReports.Wizards.Presenters.MultiQueryConfigurePageEx`1.FinishEnabled">
@@ -23836,7 +23836,7 @@
       <param name="view">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Views.IMultiQueryConfigureParametersPageView"/> interface that provides a view for a wizard page.</param>
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface that provides a service functionality to manage query parameters.</param>
       <param name="serviceProvider">An object implementing the <see cref="T:System.IServiceProvider"/> interface.</param>
-      <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface that provides the capability to customize the data source schema.</param>
+      <param name="dbSchemaProviderEx">An object implementing the  interface that provides the capability to customize the data source schema.</param>
       <param name="customQueryValidator">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.ICustomQueryValidator"/> interface that provides custom validation logic for SQL queries.</param>
       <param name="context">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.IWizardRunnerContext"/> interface that provides the functionality to run the wizard.</param>
       <param name="options">An object that specifies the wizard options.</param>
@@ -24482,7 +24482,7 @@
       <summary>
         <para>Specifies the margins of the report&#39;s pages (measured in <see cref="F:System.Drawing.GraphicsUnit.Document"/> units).</para>
       </summary>
-      <value>A DevExpress.XtraPrinting.Drawing.MarginsFloat object.</value>
+      <value>A  object.</value>
     </member>
     <member name="P:DevExpress.XtraReports.Wizards.ReportModel.PaperKind">
       <summary>

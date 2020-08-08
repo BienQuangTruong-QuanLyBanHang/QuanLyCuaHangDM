@@ -4256,12 +4256,12 @@ This property is only in effect for the <see cref="T:DevExpress.XtraVerticalGrid
     </member>
     <member name="E:DevExpress.XtraVerticalGrid.VGridControlBase.CustomizationFormCreatingCategory">
       <summary>
-        <para>Fires when a new category is about to be created in Customization Form.</para>
+        <para>Fires when an end-user tries to create a new category row within the Customization Form.</para>
       </summary>
     </member>
     <member name="E:DevExpress.XtraVerticalGrid.VGridControlBase.CustomizationFormDeletingCategory">
       <summary>
-        <para>Fires when a category is about to be deleted in Customization Form.</para>
+        <para>Fires when an end-user tries to delete a category row from the Customization Form.</para>
       </summary>
     </member>
     <member name="E:DevExpress.XtraVerticalGrid.VGridControlBase.CustomRecordCellEdit">

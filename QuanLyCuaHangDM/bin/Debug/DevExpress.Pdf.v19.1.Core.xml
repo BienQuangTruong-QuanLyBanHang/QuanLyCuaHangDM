@@ -5237,17 +5237,17 @@
     </member>
     <member name="T:DevExpress.Pdf.PdfRectangle">
       <summary>
-        <para>A rectangle used to describe locations on a page and bounding boxes for various PDF objects.</para>
+        <para>Represents a rectangle on a page.</para>
       </summary>
     </member>
     <member name="M:DevExpress.Pdf.PdfRectangle.#ctor(System.Double,System.Double,System.Double,System.Double)">
       <summary>
         <para>Initializes a new instance of the <see cref="T:DevExpress.Pdf.PdfRectangle"/> class with the specified settings.</para>
       </summary>
-      <param name="left">Specifies the lower left x-coordinate.</param>
-      <param name="bottom">Specifies the lower left y-coordinate.</param>
-      <param name="right">Specifies the upper right x-coordinate.</param>
-      <param name="top">Specifies the upper right y-coordinate.</param>
+      <param name="left">A <see cref="T:System.Double"/> value.</param>
+      <param name="bottom">A <see cref="T:System.Double"/> value.</param>
+      <param name="right">A <see cref="T:System.Double"/> value.</param>
+      <param name="top">A <see cref="T:System.Double"/> value.</param>
     </member>
     <member name="P:DevExpress.Pdf.PdfRectangle.Bottom">
       <summary>

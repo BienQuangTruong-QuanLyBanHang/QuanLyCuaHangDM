@@ -3255,7 +3255,7 @@
       <summary>
         <para>Specifies the View style for the Report Designer&#39;s dock panels and tabs.</para>
       </summary>
-      <value>A DevExpress.XtraBars.Docking2010.Views.DockingViewStyle enumeration value that specifies the View style.</value>
+      <value>A  enumeration value that specifies the View style.</value>
     </member>
     <member name="P:DevExpress.XtraReports.UserDesigner.XRDesignMdiControllerDesignSettings.UseLegacyExpressionEditor">
       <summary>
@@ -5243,7 +5243,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
     </member>
     <member name="M:DevExpress.XtraReports.Wizards.XtraReportWizardClient`1.#ctor(DevExpress.DataAccess.Wizard.Services.IConnectionStorageService,DevExpress.DataAccess.Wizard.Services.IParameterService,DevExpress.Entity.ProjectModel.ISolutionTypesProvider,DevExpress.Data.Entity.IConnectionStringsProvider,DevExpress.DataAccess.Sql.IDBSchemaProvider,DevExpress.DataAccess.Sql.IDBSchemaProviderEx,DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService,DevExpress.DataAccess.Wizard.OperationMode)">
@@ -5254,7 +5254,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
       <param name="dataSourceNameCreationService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService"/> interface.</param>
       <param name="operationMode">An <see cref="T:DevExpress.DataAccess.Wizard.OperationMode"/> enumeration value.</param>
@@ -5267,7 +5267,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
       <param name="dataSourceNameCreationService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService"/> interface.</param>
       <param name="propertyGridServices">An object implementing the <see cref="T:System.IServiceProvider"/> interface.</param>
@@ -5281,7 +5281,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
       <param name="dataSourceNameCreationService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService"/> interface.</param>
       <param name="propertyGridServices">An object implementing the <see cref="T:System.IServiceProvider"/> interface.</param>
@@ -5301,7 +5301,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
       <param name="dataSourceNameCreationService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService"/> interface.</param>
       <param name="propertyGridServices">An object implementing the <see cref="T:System.IServiceProvider"/> interface.</param>
@@ -5317,7 +5317,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
       <param name="dataSourceNameCreationService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService"/> interface.</param>
       <param name="propertyGridServices">An object implementing the <see cref="T:System.IServiceProvider"/> interface.</param>
@@ -5335,7 +5335,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
       <param name="dataSourceNameCreationService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService"/> interface.</param>
       <param name="propertyGridServices">An object implementing the <see cref="T:System.IServiceProvider"/> interface.</param>
@@ -5355,7 +5355,7 @@
       <param name="parameterService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IParameterService"/> interface.</param>
       <param name="solutionTypesProvider">An object implementing the <see cref="T:DevExpress.Entity.ProjectModel.ISolutionTypesProvider"/> interface.</param>
       <param name="connectionStringsProvider">An object implementing the <see cref="T:DevExpress.Data.Entity.IConnectionStringsProvider"/> interface.</param>
-      <param name="dbSchemaProvider">An object implementing the DevExpress.DataAccess.Sql.IDBSchemaProvider interface.</param>
+      <param name="dbSchemaProvider">An object implementing the  interface.</param>
       <param name="dbSchemaProviderEx">An object implementing the <see cref="T:DevExpress.DataAccess.Sql.IDBSchemaProviderEx"/> interface.</param>
       <param name="dataSourceNameCreationService">An object implementing the <see cref="T:DevExpress.DataAccess.Wizard.Services.IDataSourceNameCreationService"/> interface.</param>
       <param name="propertyGridServices">An object implementing the <see cref="T:System.IServiceProvider"/> interface.</param>

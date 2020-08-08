@@ -4353,7 +4353,7 @@ Day After Tomorrow &lt;= date &lt; First Day of Next Week</para>
       <summary>
         <para>When implemented by a custom function, evaluates it on the client.</para>
       </summary>
-      <param name="caseSensitive">true, if the custom function is case-sensitive; otherwise, false.</param>
+      <param name="caseSensetive">true, if the custom function is case-sensitive; otherwise, false.</param>
       <param name="operands">An array of objects specifying function operands (parameters).</param>
       <returns>An <see cref="T:System.Object"/> specifying a custom function&#39;s return value, calculated based on the operands.</returns>
     </member>
@@ -13873,7 +13873,7 @@ Also <see cref="P:DevExpress.Utils.FormatInfo.FormatString"/> is set to &quot;d&
         <para></para>
       </summary>
       <param name="table"></param>
-      <param name="foreignKey"></param>
+      <param name="fk"></param>
     </member>
     <member name="M:DevExpress.Xpo.DB.ConnectionProviderSql.CreateIndex(DevExpress.Xpo.DB.DBTable,DevExpress.Xpo.DB.DBIndex)">
       <summary>
@@ -13944,7 +13944,7 @@ Also <see cref="P:DevExpress.Utils.FormatInfo.FormatString"/> is set to &quot;d&
       <summary>
         <para></para>
       </summary>
-      <param name="isolationLevel"></param>
+      <param name="il"></param>
     </member>
     <member name="M:DevExpress.Xpo.DB.ConnectionProviderSql.ExplicitCommitTransaction">
       <summary>
@@ -14450,7 +14450,7 @@ Also <see cref="P:DevExpress.Utils.FormatInfo.FormatString"/> is set to &quot;d&
       <summary>
         <para>This member supports the internal infrastructure and is not intended to be used directly from your code.</para>
       </summary>
-      <param name="statement"></param>
+      <param name="stmt"></param>
       <returns></returns>
     </member>
     <member name="T:DevExpress.Xpo.DB.DataCacheRoot">
@@ -14643,7 +14643,7 @@ Also <see cref="P:DevExpress.Utils.FormatInfo.FormatString"/> is set to &quot;d&
         <para>Gets the column type of the specified runtime type.</para>
       </summary>
       <param name="type">A <see cref="T:System.Type"/> object that represents the exact runtime type.</param>
-      <param name="suppressExceptionOnUnknown">true to return the DBColumnType.Unknown value if the specified type cannot be identified; false to raise the <see cref="T:DevExpress.Xpo.DB.Exceptions.PropertyTypeMappingMissingException"/> exception.</param>
+      <param name="supressExceptionOnUnknown">true to return the DBColumnType.Unknown value if the specified type cannot be identified; false to raise the <see cref="T:DevExpress.Xpo.DB.Exceptions.PropertyTypeMappingMissingException"/> exception.</param>
       <returns>A DevExpress.Xpo.DB.DBColumnType enumeration value that corresponds to the specified runtime type.</returns>
     </member>
     <member name="M:DevExpress.Xpo.DB.DBColumn.GetType(DevExpress.Xpo.DB.DBColumnType)">
@@ -15061,7 +15061,7 @@ Also <see cref="P:DevExpress.Utils.FormatInfo.FormatString"/> is set to &quot;d&
       <summary>
         <para>Appends a <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object to the <see cref="P:DevExpress.Xpo.DB.DBTable.ForeignKeys"/> collection.</para>
       </summary>
-      <param name="foreignKey">A <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object to be added to the collection.</param>
+      <param name="fk">A <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object to be added to the collection.</param>
     </member>
     <member name="M:DevExpress.Xpo.DB.DBTable.AddIndex(DevExpress.Xpo.DB.DBIndex)">
       <summary>
@@ -15111,7 +15111,7 @@ Also <see cref="P:DevExpress.Utils.FormatInfo.FormatString"/> is set to &quot;d&
       <summary>
         <para>Indicates whether the <see cref="P:DevExpress.Xpo.DB.DBTable.ForeignKeys"/> collection contains the specified <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object.</para>
       </summary>
-      <param name="foreignKey">A <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object to locate in the collection.</param>
+      <param name="fk">A <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object to locate in the collection.</param>
       <returns>true if the collection contains the specified object; otherwise, false.</returns>
     </member>
     <member name="M:DevExpress.Xpo.DB.DBTable.IsIndexIncluded(DevExpress.Xpo.DB.DBIndex)">
@@ -15235,7 +15235,7 @@ Also <see cref="P:DevExpress.Utils.FormatInfo.FormatString"/> is set to &quot;d&
       <summary>
         <para>Initializes a new instance of the <see cref="T:DevExpress.Xpo.DB.Exceptions.PropertyTypeMappingMissingException"/> class with the specified settings.</para>
       </summary>
-      <param name="objectType">The type of column that cannot be identified.</param>
+      <param name="objtype">The type of column that cannot be identified.</param>
     </member>
     <member name="P:DevExpress.Xpo.DB.Exceptions.PropertyTypeMappingMissingException.PropertyType">
       <summary>

@@ -717,7 +717,7 @@
       <summary>
         <para>Gets coordinates of a rectangle which encompasses the comment&#39;s content.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the bounds of the comment&#39;s content measured in twips.</value>
+      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the bounds of the comment&#39;s content.</value>
     </member>
     <member name="M:DevExpress.XtraRichEdit.API.Layout.LayoutComment.EndUpdate(DevExpress.XtraRichEdit.API.Native.SubDocument)">
       <summary>
@@ -757,7 +757,7 @@
       <summary>
         <para>Gets coordinates of a rectangle which encompasses the layout element.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element measured in twips.</value>
+      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element.</value>
     </member>
     <member name="M:DevExpress.XtraRichEdit.API.Layout.LayoutElement.GetParentByType``1">
       <summary>
@@ -770,7 +770,7 @@
         <para>Gets coordinates of the specified layout element relative to its container.</para>
       </summary>
       <param name="element">A <see cref="T:DevExpress.XtraRichEdit.API.Layout.LayoutElement"/> descendant that is the element whose relative position is obtained.</param>
-      <returns>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element measured in twips.</returns>
+      <returns>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element.</returns>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Layout.LayoutElement.Parent">
       <summary>
@@ -799,7 +799,7 @@
       <summary>
         <para>Gets coordinates of a rectangle which encompasses the layout element.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element measured in twips.</value>
+      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element.</value>
     </member>
     <member name="M:DevExpress.XtraRichEdit.API.Layout.LayoutElementBase.GetParentByType``1">
       <summary>
@@ -812,7 +812,7 @@
         <para>Gets coordinates of the specified layout element relative to its container.</para>
       </summary>
       <param name="element">A <see cref="T:DevExpress.XtraRichEdit.API.Layout.LayoutElement"/> descendant that is the element whose relative position is obtained.</param>
-      <returns>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element measured in twips.</returns>
+      <returns>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the coordinates of the layout element.</returns>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Layout.LayoutElementBase.Parent">
       <summary>
@@ -877,7 +877,7 @@
       <summary>
         <para>Gets coordinates of a rectangle which encompasses the floating object&#39;s content.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the bounds of the floating object&#39;s content measured in twips.</value>
+      <value>A <see cref="T:System.Drawing.Rectangle"/> structure specifying the bounds of the floating object&#39;s content.</value>
     </member>
     <member name="M:DevExpress.XtraRichEdit.API.Layout.LayoutFloatingObject.GetContentCoordinates">
       <summary>
@@ -3170,7 +3170,7 @@
       <summary>
         <para>Gets or sets the checkbox size.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value indicating the check box&#39;s size in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value indicating the check box&#39;s size.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.CheckBox.SizeMode">
       <summary>
@@ -4548,7 +4548,7 @@ A <see cref="T:System.DateTime"/> object that is the comment creation date.</par
       <summary>
         <para>Specifies the size of the inline image.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.SizeF"/> object representing the image size in in current measure units.</value>
+      <value>A <see cref="T:System.Drawing.SizeF"/> object representing the image size in current <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units of measurement.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.DocumentImage.Uri">
       <summary>
@@ -8623,7 +8623,7 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the width of individual column.</para>
       </summary>
-      <value>A Single value measured in current measure units.</value>
+      <value>A Single value measured in units specified via the <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> property.</value>
     </member>
     <member name="T:DevExpress.XtraRichEdit.API.Native.SectionColumnCollection">
       <summary>
@@ -8714,37 +8714,37 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets a value that specifies the bottom margin.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the bottom margin in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the bottom margin measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.SectionMargins.FooterOffset">
       <summary>
         <para>Gets or sets a value that specifies the distance between the footer and the bottom of the page.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the margin in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the margin measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.SectionMargins.HeaderOffset">
       <summary>
         <para>Gets or sets a value that specifies the distance between the header and the top of the page.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the margin in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the margin measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.SectionMargins.Left">
       <summary>
         <para>Gets or sets a value that specifies the left margin.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the left margin in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the left margin measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.SectionMargins.Right">
       <summary>
         <para>Gets or sets a value that specifies the right margin.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the right margin in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the right margin measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.SectionMargins.Top">
       <summary>
         <para>Gets or sets a value that specifies the top margin.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the top margin in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the top margin measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="T:DevExpress.XtraRichEdit.API.Native.SectionPage">
       <summary>
@@ -8755,7 +8755,7 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the page&#39;s height.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value specifying the page&#39;s height in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value specifying the page&#39;s height measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.SectionPage.Landscape">
       <summary>
@@ -8773,7 +8773,7 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the page&#39;s width.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the page&#39;s width in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the page&#39;s width measured in <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> units.</value>
     </member>
     <member name="T:DevExpress.XtraRichEdit.API.Native.SectionPageNumbering">
       <summary>
@@ -8937,25 +8937,25 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the distance between the document text and the bottom border of the shape.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that is the distance in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that is the distance in units of measurement specified by the <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> property.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.Shape.MarginLeft">
       <summary>
         <para>Gets or sets the distance between the document text and the left border of the shape.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that is the distance in in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that is the distance in units of measurement specified by the <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> property.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.Shape.MarginRight">
       <summary>
         <para>Gets or sets the distance between the document text and the right border of the shape.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that is the distance in in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that is the distance in units of measurement specified by the <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> property.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.Shape.MarginTop">
       <summary>
         <para>Gets or sets the distance between the document text and the top border of the shape.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that is the distance in in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that is the distance in units of measurement specified by the <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> property.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.Shape.Name">
       <summary>
@@ -8967,13 +8967,13 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the shape position relative to a certain element of the document layout.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.PointF"/> object specifying the offset of the shape measured in current units.</value>
+      <value>A <see cref="T:System.Drawing.PointF"/> object specifying the offset of the shape measured in units specified by the <see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/> property.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.Shape.OriginalSize">
       <summary>
         <para>Gets the original size of a shape, i.e. the size before scaling.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.SizeF"/> structure specifying the size of a shape in current measure units.</value>
+      <value>A <see cref="T:System.Drawing.SizeF"/> structure specifying the size of a shape.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.Shape.Picture">
       <summary>
@@ -9027,7 +9027,7 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the size of a shape.</para>
       </summary>
-      <value>A <see cref="T:System.Drawing.SizeF"/> structure specifying the width and height of a shape in current measure units.</value>
+      <value>A <see cref="T:System.Drawing.SizeF"/> structure specifying the width and height of a shape.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.Shape.TextBox">
       <summary>
@@ -11862,7 +11862,7 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the height of the current row.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> that is the row height in current measure units,  or 0 (zero) if the <see cref="P:DevExpress.XtraRichEdit.API.Native.TableRow.HeightType"/> is set to <see cref="F:DevExpress.XtraRichEdit.API.Native.HeightType.Auto"/>.</value>
+      <value>A <see cref="T:System.Single"/> that is the row height in units of measurement that are in effect,  or 0 (zero) if the <see cref="P:DevExpress.XtraRichEdit.API.Native.TableRow.HeightType"/> is set to <see cref="F:DevExpress.XtraRichEdit.API.Native.HeightType.Auto"/>.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.TableRow.HeightType">
       <summary>
@@ -12119,25 +12119,25 @@ Example: I, II, III</para>
       <summary>
         <para>Gets or sets the distance between the bottom of the text and the bottom edge of the shape that contains the text.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the distance in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the distance in current units of measurement (<see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/>).</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.TextBox.MarginLeft">
       <summary>
         <para>Gets or sets the distance between the left edge of the text and the left edge of the shape that contains the text.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the distance in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the distance in current units of measurement (<see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/>).</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.TextBox.MarginRight">
       <summary>
         <para>Gets or sets the distance between the right edge of the text and the right edge of the shape that contains the text.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the distance in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the distance in current units of measurement (<see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/>).</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.API.Native.TextBox.MarginTop">
       <summary>
         <para>Gets or sets the distance between the top of the text and the top edge of the shape that contains the text.</para>
       </summary>
-      <value>A <see cref="T:System.Single"/> value that specifies the distance in current measure units.</value>
+      <value>A <see cref="T:System.Single"/> value that specifies the distance in current units of measurement (<see cref="P:DevExpress.XtraRichEdit.API.Native.Document.Unit"/>).</value>
     </member>
     <member name="T:DevExpress.XtraRichEdit.API.Native.TextBoxSizeRule">
       <summary>

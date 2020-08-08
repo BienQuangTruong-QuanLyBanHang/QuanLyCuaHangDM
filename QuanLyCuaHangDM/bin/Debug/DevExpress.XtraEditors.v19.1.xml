@@ -1001,12 +1001,12 @@
     </member>
     <member name="E:DevExpress.XtraEditors.BaseCheckedListBoxControl.ItemCheck">
       <summary>
-        <para>Fires after an item&#39;s check state changes.</para>
+        <para>Fires when the checked state of an item has been changed.</para>
       </summary>
     </member>
     <member name="E:DevExpress.XtraEditors.BaseCheckedListBoxControl.ItemChecking">
       <summary>
-        <para>Fires before an item&#39;s check state changes and allows you to cancel the action.</para>
+        <para>Enables you to restrict item state changes.</para>
       </summary>
     </member>
     <member name="P:DevExpress.XtraEditors.BaseCheckedListBoxControl.Items">
@@ -14315,12 +14315,6 @@ A specific version of the addressed image is automatically chosen based on the a
       <summary>
         <para>Allows you to add custom function based filters (for example, &#39;discount is more than 15%&#39;) to Excel-style pop-up filter menus and/or the filter editor.</para>
       </summary>
-    </member>
-    <member name="P:DevExpress.XtraEditors.FilterControl.ReadOnly">
-      <summary>
-        <para></para>
-      </summary>
-      <value></value>
     </member>
     <member name="M:DevExpress.XtraEditors.FilterControl.SetDefaultColumn(DevExpress.XtraEditors.Filtering.FilterColumn)">
       <summary>
@@ -32633,15 +32627,15 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         <para>Shows an Overlay Form with the specified options over the specified control.</para>
       </summary>
       <param name="owner">The control over which the overlay form will be shown.</param>
-      <param name="fadeIn">True, if fade-in animation is enabled; otherwise, False.</param>
-      <param name="fadeOut">True, if fade-out animation is enabled; otherwise, False.</param>
-      <param name="backColor">The Overlay Form&#39;s background color.</param>
-      <param name="foreColor">The Overlay Form&#39;s foreground color.</param>
-      <param name="opacity">The Overlay Form&#39;s transparency level. 0 corresponds to total transparency, 255 - to the normal state.</param>
+      <param name="fadeIn">true, if fade-in animation is enabled; otherwise, false.</param>
+      <param name="fadeOut">true, if fade-out animation is enabled; otherwise, false.</param>
+      <param name="backColor">Overlay form&#39;s background color.</param>
+      <param name="foreColor">Overlay form&#39;s foreground color.</param>
+      <param name="opacity">Overlay form&#39;s transparency level. 0 corresponds to total transparency, 255 - to the normal state.</param>
       <param name="image">The image shown rotating in the Overlay Form&#39;s center.</param>
       <param name="customPainter">An IOverlayWindowPainter object that performs the Overlay Form&#39;s custom draw.</param>
-      <param name="skinName">The Overlay Form&#39;s skin.</param>
-      <param name="rotationParameters">The Overlay Form&#39;s rotation parameters.  The Ticks parameter specifies the number of frames per rotation. The Duration parameter specifies the length, in milliseconds, of a single rotation.</param>
+      <param name="skinName">Overlay form&#39;s skin.</param>
+      <param name="rotationParameters">Overlay form&#39;s rotation parameters.</param>
       <param name="startupDelay">A display delay.</param>
       <returns>A handle for the shown Overlay Form. Use this handle to close the Overlay Form.</returns>
     </member>

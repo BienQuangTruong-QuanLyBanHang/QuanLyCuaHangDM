@@ -116,7 +116,7 @@ namespace QuanLyCuaHangDM
             if (flag == 0)
             {
                 if (_MatKhau == "" || _TenDangNhap == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin", "Thông báo");
+                    MessageBox.Show("Hãy nhập đầy đủ thông tin", "Thông báo");
                 else
                 {
                     int rs2 = bll_user.KiemTraMaNV(_MaNhanVien);
@@ -128,20 +128,20 @@ namespace QuanLyCuaHangDM
                             int i = bll_user.AddUsers(_ID, _MaNhanVien, _TenDangNhap, _MatKhau);
                             if (i > 0)
                             {
-                                XtraMessageBox.Show("Thêm mới thành công", "Thông báo");
+                                MessageBox.Show("Thêm mới thành công", "Thông báo");
                                 reActive();
                             }
                             else
-                                XtraMessageBox.Show("Thêm mới thất bại", "Thông báo");
+                                MessageBox.Show("Thêm mới thất bại", "Thông báo");
                         }
                         else
                         {
-                            XtraMessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo");
+                            MessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo");
                         }
                     }
                     else
                     {
-                        XtraMessageBox.Show("Nhân viên này đã có tài khoản", "Thông báo");
+                        MessageBox.Show("Nhân viên này đã có tài khoản", "Thông báo");
                     }
                 }
             }

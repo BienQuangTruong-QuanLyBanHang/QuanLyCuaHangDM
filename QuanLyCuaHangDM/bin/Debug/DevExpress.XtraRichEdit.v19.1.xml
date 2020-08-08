@@ -1057,7 +1057,7 @@
     </member>
     <member name="E:DevExpress.XtraRichEdit.RichEditControl.DocumentLoaded">
       <summary>
-        <para>Occurs after the document is fully loaded.</para>
+        <para>Occurs after a document is loaded into the RichEdit control.</para>
       </summary>
     </member>
     <member name="E:DevExpress.XtraRichEdit.RichEditControl.DocumentPropertiesChanged">
@@ -1375,10 +1375,9 @@
     </member>
     <member name="P:DevExpress.XtraRichEdit.RichEditControl.LayoutUnit">
       <summary>
-        <para>Gets or sets a unit of measure used for a document layout. Starting from v18.1, the property has no effect.</para>
+        <para>Gets or sets a unit of measure used for a document model layout.</para>
       </summary>
-      <value>One of the <see cref="T:DevExpress.XtraRichEdit.DocumentLayoutUnit"/> enumeration values.
-The default is DocumentLayoutUnit.Pixel.</value>
+      <value>One of the <see cref="T:DevExpress.XtraRichEdit.DocumentLayoutUnit"/> enumeration values.The default is DocumentLayoutUnit.Pixel.</value>
     </member>
     <member name="E:DevExpress.XtraRichEdit.RichEditControl.LineNumberingFormShowing">
       <summary>
@@ -1972,7 +1971,7 @@ The default is DocumentLayoutUnit.Pixel.</value>
     </member>
     <member name="P:DevExpress.XtraRichEdit.RichEditControl.Unit">
       <summary>
-        <para>Gets or sets a measure unit used within the control.</para>
+        <para>Gets or sets a unit of measure used within the control.</para>
       </summary>
       <value>One of the <see cref="T:DevExpress.Office.DocumentUnit"/> enumeration values.</value>
     </member>
