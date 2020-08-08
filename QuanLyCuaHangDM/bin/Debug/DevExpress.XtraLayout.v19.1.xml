@@ -2770,28 +2770,6 @@ is dependent on the type of control embedded in this layout item.</value>
       </summary>
       <value>true if the layout item&#39;s contents are visible; otherwise, false.</value>
     </member>
-    <member name="E:DevExpress.XtraLayout.LayoutControlItem.ContextButtonClick">
-      <summary>
-        <para>Allows you to respond to a click on a context button.</para>
-      </summary>
-    </member>
-    <member name="P:DevExpress.XtraLayout.LayoutControlItem.ContextButtonOptions">
-      <summary>
-        <para>Provides access to the settings applied to context buttons displayed in this layout item.</para>
-      </summary>
-      <value>An object that exposes settings applied to the context buttons.</value>
-    </member>
-    <member name="P:DevExpress.XtraLayout.LayoutControlItem.ContextButtons">
-      <summary>
-        <para>Provides access to the collection of context buttons appearing in this layout item when it is hovered over with the pointer.</para>
-      </summary>
-      <value>The collection of context buttons.</value>
-    </member>
-    <member name="E:DevExpress.XtraLayout.LayoutControlItem.ContextButtonValueChanged">
-      <summary>
-        <para>Fires when the <see cref="P:DevExpress.Utils.CheckContextButton.Checked"/>, <see cref="P:DevExpress.Utils.TrackBarContextButton.Value"/> or <see cref="P:DevExpress.Utils.RatingContextButton.Rating"/> property value changes.</para>
-      </summary>
-    </member>
     <member name="P:DevExpress.XtraLayout.LayoutControlItem.Control">
       <summary>
         <para>Gets or sets the control which is owned by the layout item.</para>
@@ -2821,11 +2799,6 @@ is dependent on the type of control embedded in this layout item.</value>
         <para>This property is for internal use only. It is used in serialization. Do not change it.</para>
       </summary>
       <value>A <see cref="T:System.String"/> value that specifies the name of the control which is owned by the current layout item.</value>
-    </member>
-    <member name="E:DevExpress.XtraLayout.LayoutControlItem.CustomContextButtonToolTip">
-      <summary>
-        <para>Allows hints for context buttons to be customized. This event is only raised for <see cref="T:DevExpress.Utils.RatingContextButton"/> and <see cref="T:DevExpress.Utils.TrackBarContextButton"/> objects.</para>
-      </summary>
     </member>
     <member name="P:DevExpress.XtraLayout.LayoutControlItem.Enabled">
       <summary>
@@ -4479,9 +4452,9 @@ is dependent on the type of control embedded in this layout item.</value>
     </member>
     <member name="M:DevExpress.XtraLayout.OptionsTableLayoutItem.Assign(DevExpress.Utils.Controls.BaseOptions)">
       <summary>
-        <para></para>
+        <para>Assigns the specified object&#39;s property values to the current object&#39;s corresponding properties.</para>
       </summary>
-      <param name="options"></param>
+      <param name="options">The object whose property values to assign to the current object&#39;s corresponding properties.</param>
     </member>
     <member name="P:DevExpress.XtraLayout.OptionsTableLayoutItem.ColumnIndex">
       <summary>
@@ -4984,6 +4957,12 @@ is dependent on the type of control embedded in this layout item.</value>
         <para>Gets or sets the amount of space in pixels between the item&#39;s borders and its contents. This member supports the .NET Framework infrastructure and is not intended to be used directly from your code.</para>
       </summary>
       <value>A DevExpress.XtraLayout.Utils.Padding object that contains inner indents between the layout item&#39;s borders and its contents.</value>
+    </member>
+    <member name="P:DevExpress.XtraLayout.SplitterItem.Position">
+      <summary>
+        <para></para>
+      </summary>
+      <value></value>
     </member>
     <member name="E:DevExpress.XtraLayout.SplitterItem.PositionChanged">
       <summary>

@@ -455,7 +455,7 @@
         <para>Creates a foreign key.</para>
       </summary>
       <param name="table">A <see cref="T:DevExpress.Xpo.DB.DBTable"/> object that represents the table.</param>
-      <param name="fk">A <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object that represents the foreign key.</param>
+      <param name="foreignKey">A <see cref="T:DevExpress.Xpo.DB.DBForeignKey"/> object that represents the foreign key.</param>
     </member>
     <member name="M:DevExpress.Xpo.DB.AccessConnectionProvider.CreateProviderFromConnection(System.Data.IDbConnection,DevExpress.Xpo.DB.AutoCreateOption)">
       <summary>
