@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DAL_BLL;
+using System.Text.RegularExpressions;
 
 namespace QuanLyCuaHangDM
 {
@@ -233,6 +234,20 @@ namespace QuanLyCuaHangDM
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+            if(txtEmail.Text == string.Empty)
+            {
+                return;
+            }    
+            if (!Regex.IsMatch(txtEmail.Text, match))
+            {
+                MessageBox.Show("Nhập sai Email !!!");
+                txtEmail.Focus();
             }
         }
     }

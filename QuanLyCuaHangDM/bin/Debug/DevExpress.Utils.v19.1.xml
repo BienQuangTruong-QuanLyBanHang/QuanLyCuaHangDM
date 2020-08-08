@@ -8696,12 +8696,12 @@ For the <see cref="T:DevExpress.Utils.SharedImageCollection"/>, this property sp
     </member>
     <member name="M:DevExpress.Utils.Taskbar.TaskbarAssistant.FlashWindow(DevExpress.Utils.Taskbar.FlashFlags,System.Int32,System.Int32)">
       <summary>
-        <para></para>
+        <para>Flashes the parent window. It does not change the window&#39;s active state.</para>
       </summary>
-      <param name="opt"></param>
-      <param name="count"></param>
-      <param name="timeout"></param>
-      <returns></returns>
+      <param name="opt">A FlashFlags enumeration value that specifies the flash status (flash the window caption, flash the taskbar button, flash continuously until the window comes to the foreground, etc.). The enumeration supports bitwise operations, you can enable multiple flags.</param>
+      <param name="count">An integer value that specifies the number of flashes.</param>
+      <param name="timeout">An integer value that specifies the flash rate, in milliseconds. 0 to use the default cursor blink rate.</param>
+      <returns>true, if the window caption was drawn as active before the call; otherwise, false</returns>
     </member>
     <member name="P:DevExpress.Utils.Taskbar.TaskbarAssistant.IconsAssembly">
       <summary>
@@ -11902,6 +11902,23 @@ Use the <see cref="P:DevExpress.Utils.FlyoutPanelOptions.HorzIndent"/> and <see 
       <summary>
         <para>A slide-in animation effect.</para>
       </summary>
+    </member>
+    <member name="T:DevExpress.Utils.WorkspaceEventArgs">
+      <summary>
+        <para>Provides arguments for the <see cref="E:DevExpress.Utils.WorkspaceManager.BeforeApplyWorkspace"/>, <see cref="E:DevExpress.Utils.WorkspaceManager.AfterApplyWorkspace"/>, <see cref="E:DevExpress.Utils.WorkspaceManager.WorkspaceSaved"/>, <see cref="E:DevExpress.Utils.WorkspaceManager.WorkspaceAdded"/>, and <see cref="E:DevExpress.Utils.WorkspaceManager.WorkspaceRemoved"/> events.</para>
+      </summary>
+    </member>
+    <member name="M:DevExpress.Utils.WorkspaceEventArgs.#ctor(DevExpress.Utils.IWorkspace)">
+      <summary>
+        <para>Initializes a new WorkspaceEventArgs class instance.</para>
+      </summary>
+      <param name="workspace">An IWorkspace object that specifies the processed workspace. This parameter is assigned to the <see cref="P:DevExpress.Utils.WorkspaceEventArgs.Workspace"/> property.</param>
+    </member>
+    <member name="P:DevExpress.Utils.WorkspaceEventArgs.Workspace">
+      <summary>
+        <para>Gets the processed workspace.</para>
+      </summary>
+      <value>An IWorkspace object that specifies the processed workspace.</value>
     </member>
     <member name="T:DevExpress.Utils.WorkspaceManager">
       <summary>

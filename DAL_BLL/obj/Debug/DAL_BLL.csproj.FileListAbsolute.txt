@@ -31,3 +31,10 @@ D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csproj.CoreCompileInputs.cac
 D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.dll
 D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.pdb
 D:\GitHub\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csprojAssemblyReference.cache
+E:\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll.config
+E:\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.dll
+E:\QuanLyCuaHangDM\DAL_BLL\bin\Debug\DAL_BLL.pdb
+E:\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csprojAssemblyReference.cache
+E:\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.csproj.CoreCompileInputs.cache
+E:\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.dll
+E:\QuanLyCuaHangDM\DAL_BLL\obj\Debug\DAL_BLL.pdb
