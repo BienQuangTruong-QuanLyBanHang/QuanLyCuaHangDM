@@ -138,6 +138,8 @@
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(435, 30);
             this.dtpNgaySinh.TabIndex = 12;
+            this.dtpNgaySinh.CloseUp += new System.EventHandler(this.dtpNgaySinh_CloseUp);
+            this.dtpNgaySinh.Leave += new System.EventHandler(this.dtpNgaySinh_ValueChanged);
             // 
             // cboGioiTinh
             // 
@@ -155,10 +157,14 @@
             this.txtDC.Name = "txtDC";
             this.txtDC.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDC.Properties.Appearance.Options.UseFont = true;
+            this.txtDC.Properties.MaxLength = 100;
             this.txtDC.Size = new System.Drawing.Size(433, 30);
             this.txtDC.StyleController = this.layoutTop;
             this.txtDC.TabIndex = 9;
-            this.txtDC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDC_KeyPress);
+            this.txtDC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDT_KeyDown);
+            this.txtDC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDC_KeyPress_1);
+            this.txtDC.Leave += new System.EventHandler(this.txtDC_Leave);
+            this.txtDC.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDT_MouseDown);
             // 
             // txtDT
             // 
@@ -170,7 +176,9 @@
             this.txtDT.Size = new System.Drawing.Size(433, 30);
             this.txtDT.StyleController = this.layoutTop;
             this.txtDT.TabIndex = 7;
+            this.txtDT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDT_KeyDown);
             this.txtDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDT_KeyPress);
+            this.txtDT.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDT_MouseDown);
             // 
             // txtTenNV
             // 
@@ -179,10 +187,14 @@
             this.txtTenNV.Name = "txtTenNV";
             this.txtTenNV.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenNV.Properties.Appearance.Options.UseFont = true;
+            this.txtTenNV.Properties.MaxLength = 100;
             this.txtTenNV.Size = new System.Drawing.Size(436, 30);
             this.txtTenNV.StyleController = this.layoutTop;
             this.txtTenNV.TabIndex = 5;
+            this.txtTenNV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDT_KeyDown);
             this.txtTenNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDC_KeyPress);
+            this.txtTenNV.Leave += new System.EventHandler(this.txtDC_Leave);
+            this.txtTenNV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDT_MouseDown);
             // 
             // txtMaNV
             // 

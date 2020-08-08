@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DAL_BLL;
+using DevExpress.XtraPrinting.Native.LayoutAdjustment;
+using System.Text.RegularExpressions;
 
 namespace QuanLyCuaHangDM
 {
@@ -49,6 +51,7 @@ namespace QuanLyCuaHangDM
             cboGioiTinh.Items.Clear();
             cboGioiTinh.Items.Add("Nam");
             cboGioiTinh.Items.Add("Nữ");
+            cboGioiTinh.SelectedIndex = 0;
         }
         void loadControl_cboLoaiKH()
         {
@@ -256,6 +259,80 @@ namespace QuanLyCuaHangDM
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtTenKH_Leave(object sender, EventArgs e)
+        {
+            if (((TextEdit)sender).Text != string.Empty)
+            {
+                if (((TextEdit)sender).Text.Length < 5)
+                {
+                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
+                    ((TextEdit)sender).Focus();
+                }
+            }
+        }
+
+        private void txtMaKH_Leave(object sender, EventArgs e)
+        {
+            List<string> lst = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039" 
+            , "070", "079", "077", "076", "078"
+            , "083", "084", "085", "081", "082", "088", "091", "094", "099", "059", "092"
+            , "056", "058", "085", "081", "082"};
+            bool flag = false;
+            for (int i = 0; i < lst.Count; i++)
+            {
+                if (((TextEdit)sender).Text.StartsWith(lst[i]))
+                {
+                    if (((TextEdit)sender).Text.Length == 10)
+                    {
+                        flag = true;
+                        return;
+                    }
+                    XtraMessageBox.Show("Số điện thoại sai định dạng");
+                    ((TextEdit)sender).Focus();
+                    return;
+                }
+            }
+            if(!flag)
+            {
+                XtraMessageBox.Show("Số điện thoại sai định dạng");
+                ((TextEdit)sender).Focus();
+                return;
+            }
+        }
+        private void txtDC_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            var regex = new Regex(@"^[0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ./, ]+$");
+            if (!regex.IsMatch(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMaKH_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void txtMaKH_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void dtpNgaySinh_Leave(object sender, EventArgs e)
+        {
+            if ((DateTime.Now.Year - ((DateTimePicker)sender).Value.Year) < 7)
+            {
+                XtraMessageBox.Show("Ngày sinh không hợp lệ");
+                ((DateTimePicker)sender).Focus();
             }
         }
     }

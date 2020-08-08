@@ -100,9 +100,14 @@
             this.txtTenDN.Name = "txtTenDN";
             this.txtTenDN.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenDN.Properties.Appearance.Options.UseFont = true;
+            this.txtTenDN.Properties.MaxLength = 50;
             this.txtTenDN.Size = new System.Drawing.Size(679, 30);
             this.txtTenDN.StyleController = this.layoutTop;
             this.txtTenDN.TabIndex = 7;
+            this.txtTenDN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenDN_KeyDown);
+            this.txtTenDN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenDN_KeyPress);
+            this.txtTenDN.Leave += new System.EventHandler(this.txtTenDN_Leave);
+            this.txtTenDN.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenDN_MouseDown);
             // 
             // txtMatKhau
             // 
@@ -110,9 +115,13 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMatKhau.Properties.Appearance.Options.UseFont = true;
+            this.txtMatKhau.Properties.MaxLength = 50;
             this.txtMatKhau.Size = new System.Drawing.Size(679, 30);
             this.txtMatKhau.StyleController = this.layoutTop;
             this.txtMatKhau.TabIndex = 5;
+            this.txtMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenDN_KeyDown);
+            this.txtMatKhau.Leave += new System.EventHandler(this.txtTenDN_Leave);
+            this.txtMatKhau.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenDN_MouseDown);
             // 
             // txtID
             // 

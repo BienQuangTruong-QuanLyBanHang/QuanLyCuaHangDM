@@ -303,10 +303,13 @@
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoLuong.Properties.Appearance.Options.UseFont = true;
+            this.txtSoLuong.Properties.MaxLength = 10;
             this.txtSoLuong.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSoLuong.Size = new System.Drawing.Size(247, 28);
             this.txtSoLuong.TabIndex = 5;
+            this.txtSoLuong.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSoLuong_KeyDown);
             this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress_1);
+            this.txtSoLuong.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtSoLuong_MouseDown);
             // 
             // txtGiaBan
             // 

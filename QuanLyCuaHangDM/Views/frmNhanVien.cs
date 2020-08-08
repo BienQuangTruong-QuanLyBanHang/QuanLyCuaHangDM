@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using DAL_BLL;
 using DevExpress.XtraReports.UI;
+using System.Text.RegularExpressions;
 
 namespace QuanLyCuaHangDM
 {
@@ -279,6 +280,66 @@ namespace QuanLyCuaHangDM
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+            if ((DateTime.Now.Year - ((DateTimePicker)sender).Value.Year) > 16)
+            {
+                return;
+            }
+            else if((DateTime.Now.Year - ((DateTimePicker)sender).Value.Year) == 16)
+            {
+                if (DateTime.Now.Month < ((DateTimePicker)sender).Value.Month)
+                {
+                    if (DateTime.Now.Day < ((DateTimePicker)sender).Value.Day)
+                        return;
+                }
+            }    
+            XtraMessageBox.Show("Ngày sinh không hợp lệ");
+            ((DateTimePicker)sender).Focus();
+        }
+
+        private void dtpNgaySinh_CloseUp(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtDC_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            var regex = new Regex(@"^[0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ./, ]+$");
+            if (!regex.IsMatch(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDC_Leave(object sender, EventArgs e)
+        {
+            if (((TextEdit)sender).Text != string.Empty)
+            {
+                if (((TextEdit)sender).Text.Length < 5)
+                {
+                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
+                    ((TextEdit)sender).Focus();
+                }
+            }
+        }
+
+        private void txtDT_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void txtDT_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
             }
         }
     }

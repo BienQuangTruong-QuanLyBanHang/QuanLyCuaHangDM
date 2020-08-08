@@ -477,5 +477,21 @@ namespace QuanLyCuaHangDM
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void txtSoLuong_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void txtSoLuong_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
     }
 }

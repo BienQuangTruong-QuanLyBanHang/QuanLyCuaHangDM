@@ -204,9 +204,13 @@
             this.txtTenSP.Name = "txtTenSP";
             this.txtTenSP.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenSP.Properties.Appearance.Options.UseFont = true;
+            this.txtTenSP.Properties.MaxLength = 50;
             this.txtTenSP.Size = new System.Drawing.Size(308, 30);
             this.txtTenSP.TabIndex = 5;
+            this.txtTenSP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenSP_KeyDown);
             this.txtTenSP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenSP_KeyPress);
+            this.txtTenSP.Leave += new System.EventHandler(this.txtTenSP_Leave);
+            this.txtTenSP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenSP_MouseDown);
             // 
             // labelControl6
             // 
@@ -301,10 +305,13 @@
             this.txtGiaNhap.Properties.Appearance.Options.UseFont = true;
             this.txtGiaNhap.Properties.Appearance.Options.UseTextOptions = true;
             this.txtGiaNhap.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtGiaNhap.Properties.MaxLength = 10;
             this.txtGiaNhap.Size = new System.Drawing.Size(94, 30);
             this.txtGiaNhap.TabIndex = 11;
             this.txtGiaNhap.TextChanged += new System.EventHandler(this.txtGiaNhap_TextChanged);
+            this.txtGiaNhap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenSP_KeyDown);
             this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
+            this.txtGiaNhap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenSP_MouseDown);
             // 
             // txtGiaBan
             // 
@@ -315,9 +322,12 @@
             this.txtGiaBan.Properties.Appearance.Options.UseFont = true;
             this.txtGiaBan.Properties.Appearance.Options.UseTextOptions = true;
             this.txtGiaBan.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtGiaBan.Properties.MaxLength = 10;
             this.txtGiaBan.Size = new System.Drawing.Size(308, 30);
             this.txtGiaBan.TabIndex = 12;
+            this.txtGiaBan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenSP_KeyDown);
             this.txtGiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
+            this.txtGiaBan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenSP_MouseDown);
             // 
             // txtTonKho
             // 
@@ -330,7 +340,9 @@
             this.txtTonKho.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtTonKho.Size = new System.Drawing.Size(151, 30);
             this.txtTonKho.TabIndex = 13;
+            this.txtTonKho.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenSP_KeyDown);
             this.txtTonKho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
+            this.txtTonKho.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenSP_MouseDown);
             // 
             // tableLayoutPanel3
             // 

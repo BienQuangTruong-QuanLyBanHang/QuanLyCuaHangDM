@@ -235,9 +235,13 @@
             this.txtTenLoai.Name = "txtTenLoai";
             this.txtTenLoai.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenLoai.Properties.Appearance.Options.UseFont = true;
+            this.txtTenLoai.Properties.MaxLength = 50;
             this.txtTenLoai.Size = new System.Drawing.Size(340, 28);
             this.txtTenLoai.TabIndex = 3;
+            this.txtTenLoai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenLoai_KeyDown);
             this.txtTenLoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenLoai_KeyPress);
+            this.txtTenLoai.Leave += new System.EventHandler(this.txtTenLoai_Leave);
+            this.txtTenLoai.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenLoai_MouseDown);
             // 
             // labelControl6
             // 

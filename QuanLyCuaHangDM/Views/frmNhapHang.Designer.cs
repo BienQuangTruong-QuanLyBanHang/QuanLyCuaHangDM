@@ -521,9 +521,12 @@
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoLuong.Properties.Appearance.Options.UseFont = true;
+            this.txtSoLuong.Properties.MaxLength = 10;
             this.txtSoLuong.Size = new System.Drawing.Size(155, 30);
             this.txtSoLuong.TabIndex = 5;
+            this.txtSoLuong.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGiaNhap_KeyDown);
             this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
+            this.txtSoLuong.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtGiaNhap_MouseDown);
             // 
             // txtGiaNhap
             // 
@@ -534,9 +537,12 @@
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGiaNhap.Properties.Appearance.Options.UseFont = true;
+            this.txtGiaNhap.Properties.MaxLength = 10;
             this.txtGiaNhap.Size = new System.Drawing.Size(155, 30);
             this.txtGiaNhap.TabIndex = 4;
+            this.txtGiaNhap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGiaNhap_KeyDown);
             this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
+            this.txtGiaNhap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtGiaNhap_MouseDown);
             // 
             // cboMaSP
             // 

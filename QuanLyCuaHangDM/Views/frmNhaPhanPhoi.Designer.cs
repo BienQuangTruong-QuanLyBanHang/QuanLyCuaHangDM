@@ -96,10 +96,14 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Properties.Appearance.Options.UseFont = true;
+            this.txtEmail.Properties.MaxLength = 50;
             this.txtEmail.Size = new System.Drawing.Size(301, 30);
             this.txtEmail.StyleController = this.layoutTop;
             this.txtEmail.TabIndex = 10;
-            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNPP_KeyDown);
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
+            this.txtEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenNPP_MouseDown);
             // 
             // txtDiaChi
             // 
@@ -108,10 +112,14 @@
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
+            this.txtDiaChi.Properties.MaxLength = 50;
             this.txtDiaChi.Size = new System.Drawing.Size(768, 30);
             this.txtDiaChi.StyleController = this.layoutTop;
             this.txtDiaChi.TabIndex = 9;
+            this.txtDiaChi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNPP_KeyDown);
             this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
+            this.txtDiaChi.Leave += new System.EventHandler(this.txtDiaChi_Leave);
+            this.txtDiaChi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenNPP_MouseDown);
             // 
             // txtDT
             // 
@@ -122,7 +130,10 @@
             this.txtDT.Size = new System.Drawing.Size(299, 30);
             this.txtDT.StyleController = this.layoutTop;
             this.txtDT.TabIndex = 7;
+            this.txtDT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNPP_KeyDown);
             this.txtDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDT_KeyPress);
+            this.txtDT.Leave += new System.EventHandler(this.txtDT_Leave);
+            this.txtDT.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenNPP_MouseDown);
             // 
             // txtTenNPP
             // 
@@ -130,10 +141,13 @@
             this.txtTenNPP.Name = "txtTenNPP";
             this.txtTenNPP.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenNPP.Properties.Appearance.Options.UseFont = true;
+            this.txtTenNPP.Properties.MaxLength = 50;
             this.txtTenNPP.Size = new System.Drawing.Size(301, 30);
             this.txtTenNPP.StyleController = this.layoutTop;
             this.txtTenNPP.TabIndex = 5;
+            this.txtTenNPP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNPP_KeyDown);
             this.txtTenNPP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
+            this.txtTenNPP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenNPP_MouseDown);
             // 
             // txtMaNPP
             // 

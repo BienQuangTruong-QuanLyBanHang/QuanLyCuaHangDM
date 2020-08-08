@@ -92,9 +92,13 @@
             this.txtTenLoai.Location = new System.Drawing.Point(252, 42);
             this.txtTenLoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenLoai.Name = "txtTenLoai";
+            this.txtTenLoai.Properties.MaxLength = 50;
             this.txtTenLoai.Size = new System.Drawing.Size(315, 20);
             this.txtTenLoai.TabIndex = 3;
+            this.txtTenLoai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenLoai_KeyDown);
             this.txtTenLoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenLoai_KeyPress);
+            this.txtTenLoai.Leave += new System.EventHandler(this.txtTenLoai_Leave);
+            this.txtTenLoai.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenLoai_MouseDown);
             // 
             // labelControl6
             // 

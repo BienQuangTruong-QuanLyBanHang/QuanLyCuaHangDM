@@ -116,7 +116,7 @@ namespace QuanLyCuaHangDM
             if (flag == 0)
             {
                 if (_MatKhau == "" || _TenDangNhap == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin", "Thông báo");
                 else
                 {
                     int rs2 = bll_user.KiemTraMaNV(_MaNhanVien);
@@ -128,20 +128,20 @@ namespace QuanLyCuaHangDM
                             int i = bll_user.AddUsers(_ID, _MaNhanVien, _TenDangNhap, _MatKhau);
                             if (i > 0)
                             {
-                                XtraMessageBox.Show("Thêm mới thành công");
+                                XtraMessageBox.Show("Thêm mới thành công", "Thông báo");
                                 reActive();
                             }
                             else
-                                XtraMessageBox.Show("Thêm mới thất bại");
+                                XtraMessageBox.Show("Thêm mới thất bại", "Thông báo");
                         }
                         else
                         {
-                            XtraMessageBox.Show("Tên đăng nhập này đã tồn tại");
+                            XtraMessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo");
                         }
                     }
                     else
                     {
-                        XtraMessageBox.Show("Nhân viên này đã có tài khoản");
+                        XtraMessageBox.Show("Nhân viên này đã có tài khoản", "Thông báo");
                     }
                 }
             }
@@ -238,6 +238,39 @@ namespace QuanLyCuaHangDM
                 cboMaNV.SelectedValue = gv_User.GetRowCellValue(e.RowHandle, gc_MaNV).ToString();
             }
             catch { }
+        }
+
+        private void txtTenDN_Leave(object sender, EventArgs e)
+        {
+            if (((TextEdit)sender).Text != string.Empty)
+            {
+                if (((TextEdit)sender).Text.Length < 5)
+                {
+                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
+                    ((TextEdit)sender).Focus();
+                }
+            }
+        }
+
+        private void txtTenDN_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void txtTenDN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void txtTenDN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

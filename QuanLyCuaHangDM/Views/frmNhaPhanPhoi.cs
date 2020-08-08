@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DAL_BLL;
+using System.Text.RegularExpressions;
 
 namespace QuanLyCuaHangDM
 {
@@ -230,9 +231,86 @@ namespace QuanLyCuaHangDM
 
         private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
+            var regex = new Regex(@"^[0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ./, ]+$");
+            if (!regex.IsMatch(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtDT_Leave(object sender, EventArgs e)
+        {
+            List<string> lst = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039"
+            , "070", "079", "077", "076", "078"
+            , "083", "084", "085", "081", "082", "088", "091", "094", "099", "059", "092"
+            , "056", "058", "085", "081", "082"};
+            bool flag = false;
+            for (int i = 0; i < lst.Count; i++)
+            {
+                if (((TextEdit)sender).Text.StartsWith(lst[i]))
+                {
+                    if (((TextEdit)sender).Text.Length == 10)
+                    {
+                        flag = true;
+                        return;
+                    }
+                    XtraMessageBox.Show("Số điện thoại sai định dạng");
+                    ((TextEdit)sender).Focus();
+                    return;
+                }
+            }
+            if (!flag)
+            {
+                XtraMessageBox.Show("Số điện thoại sai định dạng");
+                ((TextEdit)sender).Focus();
+                return;
+            }
+        }
+
+        private void txtDiaChi_Leave(object sender, EventArgs e)
+        {
+            if (((TextEdit)sender).Text != string.Empty)
+            {
+                if (((TextEdit)sender).Text.Length < 5)
+                {
+                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
+                    ((TextEdit)sender).Focus();
+                }
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (this.Text != string.Empty)
+            {
+                if (!Regex.IsMatch(this.Text, @"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$"))
+                {
+                    MessageBox.Show("Địa chỉ Email không hợp lệ");
+                }
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTenNPP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void txtTenNPP_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
             }
         }
     }

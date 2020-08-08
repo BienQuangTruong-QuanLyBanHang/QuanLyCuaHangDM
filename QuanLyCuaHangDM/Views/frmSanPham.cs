@@ -440,5 +440,33 @@ namespace QuanLyCuaHangDM
                 e.Handled = true;
             }
         }
+
+        private void txtTenSP_Leave(object sender, EventArgs e)
+        {
+            if (((TextEdit)sender).Text != string.Empty)
+            {
+                if (((TextEdit)sender).Text.Length < 5)
+                {
+                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
+                    ((TextEdit)sender).Focus();
+                }
+            }
+        }
+
+        private void txtTenSP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control == true)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
+
+        private void txtTenSP_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
+            }
+        }
     }
 }

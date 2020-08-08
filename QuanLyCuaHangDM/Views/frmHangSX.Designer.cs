@@ -236,9 +236,13 @@
             this.txtTenHang.Location = new System.Drawing.Point(246, 42);
             this.txtTenHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenHang.Name = "txtTenHang";
+            this.txtTenHang.Properties.MaxLength = 50;
             this.txtTenHang.Size = new System.Drawing.Size(308, 20);
             this.txtTenHang.TabIndex = 3;
+            this.txtTenHang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenHang_KeyDown);
             this.txtTenHang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenHang_KeyPress);
+            this.txtTenHang.Leave += new System.EventHandler(this.txtTenHang_Leave);
+            this.txtTenHang.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenHang_MouseDown);
             // 
             // labelControl6
             // 

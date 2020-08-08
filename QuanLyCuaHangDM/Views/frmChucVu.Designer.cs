@@ -212,10 +212,13 @@
             this.txtTenCV.Location = new System.Drawing.Point(253, 45);
             this.txtTenCV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenCV.Name = "txtTenCV";
+            this.txtTenCV.Properties.MaxLength = 50;
             this.txtTenCV.Size = new System.Drawing.Size(317, 20);
             this.txtTenCV.TabIndex = 3;
-            this.txtTenCV.EditValueChanged += new System.EventHandler(this.txtTenCV_EditValueChanged);
+            this.txtTenCV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenCV_KeyDown);
             this.txtTenCV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenCV_KeyPress);
+            this.txtTenCV.Leave += new System.EventHandler(this.txtTenCV_Leave);
+            this.txtTenCV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenCV_MouseDown);
             // 
             // labelControl6
             // 
