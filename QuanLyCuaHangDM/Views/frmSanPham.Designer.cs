@@ -209,7 +209,6 @@
             this.txtTenSP.TabIndex = 5;
             this.txtTenSP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenSP_KeyDown);
             this.txtTenSP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenSP_KeyPress);
-            this.txtTenSP.Leave += new System.EventHandler(this.txtTenSP_Leave);
             this.txtTenSP.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenSP_MouseDown);
             // 
             // labelControl6

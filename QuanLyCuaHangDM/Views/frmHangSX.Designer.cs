@@ -240,8 +240,6 @@
             this.txtTenHang.Size = new System.Drawing.Size(308, 20);
             this.txtTenHang.TabIndex = 3;
             this.txtTenHang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenHang_KeyDown);
-            this.txtTenHang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenHang_KeyPress);
-            this.txtTenHang.Leave += new System.EventHandler(this.txtTenHang_Leave);
             this.txtTenHang.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenHang_MouseDown);
             // 
             // labelControl6

@@ -86,39 +86,39 @@ namespace QuanLyCuaHangDM
                 _TenChucVu = txtTenCV.Text;
             }
             catch { }
-            if (flag == 0)
+            if (_TenChucVu == string.Empty)
             {
-                if (_TenChucVu == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                return;
+            }
+            if (_TenChucVu.Length < 5 || _TenChucVu.Length > 50)
+            {
+                XtraMessageBox.Show("Tên chức vụ giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if (flag == 0)
+            { 
+                int i = bll_chucvu.addChucVu(_MaChucVu, _TenChucVu);
+                if (i > 0)
                 {
-                    int i = bll_chucvu.addChucVu(_MaChucVu, _TenChucVu);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                    }
-                    else
-                        XtraMessageBox.Show("Thêm mới thất bại");
-                    disEnd(false);
-                    HienThiDSCV();
+                    XtraMessageBox.Show("Thêm mới thành công");
                 }
+                else
+                    XtraMessageBox.Show("Thêm mới thất bại");
+                disEnd(false);
+                HienThiDSCV();
             }
             else
             {
-                if (_TenChucVu == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_chucvu.updateChucVu(_MaChucVu, _TenChucVu);
+                if (i > 0)
                 {
-                    int i = bll_chucvu.updateChucVu(_MaChucVu, _TenChucVu);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Sửa thành công");
-                    }
-                    else
-                        XtraMessageBox.Show("Sửa thất bại");
-                    disEnd(false);
-                    HienThiDSCV();
+                    XtraMessageBox.Show("Sửa thành công");
                 }
+                else
+                    XtraMessageBox.Show("Sửa thất bại");
+                disEnd(false);
+                HienThiDSCV();
             }
         }
 
@@ -199,14 +199,7 @@ namespace QuanLyCuaHangDM
 
         private void txtTenCV_Leave(object sender, EventArgs e)
         {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
-            }
+
         }
 
         private void txtTenCV_KeyDown(object sender, KeyEventArgs e)

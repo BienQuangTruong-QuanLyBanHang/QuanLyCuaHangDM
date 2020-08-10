@@ -105,8 +105,6 @@
             this.txtTenDN.StyleController = this.layoutTop;
             this.txtTenDN.TabIndex = 7;
             this.txtTenDN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenDN_KeyDown);
-            this.txtTenDN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenDN_KeyPress);
-            this.txtTenDN.Leave += new System.EventHandler(this.txtTenDN_Leave);
             this.txtTenDN.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenDN_MouseDown);
             // 
             // txtMatKhau
@@ -120,7 +118,6 @@
             this.txtMatKhau.StyleController = this.layoutTop;
             this.txtMatKhau.TabIndex = 5;
             this.txtMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenDN_KeyDown);
-            this.txtMatKhau.Leave += new System.EventHandler(this.txtTenDN_Leave);
             this.txtMatKhau.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenDN_MouseDown);
             // 
             // txtID
@@ -266,7 +263,7 @@
             this.gc_TenNV.AppearanceHeader.Options.UseTextOptions = true;
             this.gc_TenNV.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gc_TenNV.Caption = "Tên nhân viên";
-            this.gc_TenNV.FieldName = "TenNV";
+            this.gc_TenNV.FieldName = "TenNhanVien";
             this.gc_TenNV.Name = "gc_TenNV";
             this.gc_TenNV.OptionsColumn.AllowEdit = false;
             this.gc_TenNV.Visible = true;

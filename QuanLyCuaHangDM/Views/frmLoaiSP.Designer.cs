@@ -36,7 +36,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.pnelButton = new System.Windows.Forms.Panel();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
-            this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
@@ -97,7 +96,6 @@
             this.txtTenLoai.TabIndex = 3;
             this.txtTenLoai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenLoai_KeyDown);
             this.txtTenLoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenLoai_KeyPress);
-            this.txtTenLoai.Leave += new System.EventHandler(this.txtTenLoai_Leave);
             this.txtTenLoai.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenLoai_MouseDown);
             // 
             // labelControl6
@@ -127,7 +125,6 @@
             // pnelButton
             // 
             this.pnelButton.Controls.Add(this.btnHuy);
-            this.pnelButton.Controls.Add(this.btnThoat);
             this.pnelButton.Controls.Add(this.btnXoa);
             this.pnelButton.Controls.Add(this.btnSua);
             this.pnelButton.Controls.Add(this.btnLuu);
@@ -142,25 +139,13 @@
             // btnHuy
             // 
             this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
-            this.btnHuy.Location = new System.Drawing.Point(501, 6);
+            this.btnHuy.Location = new System.Drawing.Point(498, 6);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(78, 32);
             this.btnHuy.TabIndex = 7;
             this.btnHuy.Text = "HỦY";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThoat.ImageOptions.Image = global::QuanLyCuaHangDM.Properties.Resources.Cancel_32x32;
-            this.btnThoat.Location = new System.Drawing.Point(602, 6);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(103, 32);
-            this.btnThoat.TabIndex = 4;
-            this.btnThoat.Text = "THOÁT";
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnXoa
             // 
@@ -288,7 +273,6 @@
         private DevExpress.XtraEditors.TextEdit txtMaLoai;
         private DevExpress.XtraEditors.TextEdit txtTenLoai;
         private System.Windows.Forms.Panel pnelButton;
-        private DevExpress.XtraEditors.SimpleButton btnThoat;
         private DevExpress.XtraEditors.SimpleButton btnXoa;
         private DevExpress.XtraEditors.SimpleButton btnSua;
         private DevExpress.XtraEditors.SimpleButton btnLuu;

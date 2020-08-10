@@ -102,7 +102,6 @@
             this.txtEmail.TabIndex = 10;
             this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNPP_KeyDown);
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
-            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             this.txtEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenNPP_MouseDown);
             // 
             // txtDiaChi
@@ -118,7 +117,6 @@
             this.txtDiaChi.TabIndex = 9;
             this.txtDiaChi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNPP_KeyDown);
             this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
-            this.txtDiaChi.Leave += new System.EventHandler(this.txtDiaChi_Leave);
             this.txtDiaChi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenNPP_MouseDown);
             // 
             // txtDT
@@ -132,7 +130,6 @@
             this.txtDT.TabIndex = 7;
             this.txtDT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNPP_KeyDown);
             this.txtDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDT_KeyPress);
-            this.txtDT.Leave += new System.EventHandler(this.txtDT_Leave);
             this.txtDT.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenNPP_MouseDown);
             // 
             // txtTenNPP

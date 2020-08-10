@@ -29,10 +29,6 @@ namespace QuanLyCuaHangDM
         {
             gridCtrlKhachHang.DataSource = bll_kh.GetKhachHangs();
         }
-        void binding()
-        {
-
-        }
         void disEnd(bool e)
         {
             txtMaKH.Enabled = e;
@@ -73,6 +69,31 @@ namespace QuanLyCuaHangDM
             HienThiDSKhachHang();
             disEnd(false);
             gv_KhachHang.RowClick += gv_KhachHang_RowClick;
+        }
+        bool kiemTraSDT(string _SDT)
+        {
+            List<string> lst = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039"
+            , "070", "079", "077", "076", "078"
+            , "083", "084", "085", "081", "082", "088", "091", "094", "099", "059", "092", "093", "095", "096", "097", "098"
+            , "056", "058", "085", "081", "082"};
+            for (int i = 0; i < lst.Count; i++)
+            {
+                if (_SDT.StartsWith(lst[i]))
+                {
+                    if (_SDT.Length == 10)
+                    {
+                        return true;
+                    }
+                    continue;
+                }
+            }
+            return false;
+        }
+        bool kiemTraTextLength(string _Str)
+        {
+            if (_Str.Length < 5 || _Str.Length > 50)
+                return false;
+            return true;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -123,21 +144,41 @@ namespace QuanLyCuaHangDM
                 _LoaiKhachHang = (cboLoaiKH.SelectedValue.ToString());
             }
             catch { }
+            if (_TenKhachHang == string.Empty || _DiaChi == string.Empty || _MaKhachHang == string.Empty)
+            {
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                return;
+            }
+            if ((DateTime.Now.Year - (dtpNgaySinh.Value.Year)) < 7)
+            {
+                XtraMessageBox.Show("Ngày sinh không hợp lệ, tuổi phải lớn hơn 6");
+                return;
+            }
+            if(!kiemTraSDT(_MaKhachHang))
+            {
+                XtraMessageBox.Show("Số điện thoại sai định dạng");
+                return;
+            }
+            if(!kiemTraTextLength(_TenKhachHang))
+            {
+                XtraMessageBox.Show("Tên khách hàng giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if (!kiemTraTextLength(_DiaChi))
+            {
+                XtraMessageBox.Show("Địa chỉ giới hạn 5 ~ 50 kí tự");
+                return;
+            }
             if (flag == 0)
             {
-                if (_TenKhachHang == "" || _DiaChi == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_kh.addKhachHang(_MaKhachHang, _TenKhachHang, _NgaySinh, _GioiTinh, _DiaChi, _LoaiKhachHang);
+                if (i > 0)
                 {
-                    int i = bll_kh.addKhachHang(_MaKhachHang, _TenKhachHang, _NgaySinh, _GioiTinh, _DiaChi, _LoaiKhachHang);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                    XtraMessageBox.Show("Thêm mới thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Thêm mới thất bại");
             }
             else
             {
@@ -207,7 +248,6 @@ namespace QuanLyCuaHangDM
             loadControl_cboGT();
             loadControl_cboLoaiKH();
             disEnd(false);
-            binding();
         }
 
         private void btnLoaiKH_Click(object sender, EventArgs e)
@@ -221,6 +261,7 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmKhachHang_Load(sender, e);
+            reActive();
         }
 
         private void txtDT_KeyPress(object sender, KeyPressEventArgs e)
@@ -233,11 +274,12 @@ namespace QuanLyCuaHangDM
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            frmMain.num = 2;
-            using (frmPrint prt = new frmPrint())
+            if (!gridCtrlKhachHang.IsPrintingAvailable)
             {
-                prt.ShowDialog();
+                MessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
+                return;
             }
+            gridCtrlKhachHang.ShowPrintPreview();
         }
 
         private void gv_KhachHang_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -264,43 +306,12 @@ namespace QuanLyCuaHangDM
 
         private void txtTenKH_Leave(object sender, EventArgs e)
         {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
-            }
+
         }
 
         private void txtMaKH_Leave(object sender, EventArgs e)
         {
-            List<string> lst = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039" 
-            , "070", "079", "077", "076", "078"
-            , "083", "084", "085", "081", "082", "088", "091", "094", "099", "059", "092"
-            , "056", "058", "085", "081", "082"};
-            bool flag = false;
-            for (int i = 0; i < lst.Count; i++)
-            {
-                if (((TextEdit)sender).Text.StartsWith(lst[i]))
-                {
-                    if (((TextEdit)sender).Text.Length == 10)
-                    {
-                        flag = true;
-                        return;
-                    }
-                    XtraMessageBox.Show("Số điện thoại sai định dạng");
-                    ((TextEdit)sender).Focus();
-                    return;
-                }
-            }
-            if(!flag)
-            {
-                XtraMessageBox.Show("Số điện thoại sai định dạng");
-                ((TextEdit)sender).Focus();
-                return;
-            }
+
         }
         private void txtDC_KeyPress_1(object sender, KeyPressEventArgs e)
         {
@@ -329,11 +340,7 @@ namespace QuanLyCuaHangDM
 
         private void dtpNgaySinh_Leave(object sender, EventArgs e)
         {
-            if ((DateTime.Now.Year - ((DateTimePicker)sender).Value.Year) < 7)
-            {
-                XtraMessageBox.Show("Ngày sinh không hợp lệ");
-                ((DateTimePicker)sender).Focus();
-            }
+            
         }
     }
 }

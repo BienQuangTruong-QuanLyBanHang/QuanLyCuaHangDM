@@ -51,6 +51,12 @@ namespace QuanLyCuaHangDM
             disEnd(false);
             gv_LoaiKH.RowClick += gv_LoaiKH_RowClick;
         }
+        bool kiemTraTextLength(string _Str)
+        {
+            if (_Str.Length < 5 || _Str.Length > 50)
+                return false;
+            return true;
+        }
         private void frmLoaiKhachHang_Load(object sender, EventArgs e)
         {
             HienThiDSLoaiKhachHang();
@@ -94,37 +100,37 @@ namespace QuanLyCuaHangDM
                 _TenLoaiKhachHang = txtTenLoai.Text;
             }
             catch { }
-            if (flag == 0)//thêm
+            if (_TenLoaiKhachHang == "")
             {
-                if (_TenLoaiKhachHang == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                return;
+            }
+            if (!kiemTraTextLength(_TenLoaiKhachHang))
+            {
+                XtraMessageBox.Show("Tên loại giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if (flag == 0)
+            {
+                int i = bll_lkh.AddLoaiKhachHangs(_MaLoaiKhachHang, _TenLoaiKhachHang);
+                if (i > 0)
                 {
-                    int i = bll_lkh.AddLoaiKhachHangs(_MaLoaiKhachHang, _TenLoaiKhachHang);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                    XtraMessageBox.Show("Thêm mới thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Thêm mới thất bại");
             }
             else
             {
-                if (_TenLoaiKhachHang == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_lkh.UpdateLoaiKhachHangs(_MaLoaiKhachHang, _TenLoaiKhachHang);
+                if (i > 0)
                 {
-                    int i = bll_lkh.UpdateLoaiKhachHangs(_MaLoaiKhachHang, _TenLoaiKhachHang);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Sửa thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Sửa thất bại");
+                    XtraMessageBox.Show("Sửa thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Sửa thất bại");
             }
         }
 
@@ -177,7 +183,7 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmLoaiKhachHang_Load(sender, e);
-            //XtraReport report = ReportGenerator.GenerateReport(gv_LoaiKH);
+            reActive();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -230,14 +236,7 @@ namespace QuanLyCuaHangDM
 
         private void txtTenLoai_Leave(object sender, EventArgs e)
         {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
-            }
+
         }
 
         private void txtTenLoai_KeyDown(object sender, KeyEventArgs e)

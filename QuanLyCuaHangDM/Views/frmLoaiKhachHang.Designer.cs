@@ -240,7 +240,6 @@
             this.txtTenLoai.TabIndex = 3;
             this.txtTenLoai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenLoai_KeyDown);
             this.txtTenLoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenLoai_KeyPress);
-            this.txtTenLoai.Leave += new System.EventHandler(this.txtTenLoai_Leave);
             this.txtTenLoai.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenLoai_MouseDown);
             // 
             // labelControl6

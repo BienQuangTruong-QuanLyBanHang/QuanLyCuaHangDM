@@ -76,6 +76,47 @@ namespace QuanLyCuaHangDM
             disEnd(false);
             gv_NhanVien.RowClick += gv_NhanVien_RowClick;
         }
+        bool kiemTraSDT(string _SDT)
+        {
+            List<string> lst = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039"
+            , "070", "079", "077", "076", "078"
+            , "083", "084", "085", "081", "082", "088", "091", "094", "099", "059", "092", "093", "095", "096", "097", "098"
+            , "056", "058", "085", "081", "082"};
+            for (int i = 0; i < lst.Count; i++)
+            {
+                if (_SDT.StartsWith(lst[i]))
+                {
+                    if (_SDT.Length == 10)
+                    {
+                        return true;
+                    }
+                    continue;
+                }
+            }
+            return false;
+        }
+        bool kiemTraTextLength(string _Str)
+        {
+            if (_Str.Length < 5 || _Str.Length > 50)
+                return false;
+            return true;
+        }
+        bool kiemTraNgaySinh(DateTime _dt)
+        {
+            if ((DateTime.Now.Year - _dt.Year) > 16)
+            {
+                return true;
+            }
+            else if ((DateTime.Now.Year - _dt.Year) == 16)
+            {
+                if (DateTime.Now.Month < _dt.Month)
+                {
+                    if (DateTime.Now.Day < _dt.Day)
+                        return true;
+                }
+            }
+            return false;
+        }
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             HienThiDSNhanVien();
@@ -162,21 +203,41 @@ namespace QuanLyCuaHangDM
                 _ChucVu = cboChucVu.SelectedValue.ToString();
             }
             catch { }
+            if (_TenNhanVien == "" || _DiaChi == "" || _SoDT == "")
+            {
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                return;
+            }
+            if(!kiemTraSDT(_SoDT))
+            {
+                XtraMessageBox.Show("Số điện thoại sai định dạng");
+                return;
+            }
+            if(!kiemTraTextLength(_TenNhanVien))
+            {
+                XtraMessageBox.Show("Tên nhân viên giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if (!kiemTraTextLength(_DiaChi))
+            {
+                XtraMessageBox.Show("Địa chỉ giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if(!kiemTraNgaySinh(_NgaySinh))
+            {
+                XtraMessageBox.Show("Ngày sinh không hợp lệ, tuổi nhân viên phải lớn hơn 16");
+                return;
+            }    
             if (flag == 0)
             {
-                if (_TenNhanVien == "" || _DiaChi == "" || _SoDT == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_nv.AddNhanViens(_MaNhanVien, _TenNhanVien, _NgaySinh, _GioiTinh, _NgayVaoLam, _ChucVu, _DiaChi, _SoDT);
+                if (i > 0)
                 {
-                    int i = bll_nv.AddNhanViens(_MaNhanVien, _TenNhanVien, _NgaySinh, _GioiTinh, _NgayVaoLam, _ChucVu, _DiaChi, _SoDT);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                    XtraMessageBox.Show("Thêm mới thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Thêm mới thất bại");
             }
             else
             {
@@ -241,6 +302,7 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmNhanVien_Load(sender, e);
+            reActive();
         }
 
         private void txtDT_KeyPress(object sender, KeyPressEventArgs e)
@@ -283,47 +345,12 @@ namespace QuanLyCuaHangDM
             }
         }
 
-        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
-        {
-            if ((DateTime.Now.Year - ((DateTimePicker)sender).Value.Year) > 16)
-            {
-                return;
-            }
-            else if((DateTime.Now.Year - ((DateTimePicker)sender).Value.Year) == 16)
-            {
-                if (DateTime.Now.Month < ((DateTimePicker)sender).Value.Month)
-                {
-                    if (DateTime.Now.Day < ((DateTimePicker)sender).Value.Day)
-                        return;
-                }
-            }    
-            XtraMessageBox.Show("Ngày sinh không hợp lệ");
-            ((DateTimePicker)sender).Focus();
-        }
-
-        private void dtpNgaySinh_CloseUp(object sender, EventArgs e)
-        {
-            
-        }
-
         private void txtDC_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             var regex = new Regex(@"^[0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ./, ]+$");
             if (!regex.IsMatch(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
-            }
-        }
-
-        private void txtDC_Leave(object sender, EventArgs e)
-        {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
             }
         }
 

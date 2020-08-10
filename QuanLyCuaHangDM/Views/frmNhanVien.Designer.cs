@@ -138,8 +138,6 @@
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(435, 30);
             this.dtpNgaySinh.TabIndex = 12;
-            this.dtpNgaySinh.CloseUp += new System.EventHandler(this.dtpNgaySinh_CloseUp);
-            this.dtpNgaySinh.Leave += new System.EventHandler(this.dtpNgaySinh_ValueChanged);
             // 
             // cboGioiTinh
             // 
@@ -163,7 +161,6 @@
             this.txtDC.TabIndex = 9;
             this.txtDC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDT_KeyDown);
             this.txtDC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDC_KeyPress_1);
-            this.txtDC.Leave += new System.EventHandler(this.txtDC_Leave);
             this.txtDC.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDT_MouseDown);
             // 
             // txtDT
@@ -193,7 +190,6 @@
             this.txtTenNV.TabIndex = 5;
             this.txtTenNV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDT_KeyDown);
             this.txtTenNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDC_KeyPress);
-            this.txtTenNV.Leave += new System.EventHandler(this.txtDC_Leave);
             this.txtTenNV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDT_MouseDown);
             // 
             // txtMaNV

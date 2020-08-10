@@ -217,7 +217,6 @@
             this.txtTenCV.TabIndex = 3;
             this.txtTenCV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenCV_KeyDown);
             this.txtTenCV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenCV_KeyPress);
-            this.txtTenCV.Leave += new System.EventHandler(this.txtTenCV_Leave);
             this.txtTenCV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtTenCV_MouseDown);
             // 
             // labelControl6

@@ -91,37 +91,37 @@ namespace QuanLyCuaHangDM
                 _TenHangSanXuat = txtTenHang.Text;
             }
             catch { }
+            if (_TenHangSanXuat == "")
+            {
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                return;
+            }
+            if (_TenHangSanXuat.Length < 5 || _TenHangSanXuat.Length > 50)
+            {
+                XtraMessageBox.Show("Tên Hãng sản xuất giới hạn 5 ~ 50 kí tự");
+                return;
+            }
             if (flag == 0)
             {
-                if (_TenHangSanXuat == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_hsx.addHangSanXuat(_MaHangSanXuat, _TenHangSanXuat);
+                if (i > 0)
                 {
-                    int i = bll_hsx.addHangSanXuat(_MaHangSanXuat, _TenHangSanXuat);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                    XtraMessageBox.Show("Thêm mới thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Thêm mới thất bại");
             }
             else
             {
-                if (_TenHangSanXuat == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_hsx.updateHangSanXuat(_MaHangSanXuat, _TenHangSanXuat);
+                if (i > 0)
                 {
-                    int i = bll_hsx.updateHangSanXuat(_MaHangSanXuat, _TenHangSanXuat);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Sửa thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Sửa thất bại");
+                    XtraMessageBox.Show("Sửa thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Sửa thất bại");
             }
         }
 
@@ -174,15 +174,17 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmHangSX_Load(sender, e);
+            reActive();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            frmMain.num = 1;
-            using (frmPrint prt = new frmPrint())
+            if (!gridCtrlHangSX.IsPrintingAvailable)
             {
-                prt.ShowDialog();
+                MessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
+                return;
             }
+            gridCtrlHangSX.ShowPrintPreview();
         }
 
         private void gv_HangSanXuat_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -197,22 +199,12 @@ namespace QuanLyCuaHangDM
 
         private void txtTenHang_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
+
         }
 
         private void txtTenHang_Leave(object sender, EventArgs e)
         {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
-            }
+
         }
 
         private void txtTenHang_KeyDown(object sender, KeyEventArgs e)

@@ -63,7 +63,42 @@ namespace QuanLyCuaHangDM
             disEnd(false);
             binding();
         }
-
+        bool kiemTraSDT(string _SDT)
+        {
+            List<string> lst = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039"
+            , "070", "079", "077", "076", "078"
+            , "083", "084", "085", "081", "082", "088", "091", "094", "099", "059", "092", "093", "095", "096", "097", "098"
+            , "056", "058", "085", "081", "082"};
+            for (int i = 0; i < lst.Count; i++)
+            {
+                if (_SDT.StartsWith(lst[i]))
+                {
+                    if (_SDT.Length == 10)
+                    {
+                        return true;
+                    }
+                    continue;
+                }
+            }
+            return false;
+        }
+        bool kiemTraTextLength(string _Str)
+        {
+            if (_Str.Length < 5 || _Str.Length > 50)
+                return false;
+            return true;
+        }
+        bool kiemTraEmail(string inputEmail)
+        {
+            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(inputEmail))
+                return (true);
+            else
+                return (false);
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
             flag = 0;
@@ -118,21 +153,41 @@ namespace QuanLyCuaHangDM
                 _SDT = txtDT.Text;
             }
             catch { }
+            if (_TenNhaPhanPhoi == string.Empty || _DiaChi == string.Empty || _SDT == string.Empty || _Email == string.Empty)
+            {
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                return;
+            }
+            if(!kiemTraSDT(_SDT))
+            {
+                XtraMessageBox.Show("Số điện thoại sai định dạng");
+                return;
+            }    
+            if(!kiemTraTextLength(_TenNhaPhanPhoi))
+            {
+                XtraMessageBox.Show("Tên nhà phân phối giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if (!kiemTraTextLength(_DiaChi))
+            {
+                XtraMessageBox.Show("Địa chỉ giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if(!kiemTraEmail(_Email))
+            {
+                XtraMessageBox.Show("Địa chỉ Email không hợp lệ");
+                return;
+            }    
             if (flag == 0)
             {
-                if (_TenNhaPhanPhoi == "" || _DiaChi == "" || _SDT == "" || _Email == "")
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_npp.AddNhaPhanPhois(_MaNhaPhanPhoi, _TenNhaPhanPhoi, _DiaChi, _SDT, _Email);
+                if (i > 0)
                 {
-                    int i = bll_npp.AddNhaPhanPhois(_MaNhaPhanPhoi, _TenNhaPhanPhoi, _DiaChi, _SDT, _Email);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                    XtraMessageBox.Show("Thêm mới thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Thêm mới thất bại");
             }
             else
             {
@@ -197,6 +252,7 @@ namespace QuanLyCuaHangDM
         {
             frmNhaPhanPhoi_Load(sender, e);
             HienThiDSNPP();
+            reActive();
         }
 
         private void txtDT_KeyPress(object sender, KeyPressEventArgs e)
@@ -209,11 +265,12 @@ namespace QuanLyCuaHangDM
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            frmMain.num = 5;
-            using (frmPrint prt = new frmPrint())
+            if (!gridCtrlNPP.IsPrintingAvailable)
             {
-                prt.ShowDialog();
+                MessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
+                return;
             }
+            gridCtrlNPP.ShowPrintPreview();
         }
 
         private void gv_NhaPhanPhoi_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -240,54 +297,17 @@ namespace QuanLyCuaHangDM
 
         private void txtDT_Leave(object sender, EventArgs e)
         {
-            List<string> lst = new List<string>() { "032", "033", "034", "035", "036", "037", "038", "039"
-            , "070", "079", "077", "076", "078"
-            , "083", "084", "085", "081", "082", "088", "091", "094", "099", "059", "092"
-            , "056", "058", "085", "081", "082"};
-            bool flag = false;
-            for (int i = 0; i < lst.Count; i++)
-            {
-                if (((TextEdit)sender).Text.StartsWith(lst[i]))
-                {
-                    if (((TextEdit)sender).Text.Length == 10)
-                    {
-                        flag = true;
-                        return;
-                    }
-                    XtraMessageBox.Show("Số điện thoại sai định dạng");
-                    ((TextEdit)sender).Focus();
-                    return;
-                }
-            }
-            if (!flag)
-            {
-                XtraMessageBox.Show("Số điện thoại sai định dạng");
-                ((TextEdit)sender).Focus();
-                return;
-            }
+
         }
 
         private void txtDiaChi_Leave(object sender, EventArgs e)
         {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
-            }
+
         }
 
         private void txtEmail_Leave(object sender, EventArgs e)
         {
-            if (this.Text != string.Empty)
-            {
-                if (!Regex.IsMatch(this.Text, @"^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$"))
-                {
-                    MessageBox.Show("Địa chỉ Email không hợp lệ");
-                }
-            }
+
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)

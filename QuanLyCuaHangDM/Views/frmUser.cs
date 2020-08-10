@@ -56,6 +56,12 @@ namespace QuanLyCuaHangDM
             disEnd(false);
             gv_User.RowClick += gv_User_RowClick;
         }
+        bool kiemTraTextLength(string _Str)
+        {
+            if (_Str.Length < 5 || _Str.Length > 50)
+                return false;
+            return true;
+        }
         private void frmUser_Load(object sender, EventArgs e)
         {
             HienThiDSUser();
@@ -113,36 +119,46 @@ namespace QuanLyCuaHangDM
                 _TenDangNhap = txtTenDN.Text;
             }
             catch { }
+            if (_MatKhau == "" || _TenDangNhap == "")
+            {
+                MessageBox.Show("Hãy nhập đầy đủ thông tin", "Thông báo");
+                return;
+            }
+            if(!kiemTraTextLength(_TenDangNhap))
+            {
+                XtraMessageBox.Show("Tên đăng nhập giới hạn 5 ~ 50 kí tự");
+                return;
+            }
+            if (!kiemTraTextLength(_MatKhau))
+            {
+                XtraMessageBox.Show("Mật khẩu giới hạn 5 ~ 50 kí tự");
+                return;
+            }
             if (flag == 0)
             {
-                if (_MatKhau == "" || _TenDangNhap == "")
-                    MessageBox.Show("Hãy nhập đầy đủ thông tin", "Thông báo");
-                else
+                int rs2 = bll_user.KiemTraMaNV(_MaNhanVien);
+                if (rs2 > 0)
                 {
-                    int rs2 = bll_user.KiemTraMaNV(_MaNhanVien);
-                    if (rs2 > 0)
+                    int rs = bll_user.KiemTraTenDangNhap(_TenDangNhap);
+                    if (rs > 0)
                     {
-                        int rs = bll_user.KiemTraTenDangNhap(_TenDangNhap);
-                        if (rs > 0)
+                        int i = bll_user.AddUsers(_ID, _MaNhanVien, _TenDangNhap, _MatKhau);
+                        if (i > 0)
                         {
-                            int i = bll_user.AddUsers(_ID, _MaNhanVien, _TenDangNhap, _MatKhau);
-                            if (i > 0)
-                            {
-                                MessageBox.Show("Thêm mới thành công", "Thông báo");
-                                reActive();
-                            }
-                            else
-                                MessageBox.Show("Thêm mới thất bại", "Thông báo");
+                            MessageBox.Show("Thêm mới thành công", "Thông báo");
+                            reActive();
                         }
                         else
-                        {
-                            MessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo");
-                        }
+                            MessageBox.Show("Thêm mới thất bại", "Thông báo");
                     }
                     else
                     {
-                        MessageBox.Show("Nhân viên này đã có tài khoản", "Thông báo");
+                        MessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Nhân viên này đã có tài khoản", "Thông báo");
                 }
             }
             else
@@ -221,11 +237,12 @@ namespace QuanLyCuaHangDM
 
         private void btnIn_Click(object sender, EventArgs e)
         {
-            frmMain.num = 7;
-            using (frmPrint prt = new frmPrint())
+            if (!gridCtrlUser.IsPrintingAvailable)
             {
-                prt.ShowDialog();
+                MessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
+                return;
             }
+            gridCtrlUser.ShowPrintPreview();
         }
 
         private void gv_User_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -242,14 +259,7 @@ namespace QuanLyCuaHangDM
 
         private void txtTenDN_Leave(object sender, EventArgs e)
         {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
-            }
+
         }
 
         private void txtTenDN_MouseDown(object sender, MouseEventArgs e)
@@ -266,11 +276,6 @@ namespace QuanLyCuaHangDM
             {
                 XtraMessageBox.Show("Cut/Copy and Paste Options are disabled");
             }
-        }
-
-        private void txtTenDN_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
         }
     }
 }

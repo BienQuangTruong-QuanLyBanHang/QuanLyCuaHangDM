@@ -15,6 +15,7 @@ using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraLayout.Converter;
 using System.Globalization;
 using DevExpress.Utils.MVVM;
+using System.Text.RegularExpressions;
 
 namespace QuanLyCuaHangDM
 {
@@ -99,7 +100,6 @@ namespace QuanLyCuaHangDM
         public void loadControl_cboDVT()
         {
             List<string> lst = new List<string>() { "Cái", "Bộ", "Thùng", "Hộp", "Chai" };
-            cboDVT.Items.Clear();
             cboDVT.DataSource = lst;
         }
         void clearData()
@@ -119,6 +119,12 @@ namespace QuanLyCuaHangDM
             HienThiDSSanPham();
             disEnd(false);
             gv_SanPham.RowClick += gv_SanPham_RowClick;
+        }
+        bool kiemTraTextLength(string _Str)
+        {
+            if (_Str.Length < 5 || _Str.Length > 50)
+                return false;
+            return true;
         }
         private void frmSanPham_Load(object sender, EventArgs e)
         {
@@ -252,37 +258,37 @@ namespace QuanLyCuaHangDM
                 _HinhSanPham = txtHinhSanPham.Text;
             }
             catch { }
+            if (_TenSanPham == "" || txtGiaNhap.Text == string.Empty || txtGiaBan.Text == string.Empty || txtTonKho.Text == string.Empty || _HinhSanPham == string.Empty)
+            {
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
+                return;
+            }
+            if(!kiemTraTextLength(_TenSanPham))
+            {
+                XtraMessageBox.Show("Tên sản phẩm giới hạn 5 ~ 50 kí tự");
+                return;
+            }
             if (flag == 0)
             {
-                if (_TenSanPham == "" || txtGiaNhap.Text == string.Empty || txtGiaBan.Text == string.Empty || txtTonKho.Text == string.Empty)
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_sp.AddSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _DVT, _TonKho, _MaMau, _HinhSanPham);
+                if (i > 0)
                 {
-                    int i = bll_sp.AddSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _DVT, _TonKho, _MaMau, _HinhSanPham);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Thêm mới thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Thêm mới thất bại");
+                    XtraMessageBox.Show("Thêm mới thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Thêm mới thất bại");
             }
             else
             {
-                if (_TenSanPham == "" || txtGiaNhap.Text == string.Empty || txtGiaBan.Text == string.Empty || txtTonKho.Text == string.Empty)
-                    XtraMessageBox.Show("Hãy nhập đầy đủ thông tin");
-                else
+                int i = bll_sp.UpdateSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _DVT, _TonKho, _MaMau, _HinhSanPham);
+                if (i > 0)
                 {
-                    int i = bll_sp.UpdateSanPhams(_MaSanPham, _TenSanPham, _LoaiSanPham, _HangSanXuat, _GiaNhap, _GiaBan, _DVT, _TonKho, _MaMau, _HinhSanPham);
-                    if (i > 0)
-                    {
-                        XtraMessageBox.Show("Sửa thành công");
-                        reActive();
-                    }
-                    else
-                        XtraMessageBox.Show("Sửa thất bại");
+                    XtraMessageBox.Show("Sửa thành công");
+                    reActive();
                 }
+                else
+                    XtraMessageBox.Show("Sửa thất bại");
             }
         }
 
@@ -379,6 +385,7 @@ namespace QuanLyCuaHangDM
         private void btnHuy_Click(object sender, EventArgs e)
         {
             frmSanPham_Load(sender, e);
+            reActive();
         }
 
         private void gv_SanPham_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -435,7 +442,8 @@ namespace QuanLyCuaHangDM
 
         private void txtTenSP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !(char.IsWhiteSpace(e.KeyChar)))
+            var regex = new Regex(@"^[0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ./, ]+$");
+            if (!regex.IsMatch(e.KeyChar.ToString()) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -443,14 +451,7 @@ namespace QuanLyCuaHangDM
 
         private void txtTenSP_Leave(object sender, EventArgs e)
         {
-            if (((TextEdit)sender).Text != string.Empty)
-            {
-                if (((TextEdit)sender).Text.Length < 5)
-                {
-                    XtraMessageBox.Show("Phải nhập ít nhất 5 ký tự");
-                    ((TextEdit)sender).Focus();
-                }
-            }
+
         }
 
         private void txtTenSP_KeyDown(object sender, KeyEventArgs e)
