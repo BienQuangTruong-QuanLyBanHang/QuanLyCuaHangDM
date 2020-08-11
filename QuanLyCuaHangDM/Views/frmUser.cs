@@ -126,12 +126,12 @@ namespace QuanLyCuaHangDM
             }
             if(!kiemTraTextLength(_TenDangNhap))
             {
-                XtraMessageBox.Show("Tên đăng nhập giới hạn 5 ~ 50 kí tự");
+                XtraMessageBox.Show("Tên đăng nhập giới hạn 5 ~ 50 kí tự", "Thông báo");
                 return;
             }
             if (!kiemTraTextLength(_MatKhau))
             {
-                XtraMessageBox.Show("Mật khẩu giới hạn 5 ~ 50 kí tự");
+                XtraMessageBox.Show("Mật khẩu giới hạn 5 ~ 50 kí tự", "Thông báo");
                 return;
             }
             if (flag == 0)
@@ -239,7 +239,7 @@ namespace QuanLyCuaHangDM
         {
             if (!gridCtrlUser.IsPrintingAvailable)
             {
-                MessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
+                XtraMessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error");
                 return;
             }
             gridCtrlUser.ShowPrintPreview();
