@@ -121,7 +121,7 @@ namespace QuanLyCuaHangDM
             catch { }
             if (_MatKhau == "" || _TenDangNhap == "")
             {
-                MessageBox.Show("Hãy nhập đầy đủ thông tin", "Thông báo");
+                XtraMessageBox.Show("Hãy nhập đầy đủ thông tin", "Thông báo");
                 return;
             }
             if(!kiemTraTextLength(_TenDangNhap))
@@ -145,20 +145,20 @@ namespace QuanLyCuaHangDM
                         int i = bll_user.AddUsers(_ID, _MaNhanVien, _TenDangNhap, _MatKhau);
                         if (i > 0)
                         {
-                            MessageBox.Show("Thêm mới thành công", "Thông báo");
+                            XtraMessageBox.Show("Thêm mới thành công", "Thông báo");
                             reActive();
                         }
                         else
-                            MessageBox.Show("Thêm mới thất bại", "Thông báo");
+                            XtraMessageBox.Show("Thêm mới thất bại", "Thông báo");
                     }
                     else
                     {
-                        MessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo");
+                        XtraMessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Nhân viên này đã có tài khoản", "Thông báo");
+                    XtraMessageBox.Show("Nhân viên này đã có tài khoản", "Thông báo");
                 }
             }
             else

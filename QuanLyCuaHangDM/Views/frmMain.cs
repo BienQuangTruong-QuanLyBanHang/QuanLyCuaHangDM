@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using System.Configuration;
 using System.IO;
 using DAL_BLL;
+using DevExpress.XtraBars;
 
 namespace QuanLyCuaHangDM
 {
@@ -54,6 +55,12 @@ namespace QuanLyCuaHangDM
             btnHangSX.Enabled = !e;
             btnInDSHoaDon.Enabled = !e;
             btnInDSPN.Enabled = !e;
+            btnPhanQuyen.Enabled = !e;
+        }
+        public void DisEndMenuLogin2(bool e)
+        {
+            btnLogin.Enabled = e;
+            btnLogout.Enabled = !e;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -96,15 +103,23 @@ namespace QuanLyCuaHangDM
                 }
                 else
                 {
-                    List<string> lstBtn = new List<string>() { "btnBanHang", "BtnNhapHang"}
-                    List<PhanQuyenManHinh> lst = new List<PhanQuyenManHinh>();
-                    lst = bll_pq.GetPhanQuyenManHinhs(bll_nv.GetChucVuBy(bll_us.GetIdUsers(IdUser)));
-                    for(int i = 0;i<lst.Count;i++)
-                    {
-                        //if(btnBanHang.Tag)
-                    }
-                    DisEndMenuLogin(false, IdLogin);
                     IdUser = login.txtUser.Text;
+                    List<BarButtonItem> lstBtn = new List<BarButtonItem>() { btnBanHang, btnNhapHang, btnNhanVien, btnKhachHang, btnGrant, btnSanPham, btnNCC, btnInDSPN, btnInDSHoaDon, btnPhanQuyen };
+                    List<PhanQuyenManHinh> lstMH = new List<PhanQuyenManHinh>();
+
+                    lstMH = bll_pq.GetManHinhs(bll_nv.GetChucVuBy(bll_us.GetIdUsers(IdUser)), true);
+
+                    for (int i = 0; i < lstMH.Count; i++)
+                    {
+                        for (int j = 0; j < lstBtn.Count; j++)
+                        {
+                            if (Equals(lstBtn[j].Tag.ToString(), lstMH[i].MaMH))
+                                //lstBtn[i].Visibility = BarItemVisibility.Never;
+                                lstBtn[j].Enabled = true;
+                        }
+                    }
+                    //DisEndMenuLogin(false, IdLogin);
+                    DisEndMenuLogin2(false);
                 }
                 //else
                 //{
@@ -163,7 +178,8 @@ namespace QuanLyCuaHangDM
         {
             if(XtraMessageBox.Show("Bạn có muốn đăng xuất ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                DisEndMenuLogin(true, IdLogin);
+                //DisEndMenuLogin(true, IdLogin);
+                DisEndMenuLogin2(true);
                 btnLogin_ItemClick(sender, e);
             }
         }
@@ -405,6 +421,18 @@ namespace QuanLyCuaHangDM
             frmDanhSachHoaDon d = new frmDanhSachHoaDon();
             d.MdiParent = this;
             d.Show();
+        }
+
+        private void btnPhanQuyen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmPhanQuyenManHinh p = new frmPhanQuyenManHinh();
+            p.MdiParent = this;
+            p.Show();
+        }
+
+        private void btnAbout_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("Phần mềm này được tạo ra nhầm mục đích phục vụ việc học", "About");
         }
     }
 }

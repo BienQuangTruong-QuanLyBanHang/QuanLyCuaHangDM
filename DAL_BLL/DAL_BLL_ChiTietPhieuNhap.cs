@@ -47,12 +47,23 @@ namespace DAL_BLL
                 ctpn.TongTien = tongTien;
                 qlhh.ChiTietPhieuNhaps.InsertOnSubmit(ctpn);
                 qlhh.SubmitChanges();
+
+                UpdateGiaNhap(MaSP, gianhap);
                 return 1;
             }
             else
             {
                 return 0;
             }
+        }
+        public void UpdateGiaNhap(string MaSP, int GiaNhap)
+        {
+            SanPham sp = qlhh.SanPhams.Where(t => t.MaSanPham == MaSP).FirstOrDefault();
+            if(sp != null)
+            {
+                sp.GiaNhap = GiaNhap;
+            }
+            qlhh.SubmitChanges();
         }
     }
 }

@@ -37,11 +37,13 @@ namespace DAL_BLL
             });
             return kq;
         }
+        public List<PhanQuyenManHinh> GetManHinhs(string qMaCV, bool qCoQuyen)
+        {
+            return qlhh.PhanQuyenManHinhs.Where(t => t.MaChucVu == qMaCV && t.CoQuyen == qCoQuyen).ToList();
+        }
         public int AddPhanQuyenManHinhs(string qMaChucVu, string qMaMH, bool qCoQuyen)
         {
-            qlhh.PhanQuyenManHinhs.DeleteAllOnSubmit(qlhh.PhanQuyenManHinhs);
-            PhanQuyenManHinh phanQuyenManHinhs = qlhh.PhanQuyenManHinhs.Where(t => t.MaChucVu == qMaChucVu).FirstOrDefault();
-            if (phanQuyenManHinhs == null)
+            try
             {
                 PhanQuyenManHinh pqmh = new PhanQuyenManHinh();
                 pqmh.MaChucVu = qMaChucVu;
@@ -51,7 +53,7 @@ namespace DAL_BLL
                 qlhh.SubmitChanges();
                 return 1;
             }
-            else
+            catch
             {
                 return 0;
             }
@@ -85,6 +87,12 @@ namespace DAL_BLL
                 return 1;
             }
             return 0;
+        }
+        public void clearData(string qMaChucVu)
+        {
+            var pq = from p in qlhh.PhanQuyenManHinhs where p.MaChucVu == qMaChucVu select p;
+            qlhh.PhanQuyenManHinhs.DeleteAllOnSubmit(pq);
+            qlhh.SubmitChanges();
         }
     }
 }
