@@ -16,6 +16,8 @@ namespace QuanLyCuaHangDM
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         DAL_BLL_User bll_us = new DAL_BLL_User();
+        DAL_BLL_PhanQuyenManHinh bll_pq = new DAL_BLL_PhanQuyenManHinh();
+        DAL_BLL_NhanVien bll_nv = new DAL_BLL_NhanVien();
         public static string user;
         public static string IdLogin;
         public static string IdUser;
@@ -94,6 +96,13 @@ namespace QuanLyCuaHangDM
                 }
                 else
                 {
+                    List<string> lstBtn = new List<string>() { "btnBanHang", "BtnNhapHang"}
+                    List<PhanQuyenManHinh> lst = new List<PhanQuyenManHinh>();
+                    lst = bll_pq.GetPhanQuyenManHinhs(bll_nv.GetChucVuBy(bll_us.GetIdUsers(IdUser)));
+                    for(int i = 0;i<lst.Count;i++)
+                    {
+                        //if(btnBanHang.Tag)
+                    }
                     DisEndMenuLogin(false, IdLogin);
                     IdUser = login.txtUser.Text;
                 }

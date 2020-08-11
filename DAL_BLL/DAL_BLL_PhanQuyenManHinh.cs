@@ -39,6 +39,7 @@ namespace DAL_BLL
         }
         public int AddPhanQuyenManHinhs(string qMaChucVu, string qMaMH, bool qCoQuyen)
         {
+            qlhh.PhanQuyenManHinhs.DeleteAllOnSubmit(qlhh.PhanQuyenManHinhs);
             PhanQuyenManHinh phanQuyenManHinhs = qlhh.PhanQuyenManHinhs.Where(t => t.MaChucVu == qMaChucVu).FirstOrDefault();
             if (phanQuyenManHinhs == null)
             {

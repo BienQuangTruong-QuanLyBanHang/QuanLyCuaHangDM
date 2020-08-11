@@ -123,5 +123,9 @@ namespace DAL_BLL
             }
             return qlhh.NhanViens.OrderByDescending(t => t.MaNhanVien).FirstOrDefault().MaNhanVien;
         }
+        public string GetChucVuBy(string qMaNV)
+        {
+            return qlhh.NhanViens.Where(t => t.MaNhanVien == qMaNV).FirstOrDefault().ChucVu;
+        }
     }
 }

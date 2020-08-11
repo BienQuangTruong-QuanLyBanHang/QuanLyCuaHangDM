@@ -63,5 +63,15 @@ namespace QuanLyCuaHangDM
                 list.Add(new Custom() { ID = "false", Name = "Name" + i });
             return list;
         }
+        
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            lst = gridCtrlPhanQuyen.DataSource as List<PhanQuyenManHinh>;
+            for(int i = 0; i < lst.Count; i++)
+            {
+                //bll_pqmh.AddPhanQuyenManHinhs(_MaCV, lst[i].MaMH, Convert.ToBoolean(lst[i].CoQuyen));
+                //MessageBox.Show(_MaCV + " " + lst[i].MaMH + " " + Convert.ToBoolean(lst[i].CoQuyen).ToString());
+            }
+        }
     }
 }
