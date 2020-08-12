@@ -73,6 +73,7 @@
       <DependentUpon>QLHH.dbml</DependentUpon>
     </Compile>
     <Compile Include="ChiTietHoaDon.cs" />
+    <Compile Include="QL_CSDL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

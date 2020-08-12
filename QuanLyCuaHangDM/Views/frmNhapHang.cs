@@ -56,12 +56,14 @@ namespace QuanLyCuaHangDM
         {
             cboMaSP.Enabled = e;
             txtSoLuong.Enabled = e;
+            txtGiaNhap.Enabled = e;
             btnThemCTPN.Enabled = e;
         }
         void disEndBtnCTPN(bool e)
         {
             btnSuaCTPN.Enabled = e;
             btnXoaCTPN.Enabled = e;
+            cboMaSP.Enabled = e;
         }
         public void loadControl_cboMaPN()
         {
@@ -152,7 +154,7 @@ namespace QuanLyCuaHangDM
             }
             clearDataPN();
             clearDataCTPN();
-            disEndCTPN(false);
+            disEndCTPN(true);
             disEndPN(true);
             cboMaPN.Enabled = false;
             txtMaPN.Text = cboMaPN.Text;
@@ -172,7 +174,7 @@ namespace QuanLyCuaHangDM
             catch { }
             try
             {
-                _MaNhanVien = (txtMaNV.Text);
+                _MaNhanVien = MaNV;
             }
             catch { }
             try
@@ -275,7 +277,7 @@ namespace QuanLyCuaHangDM
                         return;
                     }
                 }
-                lst.Add(new ChiTietPhieuNhap { MaPhieuNhap = _MaPhieuNhap, MaSanPham = _MaSanPham, SoLuong = _SoLuong, TongTien = _TongTien });
+                lst.Add(new ChiTietPhieuNhap { MaPhieuNhap = _MaPhieuNhap, MaSanPham = _MaSanPham, TenSanPham = _TenSanPham, SoLuong = _SoLuong, TongTien = _TongTien, GiaNhap = _GiaNhap });
                 loadListCTPN();
                 int money = 0;
                 for (int i = 0; i < lst.Count; i++)

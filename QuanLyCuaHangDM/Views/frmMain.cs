@@ -19,6 +19,7 @@ namespace QuanLyCuaHangDM
         DAL_BLL_User bll_us = new DAL_BLL_User();
         DAL_BLL_PhanQuyenManHinh bll_pq = new DAL_BLL_PhanQuyenManHinh();
         DAL_BLL_NhanVien bll_nv = new DAL_BLL_NhanVien();
+        QL_CSDL ql = new QL_CSDL();
         public static string user;
         public static string IdLogin;
         public static string IdUser;
@@ -77,6 +78,19 @@ namespace QuanLyCuaHangDM
 
         private void btnLogin_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //QL_CSDL ql = new QL_CSDL();
+            //int rs1 = ql.Check_Config();
+            //if (rs1 == 1)
+            //{
+            //    XtraMessageBox.Show("Cơ sở dữ liệu không tồn tại");
+            //    return;
+            //}
+            //if (rs1 == 2)
+            //{
+            //    XtraMessageBox.Show("Cơ sở dữ liệu không phù hợp");
+            //    return;
+            //}
+
             frmLogin login = null;
             Check_Login:
             if (login == null || login.IsDisposed)
@@ -120,6 +134,7 @@ namespace QuanLyCuaHangDM
                     }
                     //DisEndMenuLogin(false, IdLogin);
                     DisEndMenuLogin2(false);
+                    XtraMessageBox.Show("Người dùng " + bll_nv.GetTenNhanVien(bll_us.GetIdUsers(IdUser)) + " đăng nhập thành công", "Thông báo");
                 }
                 //else
                 //{
@@ -173,12 +188,29 @@ namespace QuanLyCuaHangDM
                 //}
             }
         }
+        public void DisposeAllButThis(XtraForm form)
+        {
+            foreach (XtraForm frm in this.MdiChildren)
+            {
+                if (frm.GetType() == form.GetType()
+                    && frm != form)
+                {
+                    frm.Dispose();
+                    frm.Close();
+                }
+            }
+        }
 
         private void btnLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if(XtraMessageBox.Show("Bạn có muốn đăng xuất ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //DisEndMenuLogin(true, IdLogin);
+                foreach (XtraForm f in MdiChildren)
+                {
+                    f.Close();
+                }
+                frmMain_Load(sender, e);
+                DisEndMenuLogin(true, IdLogin);
                 DisEndMenuLogin2(true);
                 btnLogin_ItemClick(sender, e);
             }

@@ -47,17 +47,6 @@ namespace QuanLyCuaHangDM.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-H6BPC8N\\SQLEXPRESS;Initial Catalog=QuanLySanPham;Persist Secu" +
-            "rity Info=True;User ID=sa")]
-        public string QuanLySanPhamConnectionString {
-            get {
-                return ((string)(this["QuanLySanPhamConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]

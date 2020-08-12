@@ -7,20 +7,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyCuaHangDM", "QuanLyCu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_BLL", "DAL_BLL\DAL_BLL.csproj", "{C8CA1F8E-9DC1-4B6B-A267-FC3887F396E6}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{43A31373-0972-47F9-9DE7-E87752C5F0A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5FD137C2-097B-4A02-AACB-C084E561B37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FD137C2-097B-4A02-AACB-C084E561B37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD137C2-097B-4A02-AACB-C084E561B37F}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD137C2-097B-4A02-AACB-C084E561B37F}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{5FD137C2-097B-4A02-AACB-C084E561B37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FD137C2-097B-4A02-AACB-C084E561B37F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8CA1F8E-9DC1-4B6B-A267-FC3887F396E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C8CA1F8E-9DC1-4B6B-A267-FC3887F396E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8CA1F8E-9DC1-4B6B-A267-FC3887F396E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8CA1F8E-9DC1-4B6B-A267-FC3887F396E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43A31373-0972-47F9-9DE7-E87752C5F0A8}.Debug|Any CPU.ActiveCfg = Debug
+		{43A31373-0972-47F9-9DE7-E87752C5F0A8}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

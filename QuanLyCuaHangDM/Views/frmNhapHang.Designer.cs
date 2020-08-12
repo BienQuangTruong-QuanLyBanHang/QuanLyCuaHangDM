@@ -107,10 +107,10 @@
             this.pnelButton.Controls.Add(this.btnLuuPN);
             this.pnelButton.Controls.Add(this.btnThemPN);
             this.pnelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnelButton.Location = new System.Drawing.Point(2, 108);
+            this.pnelButton.Location = new System.Drawing.Point(2, 111);
             this.pnelButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnelButton.Name = "pnelButton";
-            this.pnelButton.Size = new System.Drawing.Size(1012, 70);
+            this.pnelButton.Size = new System.Drawing.Size(1012, 67);
             this.pnelButton.TabIndex = 23;
             // 
             // btnIn
@@ -187,7 +187,7 @@
             this.tableLayoutPanel2.Controls.Add(this.labelControl6, 5, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtTongTien, 6, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 20);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 23);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -333,11 +333,11 @@
             // 
             this.gridCtrlCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCtrlCTPN.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
-            this.gridCtrlCTPN.Location = new System.Drawing.Point(478, 20);
+            this.gridCtrlCTPN.Location = new System.Drawing.Point(478, 23);
             this.gridCtrlCTPN.MainView = this.gv_CTPN;
             this.gridCtrlCTPN.Margin = new System.Windows.Forms.Padding(2);
             this.gridCtrlCTPN.Name = "gridCtrlCTPN";
-            this.gridCtrlCTPN.Size = new System.Drawing.Size(536, 262);
+            this.gridCtrlCTPN.Size = new System.Drawing.Size(536, 259);
             this.gridCtrlCTPN.TabIndex = 24;
             this.gridCtrlCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_CTPN});
@@ -443,10 +443,10 @@
             this.panel1.Controls.Add(this.tableLayoutPanel3);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(2, 20);
+            this.panel1.Location = new System.Drawing.Point(2, 23);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(476, 262);
+            this.panel1.Size = new System.Drawing.Size(476, 259);
             this.panel1.TabIndex = 8;
             // 
             // tableLayoutPanel3
@@ -474,7 +474,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(319, 262);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(319, 259);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
             // labelControl9
@@ -593,7 +593,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(157, 262);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(157, 259);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // panel2
@@ -601,7 +601,7 @@
             this.panel2.Controls.Add(this.btnSuaCTPN);
             this.panel2.Controls.Add(this.btnThemCTPN);
             this.panel2.Controls.Add(this.btnXoaCTPN);
-            this.panel2.Location = new System.Drawing.Point(3, 29);
+            this.panel2.Location = new System.Drawing.Point(3, 28);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(151, 226);
             this.panel2.TabIndex = 8;
